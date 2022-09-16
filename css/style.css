@@ -482,3 +482,49 @@ input[type=submit]:hover {
 }
 
 /* End of Contact Us  */
+
+/* Media */
+
+.mediaRow {
+  margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.mediaRow,
+.mediaRow > .mediaColumn {
+  padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.mediaColumn {
+  float: left;
+  width: 25%;
+}
+
+/* Clear floats after rows */ 
+.mediaRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 20px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .mediaColumn {
+    width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .mediaColumn {
+    width: 100%;
+  }
+}
+/* End of Media */
