@@ -553,3 +553,22 @@ img.CEOimg {
 }
 
 /* End of The TS*/
+
+/* Our Services*/
+
+.serviceContainer {
+    float: left;
+    display: inline-block;
+    padding: 10px;
+    width:50%;
+}
+
+img.serviceIMG {
+    float: left;
+    top: 0;
+    width: 40%;
+    padding-right: 10px;
+}
+
+
+/* End of Our Services*/
