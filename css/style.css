@@ -1,13 +1,22 @@
+/*Colors used for reference:
+#F5F5F5 light gray background
+#333535 dark gray text, header and footer
+#FFA500 orange highlight
+*/ 
+
+
 body {
-    font-family: Helvetica;
-    margin:0;
+    font-family: Bahnschrift;
+	color: #333535;
+    margin: 0;
+	background-color:  #F5F5F5;
   }
   
   
   .navbar {
       overflow: hidden;
-      background-color: #1155cc;
-      border-bottom: 2px solid #3c78FF;
+      border-bottom: 6px solid #FFA500;
+	  background-color: #333535;
   }
   
   .navbar a {
@@ -44,7 +53,7 @@ body {
   
   
   .navbar .linkHover:hover, .subnav:hover .subnavbtn {
-          background-color: #3c78d8;
+          background-color: #FFA500;
    }
   
   .subnav-content {
@@ -125,6 +134,9 @@ body {
       opacity: 0.8;
   }
   
+  .home {
+	  background-color: #B77A00;
+  }
   
   /* Full-width input fields */
   input[type=text], input[type=password] {
@@ -341,12 +353,6 @@ body {
       text-align: center;
   }
   
-  .verticalLine {
-      border-left: 6px solid #3c78FF;
-      position: absolute;
-      left: 110px;
-      height: 68px;
-  }
   
   footer {
       display: flex;
