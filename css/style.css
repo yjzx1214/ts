@@ -528,3 +528,22 @@ input[type=submit]:hover {
   }
 }
 /* End of Media */
+
+/* The TS*/
+
+.TSContainer {
+    float: left;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+img.CEOimg {
+    float:left;
+    margin: 10px;
+    top: 0;
+    width: 200px;
+}
+
+/* End of The TS*/
