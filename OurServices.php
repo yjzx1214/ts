@@ -77,7 +77,8 @@ if (isset($_SESSION['islogin'])) {
                 At Spider Web Design we bring together our experience, energy and new age designs to provide our customers with creative and innovative solutions. Our highly skilled design professionals are committed to helping your business achieve its goals. We have a number of custom design solutions including website design, business branding and promotion, including logo and banner designs as well as social media marketing.
             </p>
         </div>
-
+    <div class="cleardiv"></div>
+    
 </main>
 
     <?php include("footer.php"); ?>

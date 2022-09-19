@@ -9,7 +9,7 @@ body {
     font-family: Bahnschrift;
 	color: #333535;
     margin: 0;
-	background-color:  #F5F5F5;
+	background-color: #F5F5F5;
   }
   
   
@@ -560,7 +560,7 @@ img.CEOimg {
   float: left;
   display: inline-block;
   padding: 10px;
-  width:50%;
+  width: 49%;
 }
 
 img.serviceIMG {
@@ -570,5 +570,7 @@ img.serviceIMG {
   padding-right: 10px;
 }
 
-
+.cleardiv {
+	clear: both;
+}
 /* End of Our Services*/
