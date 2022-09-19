@@ -109,7 +109,7 @@
 
             <div class="clearfix">
                 <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="submit" class="signupbtn">Sign Up</button>
+                <button type="submit" class="signUpButton">Sign Up</button>
             </div>
         </div>
     </form>
