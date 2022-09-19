@@ -10,6 +10,7 @@ if (isset($_SESSION['islogin'])) {
 }
 ?>
 
+<!-- testing to see if this works -->
 <!DOCTYPE html>
 <html>
 
