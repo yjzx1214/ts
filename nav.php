@@ -1,56 +1,29 @@
 <div class="navbar">
 
     <a href="#" class="home">Turnstar<br>Stratergies</a>
-
+	
     <div class="verticalLine"></div>
 
-    <a href="#home" class="linkHover">The Ts</a>
-    <a href="#home" class="linkHover">Our Partners</a>
+    <a href="Home.php" class="linkHover">The Ts</a>
+    <a href="OurPartners.php" class="linkHover">Our Partners</a>
+	<a href="Training.php" class="linkHover">Training</a>
+	<a href="OurServices.php" class="linkHover">Our Services</a>
+	<a href="Media.php" class="linkHover">Media</a>
+	<a href="Newsletter.php" class="linkHover">Newsletter</a>
+	<a href="ContactUs.php" class="linkHover">Contact Us</a>
 
-    <!-- This is a comment -->
-
-    <div class="subnav">
-        <button class="subnavbtn"> Training <i class="fa fa-caret-down"></i></button>
-        <div class="subnav-content">
-            <a href="#company">Company</a>
-            <a href="#team">Team</a>
-            <a href="#careers">Careers</a>
-        </div>
-    </div>
-
-    <div class="subnav">
-        <button class="subnavbtn">Our Services <i class="fa fa-caret-down"></i></button>
-        <div class="subnav-content">
-            <a href="#bring">Bring</a>
-            <a href="#deliver">Deliver</a>
-            <a href="#package">Package</a>
-            <a href="#express">Express</a>
-        </div>
-    </div>
-
-    <div class="subnav">
-        <button class="subnavbtn"> Media <i class="fa fa-caret-down"></i></button>
-        <div class="subnav-content">
-            <a href="#link1">Link 1</a>
-            <a href="#link2">Link 2</a>
-            <a href="#link3">Link 3</a>
-            <a href="#link4">Link 4</a>
-        </div>
-    </div>
-    <a href="#home" class="linkHover">Newsleter</a>
+    <!-- This is the admin only button-->
     <?php
     if ($_SESSION['userlevel'] > 1) {
-        echo '<a href="#home" class="linkHover">Admin</a>';
+        echo '<a href="Admin.php" class="linkHover">Admin</a>';
     }
     ?>
-
-    <a href="#contact" class="linkHover">Contact Us</a>
+	
     <div class="topnav-right">
         <div class="pill-nav">
             <button class="loginButton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fa fa-user-circle"></i><?php echo $login ?></button>
         </div>
     </div>
-
 </div>
 
 <div id="id01" class="modal">
