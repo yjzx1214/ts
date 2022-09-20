@@ -39,6 +39,14 @@ if (isset($_SESSION['islogin'])) {
             <button class="Trainingbtn" onclick="filterSelection('Governance')"> Governance</button>
         </div>
 
+        <div id="addbtnContainer"
+            <div class=" addTrainingbtn">
+                <button class="Trainingbtn"> Add Class</button>
+            </div>
+        </div>
+
+        <div class="cleardiv"></div>
+
         <div class="TrainingContainer SS">
 
             <div class="TrainingSubTitle">
