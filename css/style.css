@@ -706,3 +706,72 @@ body::after {
 }
 
 /*End of footer fixing*/
+
+
+/* Admin */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: White;
+}
+tr:nth-child(odd) {
+  background-color: lightgrey;
+}
+
+#myInput {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 85%;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  float: left;
+}
+
+.addUser {
+  border: none;
+  outline: none;
+  background-color: white;
+  cursor: pointer;
+  background-color: dodgerblue;
+  color: white;
+  float: right;
+  display: inline;
+  margin: 9px 0;
+}
+
+
+.adminbtn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+  background-color: dodgerblue;
+  color: white;
+
+}
+
+  .adminbtn:hover {
+      opacity: 0.8;
+      background-color: blue;
+  }
+
+  .adminbtn.active {
+      color: white;
+      opacity: 0.8;
+      background-color: blue;
+  }
+
+
+/*End of Admin*/
