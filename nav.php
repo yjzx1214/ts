@@ -17,6 +17,16 @@
     if ($_SESSION['userlevel'] > 1) {
         echo '<a href="Admin.php" class="linkHover">Admin</a>';
     }
+    
+    if ($_SESSION['userlevel'] == true) {
+        echo'<button type="submit">Test</button>';
+    } else {
+        echo '<div class="topnav-right">';
+        echo '  <div class="pill-nav">';
+        echo '    <button class="loginButton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fa fa-user-circle"></i><?php echo $login ?></button>';
+        echo '  </div>';
+        echo '</div>';
+    }
     ?>
 	
     <div class="topnav-right">
