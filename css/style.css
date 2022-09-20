@@ -518,6 +518,7 @@ input[type=submit]:hover {
 .content {
   background-color: white;
   padding: 20px;
+  text-align: center;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
@@ -593,3 +594,16 @@ img.serviceIMG {
 }
 
 /* end of newsletter*/
+
+/* Our Partners*/
+
+.OurPartnersContainer {
+  background-color: white;
+  padding: 10px;
+  float: left;
+  display: inline;
+  width: 49%;
+  margin:8px;
+}
+
+/*end of Our Partners*/
