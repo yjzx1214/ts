@@ -17,7 +17,8 @@
     if ($_SESSION['userlevel'] > 1) {
         echo '<a href="Admin.php" class="linkHover">Admin</a>';
     }
-    
+
+    /*
     if ($_SESSION['userlevel'] == true) {
         echo'<button type="submit">Test</button>';
     } else {
@@ -27,7 +28,9 @@
         echo '  </div>';
         echo '</div>';
     }
+    */
     ?>
+    
 	
     <div class="topnav-right">
         <div class="pill-nav">
