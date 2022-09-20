@@ -35,7 +35,7 @@ if (isset($_SESSION['islogin'])) {
         <p>We always go above and beyond our customer's expectations because we treat your business as our own.</p>
     </div>
 
-    &nbsp;
+    <br>
     <div style="text-align:center">
         <h1>CEO Message</h1>
 	</div>
@@ -51,7 +51,7 @@ if (isset($_SESSION['islogin'])) {
     </div>
 	
 
-
+<div class="cleardiv"></div>
 </main>
 
     <?php include("footer.php"); ?>
