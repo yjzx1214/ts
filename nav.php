@@ -1,10 +1,10 @@
 <div class="navbar">
 
-    <a href="#" class="home">Turnstar<br>Stratergies</a>
+    <a href="Index.php" class="home">Turnstar<br>Stratergies</a>
 	
     <div class="verticalLine"></div>
 
-    <a href="Index.php" class="linkHover">The Ts</a>
+    <a href="TheTs.php" class="linkHover">The Ts</a>
     <a href="OurPartners.php" class="linkHover">Our Partners</a>
 	<a href="Training.php" class="linkHover">Training</a>
 	<a href="OurServices.php" class="linkHover">Our Services</a>
