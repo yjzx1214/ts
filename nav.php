@@ -4,7 +4,7 @@
 	
     <div class="verticalLine"></div>
 
-    <a href="Home.php" class="linkHover">The Ts</a>
+    <a href="Index.php" class="linkHover">The Ts</a>
     <a href="OurPartners.php" class="linkHover">Our Partners</a>
 	<a href="Training.php" class="linkHover">Training</a>
 	<a href="OurServices.php" class="linkHover">Our Services</a>
