@@ -714,6 +714,16 @@ img.serviceIMG {
   margin: 20px;
 }
 
+#addbtnContainer {
+  margin: 0 20px;
+}
+
+.addTrainingbtn {
+  float: right;
+  display: inline;
+}
+
+
 /* End of Training*/
 
 
