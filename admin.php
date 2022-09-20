@@ -73,17 +73,23 @@ if (isset($_SESSION['islogin'])) {
                     </table>
 
 
-                </div>
+                    </div>
                 <div class="column">
                     <form action="/action_page.php">
                         <label for="id">ID</label>
                         <input type="text" id="id" name="ID" placeholder="Your ID..">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="Your Name..">
+                        <label for="password">Password</label>
+                        <input type="text" id="password" name="password" placeholder="Your Password..">
                         <label for="email">Email</label>
                         <input type="text" id="email" name="email" placeholder="Your Email..">
                         <label for="phone">Phone</label>
                         <input type="text" id="phone" name="phone" placeholder="Your Phone number..">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="Your Address number..">
+                        <label for="level">Level</label>
+                        <input type="text" id="level" name="level" placeholder="Your Level..">
                         <input type="submit" value="Update">
                     </form>
                 </div>
