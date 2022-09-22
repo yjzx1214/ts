@@ -630,6 +630,9 @@ img.serviceIMG {
   background-color: white;
   padding: 10px;
   margin: 8px;
+  max-height: 200px;
+  min-width: 500px;
+  overflow: auto;
 }
 
 .TrainingImg {
@@ -648,7 +651,8 @@ img.serviceIMG {
   text-align: center;
   cursor: pointer;
   font-size: 17px;
-  width: 30%;
+  width: 100px;
+  max-height: 50px;
 }
 
 .Trainingbtn {
