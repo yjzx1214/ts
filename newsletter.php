@@ -23,7 +23,7 @@ if (isset($_SESSION['islogin'])) {
     <!-- This is nav bar file -->
     <?php include('nav.php') ?>
 
-<main>
+    <main>
         <div style="text-align:center">
             <h1>News Letter</h1>
             <p>Subscribe to newsletter</p>
@@ -31,7 +31,7 @@ if (isset($_SESSION['islogin'])) {
 
         <div class="newsletterContainer">
             <div class="newsletterContent">
-                <form action="/action_page.php">
+                <form action="subscribe.php" method="POST">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Name..">
                     <label for="email">Email</label>
@@ -42,6 +42,6 @@ if (isset($_SESSION['islogin'])) {
         </div>
 
 
-</main>
+    </main>
 
     <?php include("footer.php"); ?>
