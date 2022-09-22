@@ -41,8 +41,30 @@ if (isset($_SESSION['islogin'])) {
 
         <div id="addbtnContainer"
             <div class=" addTrainingbtn">
-                <button class="Trainingbtn"> Add Class</button>
+				<button class="Trainingbtn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Add Class</button>
             </div>
+        </div>
+
+        <div id="id01" class="modal">
+	        <form class="modal-content"  method="POST">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
+
+                <div class="container">
+                    <h1>Add Class</h1>
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" placeholder="Enter Category of class">
+                    <label for="cost">Cost</label>
+                    <input type="text" id="cost" name="cost" placeholder="Enter Cost of class">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" placeholder="Enter Title of class">
+                    <label for="info">Information</label>
+                    <textarea id="info" name="info" placeholder="Enter Information about class" style="height:170px"></textarea>
+                    <input type="submit" value="Add Class">
+                    <button type="button" class="cancelbtn" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+	        </form>
         </div>
 
         <div class="cleardiv"></div>
@@ -55,14 +77,18 @@ if (isset($_SESSION['islogin'])) {
 
             <div class="TrainingContent">
                 <div class="TrainingImg">
-                    <h1>Stuff</h1>
+                    <h3>A longer title to what happens A longer title to what happens</h3>
                 </div>
 
                 <p>
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                 </p>
-                <input type="submit" value="Submit" class="JoinClass">
+				
+				<div class="TrainingImg">
+                    <h3>Cost: $120</h3>
+                </div>
+                <input type="submit" value="Join" class="JoinClass">
                 <input type="submit" value="Change" class="JoinClass">
             </div>
 
@@ -75,7 +101,7 @@ if (isset($_SESSION['islogin'])) {
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                 </p>
-                <input type="submit" value="Submit" class="JoinClass">
+                <input type="submit" value="Join" class="JoinClass">
             </div>
         </div>
 
@@ -94,7 +120,7 @@ if (isset($_SESSION['islogin'])) {
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                 </p>
-                <input type="submit" value="Submit" class="JoinClass">
+                <input type="submit" value="Join" class="JoinClass">
                 <input type="submit" value="Change" class="JoinClass">
             </div>
         </div>
@@ -114,7 +140,7 @@ if (isset($_SESSION['islogin'])) {
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                 </p>
-                <input type="submit" value="Submit" class="JoinClass">
+                <input type="submit" value="Join" class="JoinClass">
                 <input type="submit" value="Change" class="JoinClass">
             </div>
         </div>
@@ -133,7 +159,7 @@ if (isset($_SESSION['islogin'])) {
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                 </p>
-                <input type="submit" value="Submit" class="JoinClass">
+                <input type="submit" value="Join" class="JoinClass">
                 <input type="submit" value="Change" class="JoinClass">
             </div>
         </div>
@@ -153,7 +179,7 @@ if (isset($_SESSION['islogin'])) {
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                     Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
                 </p>
-                <input type="submit" value="Submit" class="JoinClass">
+                <input type="submit" value="Join" class="JoinClass">
                 <input type="submit" value="Change" class="JoinClass">
             </div>
         </div>
