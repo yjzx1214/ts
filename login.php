@@ -1,4 +1,5 @@
 <?php
+if(isset($_POST['LogInGo'])){
 require 'conn.php';
 
 $username = $_POST['uname'];
@@ -25,3 +26,4 @@ if (count($row) > 0) {
 }
 
 mysqli_close($conn);
+}

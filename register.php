@@ -1,4 +1,6 @@
 <?php
+if(isset($_POST['SignUpGo'])){
+	
 require 'conn.php';
 
 $username = $_POST['uname'];
@@ -27,3 +29,4 @@ if ($numrows == 1) {
 
 
 mysqli_close($conn);
+}

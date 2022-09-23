@@ -14,27 +14,26 @@
 
     <!-- This is the admin only button-->
     <?php
-    if ($_SESSION['userlevel'] > 1) {
+    if (!empty($_SESSION)) {
+		if ($_SESSION['userlevel'] > 1){
         echo '<a href="Admin.php" class="linkHover">Admin</a>';
+		}
     }
-
-    /*
-    if ($_SESSION['userlevel'] == true) {
-        echo'<button type="submit">Test</button>';
-    } else {
-        echo '<div class="topnav-right">';
-        echo '  <div class="pill-nav">';
-        echo '    <button class="loginButton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fa fa-user-circle"></i><?php echo $login ?></button>';
-        echo '  </div>';
-        echo '</div>';
-    }
-    */
     ?>
-
-
+	
     <div class="topnav-right">
         <div class="pill-nav">
-            <button class="loginButton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fa fa-user-circle"></i><?php echo $login ?></button>
+		
+            <button class="loginButton" onclick="document.getElementById(
+			<?php
+			if (empty($_SESSION)){
+			echo '\'id01\'';
+			} else { 
+			echo '\'id03\'';
+			}
+			?>
+			).style.display='block'" style="width:auto;"><i class="fa fa-user-circle"></i><?php echo $login ?></button>
+			
         </div>
     </div>
 </div>
@@ -54,14 +53,10 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
 
-            <button type="submit" class="loginButton">Login</button>
-            <button class="signUpButton" onclick="document.getElementById('id02').style.display='block' , document.getElementById('id01').style.display='none'">Sign Up</button>
-        </div>
+            <button type="submit" name="LogInGo" value="LogInGo" class="loginButton">Login</button>
+            <button type="button" class="signUpButton" name="SignUpGo" value="SingUpGo" onclick="document.getElementById('id02').style.display='block' , document.getElementById('id01').style.display='none'">Sign Up</button>
+		</div>
         <div style="clear:both;"></div>
-
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        </div>
     </form>
 </div>
 
@@ -87,19 +82,40 @@
 
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="email" id="email" required>
-            <span class="text-reminder" id="email-reminder" style="display:none">* E-mail format is incorrect</span><br>
+            <span class="text-reminder" id="email-reminder" style="display:none">* Email format is incorrect</span><br>
 
             <label for="phone"><b>Phone</b></label>
             <input type="text" placeholder="Enter Phone" name="phone" id="phone" required>
-            <span class="text-reminder" id="phone-reminder" style="display:none">* Phone number must be 11 digits long</span><br>
+            <span class="text-reminder" id="phone-reminder" style="display:none">* Phone number must be 10 digits long e.g. (0412 345 678)</span><br>
 
             <div class="clearfix">
                 <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="submit" class="signUpButton">Sign Up</button>
+                <button type="submit" class="signUpButton" name="SignUpGo" value="SignUpGo">Sign Up</button>
             </div>
         </div>
     </form>
 </div>
+
+<!-- Sign Out-->
+
+<div id="id03" class="modal">
+		<form class="modal-content" action="SignOut.php" method="post">
+		<div class="imgcontainer">
+		    <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+			</div>
+		    <div class="container">
+		
+            <h1 style="text-align:center"><?php echo $login ?></h1>
+            <p></p>
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id04').style.display='block' 
+				, document.getElementById('id03').style.display='none'" class="loginButton">Profile</button>
+                <button type="submit" class= "loginButton">Sign Out</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 
 <script>
     // sign up authentication
@@ -126,7 +142,7 @@
             document.getElementById("email-reminder").style.color = "red";
             result = false;
         }
-        if (phone.value.length != 11) {
+        if (phone.value.length != 10) {
             document.getElementById("phone-reminder").style.display = "block";
             document.getElementById("phone-reminder").style.color = "red";
             result = false;
