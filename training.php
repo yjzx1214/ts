@@ -41,11 +41,11 @@ if (isset($_SESSION['islogin'])) {
 
         <div id="addbtnContainer"
             <div class=" addTrainingbtn">
-				<button class="Trainingbtn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Add Class</button>
+				<button class="Trainingbtn" onclick="document.getElementById('id10').style.display='block'" style="width:auto;">Add Class</button>
             </div>
         </div>
 
-        <div id="id01" class="modal">
+        <div id="id10" class="modal">
 	        <form class="modal-content"  method="POST">
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
