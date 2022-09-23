@@ -1,16 +1,16 @@
 <div class="navbar">
 
     <a href="Index.php" class="home">Turnstar<br>Stratergies</a>
-	
+
     <div class="verticalLine"></div>
 
     <a href="TheTs.php" class="linkHover">The Ts</a>
     <a href="OurPartners.php" class="linkHover">Our Partners</a>
-	<a href="Training.php" class="linkHover">Training</a>
-	<a href="OurServices.php" class="linkHover">Our Services</a>
-	<a href="Media.php" class="linkHover">Media</a>
-	<a href="Newsletter.php" class="linkHover">Newsletter</a>
-	<a href="ContactUs.php" class="linkHover">Contact Us</a>
+    <a href="Training.php" class="linkHover">Training</a>
+    <a href="OurServices.php" class="linkHover">Our Services</a>
+    <a href="Media.php" class="linkHover">Media</a>
+    <a href="Newsletter.php" class="linkHover">Newsletter</a>
+    <a href="ContactUs.php" class="linkHover">Contact Us</a>
 
     <!-- This is the admin only button-->
     <?php
@@ -30,8 +30,8 @@
     }
     */
     ?>
-    
-	
+
+
     <div class="topnav-right">
         <div class="pill-nav">
             <button class="loginButton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="fa fa-user-circle"></i><?php echo $login ?></button>
@@ -87,7 +87,7 @@
 
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="email" id="email" required>
-            <span class="text-reminder" id="email-reminder" style="display:none">* Email must contain @</span><br>
+            <span class="text-reminder" id="email-reminder" style="display:none">* E-mail format is incorrect</span><br>
 
             <label for="phone"><b>Phone</b></label>
             <input type="text" placeholder="Enter Phone" name="phone" id="phone" required>
@@ -118,6 +118,12 @@
         if (pwd.value != pwdRepeat.value) {
             document.getElementById("psw-reminder").style.display = "block";
             document.getElementById("psw-reminder").style.color = "red";
+            result = false;
+        }
+        var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+        if (!reg.test(email.value)) {
+            document.getElementById("email-reminder").style.display = "block";
+            document.getElementById("email-reminder").style.color = "red";
             result = false;
         }
         if (phone.value.length != 11) {
