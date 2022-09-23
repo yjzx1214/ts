@@ -1,6 +1,6 @@
 <div class="navbar">
 
-    <a href="Index.php" class="home">Turnstar<br>Stratergies</a>
+    <a href="Index.php" class="home">Turnstar<br>Strategies</a>
 
     <div class="verticalLine"></div>
 
