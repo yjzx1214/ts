@@ -108,8 +108,7 @@
             <h1 style="text-align:center"><?php echo $login ?></h1>
             <p></p>
             <div class="clearfix">
-                <button type="button" onclick="document.getElementById('id04').style.display='block' 
-				, document.getElementById('id03').style.display='none'" class="loginButton">Profile</button>
+            <button type="button" onclick="location.href='profile.php' , document.getElementById('id03').style.display='none'" class="loginButton">Profile</button>
                 <button type="submit" class= "loginButton">Sign Out</button>
             </div>
         </div>

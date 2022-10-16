@@ -779,3 +779,39 @@ tr:nth-child(odd) {
 
 
 /*End of Admin*/
+
+/* Profile */
+
+.profileContainer{
+  display:flex;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.profileColumn {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.profileRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* input might need to change */
+@media screen and (max-width: 700px) {
+  .profileColumn, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+
+}
+
+/* End of Profile */
