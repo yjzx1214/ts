@@ -23,73 +23,75 @@ if (isset($_SESSION['islogin'])) {
     <!-- This is nav bar file -->
     <?php include('nav.php') ?>
 
-<main>
+    <main>
 
-<div class="container">
+        <div class="container">
             <div style="text-align:center">
                 <h1>Admin</h1>
             </div>
             <div class="row">
                 <div class="column">
 
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                    <input type="text" id="myInput" onkeyup="searchName()" placeholder="Search for names.." title="Type in a name">
 
                     <div class="addUser">
                         <button class="adminbtn"> Add Class</button>
                     </div>
 
                     <div class="cleardiv"></div>
+                    <?php
+                    require 'conn.php';
+                    $count = 1;
 
-                    <table id="myTable">
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>View</th>
-                            <th>Delete</th>
-
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Smith</td>
-                            <td>SomeEmail@Gmail.com</td>
-                            <td><button type="submit">View</button></td>
-                            <td><button type="submit">Delete</button></td>
-                        </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Jackson</td>
-                            <td>Other@Gmail.com</td>
-                            <td><button type="submit">View</button></td>
-                            <td><button type="submit">Delete</button></td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Johnson</td>
-                            <td>ThisEmail@Gmail.com</td>
-                            <td><button type="submit">View</button></td>
-                            <td><button type="submit">Delete</button></td>
-                        </tr>
-                    </table>
-
-
-                    </div>
+                    $sql = "select * from users";
+                    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+                    echo "<table id='myTable'>";
+                    echo "<tr><td>ID</td><td>Name</td><td>Email</td><td>Phone</td><td>Update</td><td>Delete</td></tr>";
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        echo "<td>$row[u_id]</td>";
+                        echo "<td>$row[u_name]</td>";
+                        echo "<td>$row[u_email]</td>";
+                        echo "<td>$row[u_phone]</td>";
+                        echo "<td><a href='#' onclick=edit($count)>Edit</a></td>";
+                        echo "<td><a href=./del-user.php?u_id=$row[u_id]>Delete</a></td>";
+                        echo "</tr>";
+                        $count++;
+                    }
+                    echo "</table>";
+                    ?>
+                </div>
                 <div class="column">
-                    <form action="/action_page.php">
+                    <form action="/action_page.php" method="POST" onsubmit="return check()">
                         <label for="id">ID</label>
-                        <input type="text" id="id" name="ID" placeholder="Your ID..">
+                        <input type="text" id="update-id" name="ID" readonly>
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name..">
+                        <input type="text" id="update-name" name="name" placeholder="Your Name..">
+                        <span class="text-reminder" id="name-reminder" style="display:none">* Username must be at least 5 characters</span><br>
                         <label for="password">Password</label>
-                        <input type="text" id="password" name="password" placeholder="Your Password..">
+                        <input type="password" id="psw" name="password" placeholder="Your Password..">
+                        <label for="psw-repeat">Repeat Password</label>
+                        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                        <span class="text-reminder" id="psw-reminder" style="display:none">* Passwords do not match</span><br>
                         <label for="email">Email</label>
-                        <input type="text" id="email" name="email" placeholder="Your Email..">
+                        <input type="text" id="update-email" name="email" placeholder="Your Email..">
+                        <span class="text-reminder" id="email-reminder" style="display:none">* E-mail format is incorrect</span><br>
                         <label for="phone">Phone</label>
-                        <input type="text" id="phone" name="phone" placeholder="Your Phone number..">
+                        <input type="text" id="update-phone" name="phone" placeholder="Your Phone number..">
+                        <span class="text-reminder" id="phone-reminder" style="display:none">* Phone number must be 11 digits long</span><br>
                         <label for="address">Address</label>
                         <input type="text" id="address" name="address" placeholder="Your Address number..">
                         <label for="level">Level</label>
-                        <input type="text" id="level" name="level" placeholder="Your Level..">
+                        <select name='u_level'>
+                            <?php
+
+                            $sql = "select * from permissions";
+                            $result_permission = mysqli_query($conn, $sql) or die("Error require Permission Level! - " . mysqli_error($conn));
+                            while ($level = mysqli_fetch_array($result_permission)) {
+                                echo "<option value ='$level[p_level]'>$level[p_name]</option>";
+                            }
+                            ?>
+                        </select>
                         <input type="submit" value="Update">
                     </form>
                 </div>
@@ -99,7 +101,7 @@ if (isset($_SESSION['islogin'])) {
 
 
         <script>
-            function myFunction() {
+            function searchName() {
                 var input, filter, table, tr, td, i, txtValue;
                 input = document.getElementById("myInput");
                 filter = input.value.toUpperCase();
@@ -117,8 +119,47 @@ if (isset($_SESSION['islogin'])) {
                     }
                 }
             }
+
+            function edit(count) {
+                var tab = document.getElementById("myTable");
+                document.getElementById('update-id').setAttribute("value", tab.rows[count].cells[0].innerText);
+                document.getElementById('update-name').setAttribute("value", tab.rows[count].cells[1].innerText);
+                document.getElementById('update-email').setAttribute("value", tab.rows[count].cells[2].innerText);
+                document.getElementById('update-phone').setAttribute("value", tab.rows[count].cells[3].innerText);
+            }
+
+            function check() {
+                var uname = document.getElementById('update-name');
+                var pwd = document.getElementById("psw");
+                var pwdRepeat = document.getElementById("psw-repeat");
+                var email = document.getElementById("update-email");
+                var phone = document.getElementById("update-phone");
+                var result = true;
+                if (uname.value.length < 5) {
+                    document.getElementById("name-reminder").style.display = "block";
+                    document.getElementById("name-reminder").style.color = "red";
+                    result = false;
+                }
+                if (pwd.value != pwdRepeat.value) {
+                    document.getElementById("psw-reminder").style.display = "block";
+                    document.getElementById("psw-reminder").style.color = "red";
+                    result = false;
+                }
+                var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+                if (!reg.test(email.value)) {
+                    document.getElementById("email-reminder").style.display = "block";
+                    document.getElementById("email-reminder").style.color = "red";
+                    result = false;
+                }
+                if (phone.value.length != 11) {
+                    document.getElementById("phone-reminder").style.display = "block";
+                    document.getElementById("phone-reminder").style.color = "red";
+                    result = false;
+                }
+                return result;
+            }
         </script>
 
-</main>
+    </main>
 
     <?php include("footer.php"); ?>
