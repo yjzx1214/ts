@@ -79,8 +79,6 @@ if (isset($_SESSION['islogin'])) {
                         <label for="phone">Phone</label>
                         <input type="text" id="update-phone" name="phone" placeholder="Your Phone number..">
                         <span class="text-reminder" id="phone-reminder" style="display:none">* Phone number must be 11 digits long</span><br>
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" placeholder="Your Address number..">
                         <label for="level">Level</label>
                         <select name='u_level'>
                             <?php
