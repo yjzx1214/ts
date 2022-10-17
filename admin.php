@@ -62,9 +62,9 @@ if (isset($_SESSION['islogin'])) {
                     ?>
                 </div>
                 <div class="column">
-                    <form action="/action_page.php" method="POST" onsubmit="return check()">
+                    <form action="update.php" method="POST" onsubmit="return check()">
                         <label for="id">ID</label>
-                        <input type="text" id="update-id" name="ID" readonly>
+                        <input type="text" id="update-id" name="userid" readonly>
                         <label for="name">Name</label>
                         <input type="text" id="update-name" name="name" placeholder="Your Name..">
                         <span class="text-reminder" id="name-reminder" style="display:none">* Username must be at least 5 characters</span><br>
@@ -133,23 +133,27 @@ if (isset($_SESSION['islogin'])) {
                 var email = document.getElementById("update-email");
                 var phone = document.getElementById("update-phone");
                 var result = true;
-                if (uname.value.length < 5) {
+                if (uname.value.length < 2) {
+                    alert(1);
                     document.getElementById("name-reminder").style.display = "block";
                     document.getElementById("name-reminder").style.color = "red";
                     result = false;
                 }
                 if (pwd.value != pwdRepeat.value) {
+                    alert(3);
                     document.getElementById("psw-reminder").style.display = "block";
                     document.getElementById("psw-reminder").style.color = "red";
                     result = false;
                 }
                 var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
                 if (!reg.test(email.value)) {
+                    alert(4);
                     document.getElementById("email-reminder").style.display = "block";
                     document.getElementById("email-reminder").style.color = "red";
                     result = false;
                 }
-                if (phone.value.length != 11) {
+                if (phone.value.length != 10) {
+                    alert(5);
                     document.getElementById("phone-reminder").style.display = "block";
                     document.getElementById("phone-reminder").style.color = "red";
                     result = false;
