@@ -45,27 +45,34 @@ if (isset($_SESSION['islogin'])) {
             </div>
         </div>
 
-        <div id="id10" class="modal">
-	        <form class="modal-content"  method="POST">
+        <div id="id47" class="modal">
+            <form class="modal-content"  method="POST">
                 <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <span onclick="document.getElementById('id47').style.display='none'" class="close" title="Close Modal">&times;</span>
                 </div>
-
                 <div class="container">
                     <h1>Add Class</h1>
                     <label for="category">Category</label>
                     <input type="text" id="category" name="category" placeholder="Enter Category of class">
+                    <label for="course">Course</label>
+                    <input type="text" id="course" name="course" placeholder="Enter Course name">
+                    <label for="courseNum">Course Number</label>
+                    <input type="text" id="courseNum" name="courseNum" placeholder="Enter Course Number">
                     <label for="cost">Cost</label>
                     <input type="text" id="cost" name="cost" placeholder="Enter Cost of class">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" placeholder="Enter Title of class">
+                    <label for="trainer">Trainer</label>
+                    <input type="text" id="trainer" name="trainer" placeholder="Enter Trainer of class">
+                    <label for="trainerEmail">Trainer Email</label>
+                    <input type="text" id="trainerEmail" name="trainerEmail" placeholder="Enter Email of Trainer">
                     <label for="info">Information</label>
                     <textarea id="info" name="info" placeholder="Enter Information about class" style="height:170px"></textarea>
                     <input type="submit" value="Add Class">
-                    <button type="button" class="cancelbtn" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="button" class="cancelbtn" onclick="document.getElementById('id47').style.display='none'" class="cancelbtn">Cancel</button>
                 </div>
-	        </form>
+            </form>
         </div>
+
+        
 
         <div class="cleardiv"></div>
 
@@ -77,30 +84,58 @@ if (isset($_SESSION['islogin'])) {
 
             <div class="TrainingContent">
                 <div class="TrainingImg">
-                    <h3>A longer title to what happens A longer title to what happens</h3>
+                    <h3>Computer Science</h3>
+                </div>
+                
+                <div class="TrainingImg">
+                    <h3>19274</h3>
                 </div>
 
-                <p>
-                    Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
-                    Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
-                </p>
-				
-				<div class="TrainingImg">
+                <div class="TrainingImg">
+                    <p>
+                        Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
+                        Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
+                    </p>
+                </div>
+
+                <div class="TrainingImg">
                     <h3>Cost: $120</h3>
                 </div>
-                <input type="submit" value="Join" class="JoinClass">
-                <input type="submit" value="Change" class="JoinClass">
+
+                <div class="TrainingImg">
+                    <h3>Trainer Name</h3>
+                    <h3>Trainer.Name@Gmail.com</h3>
+                </div>
+				
+                <button type="submit" class="JoinClass" onclick="document.getElementById('id48').style.display='block'" style="width:auto;"> Join</button>
+                <input type="submit" value="Edit" class="JoinClass">
             </div>
 
             <div class="TrainingContent">
                 <div class="TrainingImg">
-                    <h1>Stuff</h1>
+                    <h3>Computer Science</h3>
+                </div>
+                
+                <div class="TrainingImg">
+                    <h3>19274</h3>
                 </div>
 
-                <p>
-                    Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
-                    Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
-                </p>
+                <div class="TrainingImg">
+                    <p>
+                        Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
+                        Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
+                    </p>
+                </div>
+
+                <div class="TrainingImg">
+                    <h3>Cost: $120</h3>
+                </div>
+
+                <div class="TrainingImg">
+                    <h3>Trainer Name</h3>
+                    <h3>Trainer.Name@Gmail.com</h3>
+                </div>
+
                 <input type="submit" value="Join" class="JoinClass">
             </div>
         </div>
@@ -184,6 +219,27 @@ if (isset($_SESSION['islogin'])) {
             </div>
         </div>
 
+
+        <div id="id48" class="modal">
+            <form class="modal-content"  method="POST">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id48').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                <div class="container">
+                    <h1>Payment</h1>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter Name on card">
+                    <label for="cardNum">Card Number</label>
+                    <input type="text" id="cardNum" name="cardNum" placeholder="Enter Card Number">
+                    <label for="expiration">Expiration</label>
+                    <input type="text" id="expiration" name="expiration" placeholder="Enter expiration of card">
+                    <label for="securityCode">Security Code</label>
+                    <input type="text" id="securityCode" name="securityCode" placeholder="Enter Security Code of card">
+                    <input type="submit" value="Confirm">
+                    <button type="button" class="cancelbtn" onclick="document.getElementById('id48').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+            </form>
+        </div>
 
 
         <script>
