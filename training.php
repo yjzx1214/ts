@@ -144,14 +144,35 @@ if (isset($_SESSION['islogin'])) {
                     require 'conn.php';
                     $count = 1;
 
-                    $sql = "select * from courses";
+                    $sql = "select * from courses WHERE category= 'strategicStudies'";
                     $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+                    echo"<h3>Strategic Studies</h3";
                     echo "<table id='myTable'>";
                     while ($row = mysqli_fetch_array($result)) {
                         echo "<tr>";
                         echo "<td>$row[u_courseName]</td>";
                         echo "<td>$row[u_courseNumber]</td>";
                         echo "<td>$row[u_courseInfo]</td>";
+                        echo "<td>$row[u_courseCost]</td>";
+                        echo "<td>$row[u_trainer]</td>";
+                        echo "<td>$row[u_trainerEmail]</td>";
+                        echo "<td><a href='#' >Join</a></td>";
+                        echo "<td><a href='#' onclick=edit($count)>edit</a></td>";
+                        echo "</tr>";
+                        $count++;
+                    }
+                    echo "</table>";
+                    
+                    $sql = "select * from courses WHERE category= 'it'";
+                    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+                    echo"<h3>IT</h3";
+                    echo "<table id='myTable'>";
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        echo "<td>$row[u_courseName]</td>";
+                        echo "<td>$row[u_courseNumber]</td>";
+                        echo "<td>$row[u_courseInfo]</td>";
+                        echo "<td>$row[u_courseCost]</td>";
                         echo "<td>$row[u_trainer]</td>";
                         echo "<td>$row[u_trainerEmail]</td>";
                         echo "<td><a href='#' >Join</a></td>";
@@ -161,6 +182,7 @@ if (isset($_SESSION['islogin'])) {
                     }
                     echo "</table>";
         ?>
+
 
 
 
