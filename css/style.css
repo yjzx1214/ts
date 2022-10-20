@@ -12,7 +12,6 @@ body {
 	background-color: #F5F5F5;
   }
   
-  
   .navbar {
       overflow: hidden;
       border-bottom: 6px solid #FFA500;
@@ -45,9 +44,23 @@ body {
     float: right;
   }
   
-  
   .loginButton {
       background-color: dodgerblue;
+      display: inline-block;
+      color: white;
+      padding: 14px 20px;
+      margin: 10px 20px;
+      border-radius: 5px;
+      border-width: 0;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      font-size: 17px;
+      width: 40%;
+  }
+
+  .submitButton {						/*This button is to differentiate the navbar login button and the modal login button*/
+	  background-color: dodgerblue;
       display: inline-block;
       color: white;
       padding: 14px 20px;
@@ -97,6 +110,12 @@ body {
   
   .home {
 	  background-color: #B77A00;
+  }
+  
+    /* Hiding mobile navbar */
+  
+  .mobile {
+	  display: none;
   }
   
   /* Full-width input fields */
@@ -243,10 +262,10 @@ body {
       border-radius: 3px 0 0 3px;
   }
   
-      /* On hover, add a black background color with a little bit see-through */
-      .prev:hover, .next:hover {
-          background-color: rgba(0,0,0,0.8);
-      }
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+  }
   
   /* Caption text */
   .text {
@@ -589,7 +608,6 @@ img.serviceIMG {
 }
 
 .TrainingImg {
-
 }
 
 .JoinClass {
@@ -815,3 +833,86 @@ tr:nth-child(odd) {
 }
 
 /* End of Profile */
+
+/* Mobile View*/
+
+@media screen and (max-width: 1058px) {
+  
+  .navbar {
+	  /* if we need to change anything */
+  }
+  
+  .linkHover {
+	display: none;
+  }
+  
+  .topnav-right {
+	  display: none;
+	  }
+  
+  .home {
+	  width: 33%;
+      /*width: 108px;*/
+	  margin: 0px;
+	  padding: 0px;
+	  text-align: left;
+	  background: rgba(0,0,0,0);
+  }
+  
+  .mobile {
+	display: block;
+  }
+  
+  .dropDownButton {
+      background: rgba(0,0,0,0);
+      display: inline-block;
+      color: white;
+      margin: 0px;
+      border-width: 0;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 17px;
+	  width: 33%;
+      /*width: 108px;*/
+	  height: 69px;
+	  float: left;
+  }
+  
+  .loginButton{
+	  margin: 0px;
+	  padding: 0px;
+	  width: 33%;
+	  height: 69px;
+      border-radius: 0px;
+	  background: rgba(0,0,0,0);
+	  float: left;
+      /*width: 108px;*/
+  }
+  
+  .submit{
+	  
+  }
+  
+    body::after {
+  content: '';
+  display: block;
+  height: 250px; 
+  }
+
+  footer{
+	height: 250px;
+  }
+  
+
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 95%; /* Could be more or less, depending on screen size */
+	height: 95%;
+  }
+}
+
+/* End of Mobile view*/
+

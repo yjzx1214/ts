@@ -21,6 +21,14 @@
     }
     ?>
 	
+	<div class="mobile">
+		
+		<button class="dropDownButton">
+			<i class="fa fa-bars" aria-hidden="true"></i>
+		</button>
+		
+	</div>
+	
     <div class="topnav-right">
         <div class="pill-nav">
 		
