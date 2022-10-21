@@ -26,79 +26,44 @@ if (isset($_SESSION['islogin'])) {
 <main>
 	<div style="text-align:center">
 		    <h1>Our Partners</h1>
-        <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.
-        Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-
+        <p>At Turnstar Strategies we will be supporting our Canberra clients to address any of their organisational needs. To achieve these goals we have partnered up with some australian organisations and government agencis.</p>
 	</div>
-		<!-- Portfolio Gallery Grid -->
-        <div class="OurPartnersContainer">
-            <h3>Strategic Communications</h3>
-            <img class="serviceIMG" src="picture/mountains.jpg" alt="Mountains">
-                <p>
-                    We are here to make sure your design needs are met. No fluff and fancy promises,>
-                    Our passionate team ess harness the power of the web. From social media to WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
-                    ommitted to helping your business achieve its goals. We have a number of custom design solutions including website design, business branding and promotion, including logo and banner designs as well as social media marketing.
-                </p>
-        </div>
-
-        <div class="OurPartnersContainer">
-            <h3>Information Technology</h3>
-            <img class="serviceIMG" src="picture/mountains.jpg" alt="Mountains">
-            <p>
-                We are here to make sure your design needs are met. No fluff and fancy promises,>
-                Our passionate team woharness the power of the web. From social media to WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
-                . We have a number of custom design solutions including website design, business branding and promotion, including logo and banner designs as well as social media marketing.
-            </p>
-        </div>
-
         <div class="cleardiv"></div>
 
 <div class="mediaRow">
   <div class="mediaColumn">
     <div class="content">
-      <img src="picture/mountains.jpg" alt="Mountains" style="width:100%">
+      <img src="picture/GOV.png" alt="GOV" style="width:100%">
       <h3>My Work</h3>
     </div>
   </div>
   <div class="mediaColumn">
     <div class="content">
-    <img src="picture/lights.jpg" alt="Lights" style="width:100%">
+    <img src="picture/AWP.png" alt="AWP" style="width:100%">
       <h3>My Work</h3>
    </div>
   </div>
   <div class="mediaColumn">
     <div class="content">
-    <img src="picture/nature.jpg" alt="Nature" style="width:100%">
+    <img src="picture/ATO.png" alt="ATO" style="width:100%">
       <h3>My Work</h3>
    </div>
   </div>
   <div class="mediaColumn">
     <div class="content">
-    <img src="picture/mountains.jpg" alt="Mountains" style="width:100%">
+    <img src="picture/ACMA.png" alt="ACMA" style="width:100%">
       <h3>My Work</h3>
     </div>
   </div>
 <div class="mediaColumn">
     <div class="content">
-      <img src="picture/mountains.jpg" alt="Mountains" style="width:100%">
+      <img src="picture/DTA.png" alt="DTA" style="width:100%">
       <h3>My Work</h3>
     </div>
   </div>
   <div class="mediaColumn">
     <div class="content">
-    <img src="picture/lights.jpg" alt="Lights" style="width:100%">
-      <h3>My Work</h3>
-    </div>
-  </div>
-  <div class="mediaColumn">
-    <div class="content">
-    <img src="picture/lights.jpg" alt="Nature" style="width:100%">
-      <h3>My Work</h3>
-    </div>
-  </div>
-  <div class="mediaColumn">
-    <div class="content">
-    <img src="picture/nature.jpg" alt="Mountains" style="width:100%">
+    <img src="picture/ACCC.png" alt="ACCC" style="width:100%">
       <h3>My Work</h3>
     </div>
   </div>
