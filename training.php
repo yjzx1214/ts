@@ -117,6 +117,41 @@ if (isset($_SESSION['islogin'])) {
 
         ?>
 
+
+<!-- modal = id49 -->
+<!-- Edit Class -->
+
+        <div id="id49" class="modal">
+            <form class="modal-content"  method="POST">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id49').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                <div class="container">
+                    <h1>Edit Class</h1>
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" placeholder="Enter Category of class">
+                    <label for="course">Course</label>
+                    <input type="text" id="course" name="course" placeholder="Enter Course name">
+                    <label for="courseNum">Course Number</label>
+                    <input type="text" id="courseNum" name="courseNum" placeholder="Enter Course Number">
+                    <label for="cost">Cost</label>
+                    <input type="text" id="cost" name="cost" placeholder="Enter Cost of class">
+                    <label for="trainer">Trainer</label>
+                    <input type="text" id="trainer" name="trainer" placeholder="Enter Trainer of class">
+                    <label for="trainerEmail">Trainer Email</label>
+                    <input type="text" id="trainerEmail" name="trainerEmail" placeholder="Enter Email of Trainer">
+                    <label for="info">Information</label>
+                    <textarea id="info" name="info" placeholder="Enter Information about class" style="height:170px"></textarea>
+                    <input type="submit" value="Edit Class">
+                    <button type="button" class="cancelbtn" onclick="document.getElementById('id49').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
         <!-- course payment page -->
         <div id="id48" class="modal">
             <form class="modal-content" method="POST">
