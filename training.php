@@ -40,162 +40,90 @@ if (isset($_SESSION['islogin'])) {
 
         <div id="addbtnContainer">
             <div class=" addTrainingbtn">
-				<button class="Trainingbtn" onclick="document.getElementById('id47').style.display='block'" style="width:auto;">Add Class</button>
+                <button class="Trainingbtn" onclick="document.getElementById('id47').style.display='block'" style="width:auto;">Add Class</button>
             </div>
         </div>
 
-<div id="id47" class="modal">
-	<form class="modal-content"  method="POST">
-	        <div class="imgcontainer">
-				<span onclick="document.getElementById('id47').style.display='none'" class="close" title="Close Modal">&times;</span>
-			</div>
-		<div class="container">
-			<h1>Add Class</h1>
-			<label for="category">Category</label>
-			<input type="text" id="category" name="category" placeholder="Enter Category of class">
-            <label for="course">Course</label>
-			<input type="text" id="course" name="course" placeholder="Enter Course name">
-            <label for="courseNum">Course Number</label>
-			<input type="text" id="courseNum" name="courseNum" placeholder="Enter Course Number">
-			<label for="cost">Cost</label>
-			<input type="text" id="cost" name="cost" placeholder="Enter Cost of class">
-            <label for="trainer">Trainer</label>
-			<input type="text" id="trainer" name="trainer" placeholder="Enter Trainer of class">
-            <label for="trainerEmail">Trainer Email</label>
-			<input type="text" id="trainerEmail" name="trainerEmail" placeholder="Enter Email of Trainer">
-			<label for="info">Information</label>
-			<textarea id="info" name="info" placeholder="Enter Information about class" style="height:170px"></textarea>
-			<input type="submit" value="Add Class">
-            <button onclick="appendClass()">Add Class</button>
-            <button type="button" class="cancelbtn" onclick="document.getElementById('id47').style.display='none'" class="cancelbtn">Cancel</button>
-		</div>
-	</form>
-</div>
+        <div id="id47" class="modal">
+            <form class="modal-content" method="POST" action="./addClass.php">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id47').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
+                <div class="container">
+                    <h1>Add Class</h1>
+                    <label for="category">Category</label>
+                    <?php
+                    require 'conn.php';
 
-<!-- include course name number, cost price, trainer name, contact email address -->
+                    $sql_unit = "select * from units";
+                    $result_unit = mysqli_query($conn, $sql_unit) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+                    echo "<select name='category' id='category'>";
+                    while ($row_unit = mysqli_fetch_array($result_unit)) {
+                        echo "<option value=\"$row_unit[unit_id]\">$row_unit[unit_name]</option>";
+                    }
+                    echo "</select>";
+                    ?>
+                    <label for="course">Course</label>
+                    <input type="text" id="course" name="course" placeholder="Enter Course name">
+                    <label for="courseNum">Course Number</label>
+                    <input type="text" id="courseNum" name="courseNum" placeholder="Enter Course Number">
+                    <label for="cost">Cost</label>
+                    <input type="text" id="cost" name="cost" placeholder="Enter Cost of class">
+                    <label for="trainer">Trainer</label>
+                    <input type="text" id="trainer" name="trainer" placeholder="Enter Trainer of class">
+                    <label for="trainerEmail">Trainer Email</label>
+                    <input type="text" id="trainerEmail" name="trainerEmail" placeholder="Enter Email of Trainer">
+                    <label for="info">Information</label>
+                    <textarea id="info" name="info" placeholder="Enter Information about class" style="height:170px"></textarea>
+                    <input type="submit" value="Add Class">
+                    <button onclick="appendClass()">Add Class</button>
+                    <button type="button" class="cancelbtn" onclick="document.getElementById('id47').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- include course name number, cost price, trainer name, contact email address -->
 
         <div class="cleardiv"></div>
 
-        <div class="TrainingSubTitle">
-            <h3>Strategic Studies</h3>
-        </div>
-
-        <table>
-            <tr>
-                <td>Strategic Studing</td>
-                <td>10672</td>
-                <td>This is a bunch of information that i have typed up to see what is going to appear on screen</td>
-                <td>$120</td>
-                <td>Bob Smith</td>
-                <td>Bob.Smith@TS.com</td>
-                <td><input type="submit" value="Join" class="JoinClass" onclick="document.getElementById('id48').style.display='block'" style="width:auto;"></td>
-                <td><input type="submit" value="Edit" class="JoinClass"></td>
-            </tr>
-            <tr>
-                <td>Course Name</td>
-                <td>Course Number</td>
-                <td>Course Info</td>
-                <td>Cost</td>
-                <td>Trainer</td>
-                <td>Trainer Email</td>
-            </tr>
-            <tr>
-                <td>Course Name</td>
-                <td>Course Number</td>
-                <td>Course Info</td>
-                <td>Cost</td>
-                <td>Trainer</td>
-                <td>Trainer Email</td>
-            </tr>
-        </table>
-
-        <div class="box">
-
-        </div>
-        <div class="TrainingSubTitle">
-            <h3>IT</h3>
-        </div>
-        <table>
-            <tr>
-                <td>Course Name</td>
-                <td>Course Number</td>
-                <td>Course Info</td>
-                <td>Cost</td>
-                <td>Trainer</td>
-                <td>Trainer Email</td>
-            </tr>
-        </table>
-
-        <div class="TrainingSubTitle">
-            <h3>Cyber Security</h3>
-        </div>
-
-        <div class="TrainingSubTitle">
-            <h3>Finance</h3>
-        </div>
-
-        <div class="TrainingSubTitle">
-            <h3>Governance</h3>
-        </div>
-
-
-        <!-- Database for Courses might change-->
+        <!-- Category and course list-->
         <?php
-                    require 'conn.php';
-                    $count = 1;
+        require 'conn.php';
 
-                    $sql = "select * from courses WHERE category= 'strategicStudies'";
-                    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-                    echo"<h3>Strategic Studies</h3";
-                    echo "<table id='myTable'>";
-                    while ($row = mysqli_fetch_array($result)) {
-                        echo "<tr>";
-                        echo "<td>$row[u_courseName]</td>";
-                        echo "<td>$row[u_courseNumber]</td>";
-                        echo "<td>$row[u_courseInfo]</td>";
-                        echo "<td>$row[u_courseCost]</td>";
-                        echo "<td>$row[u_trainer]</td>";
-                        echo "<td>$row[u_trainerEmail]</td>";
-                        echo "<td><a href='#' >Join</a></td>";
-                        echo "<td><a href='#' onclick=edit($count)>edit</a></td>";
-                        echo "</tr>";
-                        $count++;
-                    }
-                    echo "</table>";
-                    
-                    $sql = "select * from courses WHERE category= 'it'";
-                    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-                    echo"<h3>IT</h3";
-                    echo "<table id='myTable'>";
-                    while ($row = mysqli_fetch_array($result)) {
-                        echo "<tr>";
-                        echo "<td>$row[u_courseName]</td>";
-                        echo "<td>$row[u_courseNumber]</td>";
-                        echo "<td>$row[u_courseInfo]</td>";
-                        echo "<td>$row[u_courseCost]</td>";
-                        echo "<td>$row[u_trainer]</td>";
-                        echo "<td>$row[u_trainerEmail]</td>";
-                        echo "<td><a href='#' >Join</a></td>";
-                        echo "<td><a href='#' onclick=edit($count)>edit</a></td>";
-                        echo "</tr>";
-                        $count++;
-                    }
-                    echo "</table>";
+        $sql = "select * from units";
+        $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+        while ($row = mysqli_fetch_array($result)) {
+            echo "<div class='TrainingSubTitle'>";
+            echo "<h3>$row[unit_name]</h3>";
+            echo "</div>";
+            echo "<table>";
+            $sql_course = "SELECT * FROM courses WHERE unit_id = $row[unit_id]";
+            $result_course = mysqli_query($conn, $sql_course) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+            while ($row_course = mysqli_fetch_array($result_course)) {
+                echo "<tr>";
+                echo "<td>$row_course[course_name]</td>";
+                echo "<td>$row_course[course_number]</td>";
+                echo "<td>$row_course[course_fee]</td>";
+                echo "<td>$row_course[information]</td>";
+                echo "<td>$row_course[course_trainer]</td>";
+                echo "<td>$row_course[trainer_email]</td>";
+                echo "<td><input type=\"submit\" value=\"Join\" class=\"JoinClass\" onclick=\"document.getElementById('id48').style.display='block'\" style=\"width:auto;\"></td>";
+                echo "<td><input type=\"submit\" value=\"Edit\" class=\"JoinClass\"></td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+            echo "<div class='box'>";
+            echo "</div>";
+        }
+
         ?>
 
-
-
-
-
-
-            
-
-
+        <!-- course payment page -->
         <div id="id48" class="modal">
-            <form class="modal-content"  method="POST">
-                    <div class="imgcontainer">
-                        <span onclick="document.getElementById('id48').style.display='none'" class="close" title="Close Modal">&times;</span>
-                    </div>
+            <form class="modal-content" method="POST">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id48').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
                 <div class="container">
                     <h1>Payment</h1>
                     <label for="name">Name</label>
