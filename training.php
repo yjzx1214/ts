@@ -31,11 +31,15 @@ if (isset($_SESSION['islogin'])) {
         </div>
         <div id="myBtnContainer">
             <button class="Trainingbtn active" onclick="filterSelection('all')"> Show all</button>
-            <button class="Trainingbtn" onclick="filterSelection('SS')"> Strategic Studies</button>
-            <button class="Trainingbtn" onclick="filterSelection('IT')"> IT</button>
-            <button class="Trainingbtn" onclick="filterSelection('Cyber')"> Cyber Security</button>
-            <button class="Trainingbtn" onclick="filterSelection('Finance')"> Finance</button>
-            <button class="Trainingbtn" onclick="filterSelection('Governance')"> Governance</button>
+            <?php
+            require 'conn.php';
+
+            $sql_unit = "select * from units";
+            $result_unit = mysqli_query($conn, $sql_unit) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+            while ($row_unit = mysqli_fetch_array($result_unit)) {
+                echo "<button class=\"Trainingbtn\"> $row_unit[unit_name] </button>";
+            }
+            ?>
         </div>
 
         <div id="addbtnContainer">
