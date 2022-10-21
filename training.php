@@ -76,7 +76,6 @@ if (isset($_SESSION['islogin'])) {
                     <label for="info">Information</label>
                     <textarea id="info" name="info" placeholder="Enter Information about class" style="height:170px"></textarea>
                     <input type="submit" value="Add Class">
-                    <button onclick="appendClass()">Add Class</button>
                     <button type="button" class="cancelbtn" onclick="document.getElementById('id47').style.display='none'" class="cancelbtn">Cancel</button>
                 </div>
             </form>
