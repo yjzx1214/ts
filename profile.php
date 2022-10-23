@@ -49,7 +49,7 @@ if (isset($_SESSION['islogin'])) {
                             <input type="text" id="address" name="address" placeholder="Your Address number..">
                             <!-- edit will allow the user to edit their information-->
                             <input type="submit" value="Edit">
-                            <!-- only after clicked edit will update appear and edit will hide-->
+                            <!-- only after clicked edit will update appear and will save the information-->
                             <input type="submit" value="Update">
                         </form>
                     </div>
@@ -57,6 +57,34 @@ if (isset($_SESSION['islogin'])) {
             </div>
         </div>
     </div>
+
+<!-- Courses the user has joined -->
+    <div class="TrainingSubTitle">
+        <h3>Courses</h3>
+    </div>
+
+    <table class="trainingTable">
+        <tr>
+            <td class="classFont">Strategic Studing</td>
+            <td>10672</td>
+            <td>This is a bunch of information that i have typed up to see what is going to appear on screen</td>
+            <td>$120</td>
+            <td>Bob Smith</td>
+            <td>Bob.Smith@TS.com</td>
+            <!--Cancel Class should remove it from User -->
+            <td><input type="submit" value="Cancel Class" class="JoinClass" style="width:auto;"></td>
+        </tr>
+        <tr>
+            <td class="classFont">Strategic Studing</td>
+            <td>10672</td>
+            <td>This is a bunch of information that i have typed up to see what is going to appear on screen</td>
+            <td>$120</td>
+            <td>Bob Smith</td>
+            <td>Bob.Smith@TS.com</td>
+            <td><input type="submit" value="Cancel Class" class="JoinClass" style="width:auto;"></td>
+        </tr>
+    </table>
+
     
 </main>
 
