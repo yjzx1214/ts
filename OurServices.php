@@ -29,8 +29,10 @@ if (isset($_SESSION['islogin'])) {
         </div>
 
         <div class="serviceContainer">
-            <h3>Strategic Communications</h3>
-            <img class="serviceIMG" src="mountains.jpg" alt="Mountains">
+            <h3 style="float:left;">Strategic Communications</h3>
+            <input type="submit" value="Buy" class="JoinClass" onclick="document.getElementById('id38').style.display='block'" style="width:auto; float:right;">
+            <h3 style="float:right;">Cost: $220</h3>
+            <div class="cleardiv"></div>
                 <p>
                     We are here to make sure your design needs are met. No fluff and fancy promises,>
                     Our passionate team ess harness the power of the web. From social media to WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
@@ -39,8 +41,10 @@ if (isset($_SESSION['islogin'])) {
         </div>
 
         <div class="serviceContainer">
-            <h3>Information Technology</h3>
-            <img class="serviceIMG" src="mountains.jpg" alt="Mountains">
+            <h3 style="float:left;">Information Technology</h3>
+            <input type="submit" value="Buy" class="JoinClass" onclick="document.getElementById('id38').style.display='block'" style="width:auto; float:right;">
+            <h3 style="float:right;">Cost: $135</h3>
+            <div class="cleardiv"></div>
             <p>
                 We are here to make sure your design needs are met. No fluff and fancy promises,>
                 Our passionate team woharness the power of the web. From social media to WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
@@ -49,8 +53,10 @@ if (isset($_SESSION['islogin'])) {
         </div>
 
         <div class="serviceContainer">
-            <h3>Cyber Security</h3>
-            <img class="serviceIMG" src="mountains.jpg" alt="Mountains">
+            <h3 style="float:left;">Cyber Security</h3>
+            <input type="submit" value="Buy" class="JoinClass" onclick="document.getElementById('id38').style.display='block'" style="width:auto; float:right;">
+            <h4 style="float:right;">Cost: $321</h4>
+            <div class="cleardiv"></div>
             <p>
                 We are here to make sure your design needs are met. No fluff and fancy promises,>
                 Our passionate team work ess the power of the web. From social media to WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
@@ -59,8 +65,10 @@ if (isset($_SESSION['islogin'])) {
         </div>
 
         <div class="serviceContainer">
-            <h3>Business</h3>
-            <img class="serviceIMG" src="mountains.jpg" alt="Mountains">
+            <h3 style="float:left;">Business</h3>
+            <input type="submit" value="Buy" class="JoinClass" onclick="document.getElementById('id38').style.display='block'" style="width:auto; float:right;">
+            <h4 style="float:right;">Cost: $256</h4>
+            <div class="cleardiv"></div>
             <p>
                 We are here to make sure your design needs are met. No fluff and fancy promises,>
                 Our passionate team work einesthe web. From social media to WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
@@ -69,8 +77,10 @@ if (isset($_SESSION['islogin'])) {
         </div>
 
         <div class="serviceContainer">
-            <h3>Education</h3>
-            <img class="serviceIMG" src="mountains.jpg" alt="Mountains">
+            <h3 style="float:left;">Education</h3>
+            <input type="submit" value="Buy" class="JoinClass" onclick="document.getElementById('id38').style.display='block'" style="width:auto; float:right;">
+            <h4 style="float:right;">Cost: $150</h4>
+            <div class="cleardiv"></div>
             <p>
                 We are here to make sure your design needs are met. No fluff and fancy promises,>
                 Our passionate team work endlessly power of the web. From social media to WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
