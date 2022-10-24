@@ -111,7 +111,7 @@ if (isset($_SESSION['islogin'])) {
                 echo "<td>$row_course[course_trainer]</td>";
                 echo "<td>$row_course[trainer_email]</td>";
                 echo "<td><input type=\"submit\" value=\"Join\" class=\"JoinClass\" onclick=\"document.getElementById('id48').style.display='block'\" style=\"width:auto;\"></td>";
-                echo "<td><input type=\"submit\" value=\"Edit\" class=\"JoinClass\"></td>";
+                echo "<td><input type=\"submit\" value=\"Edit\" class=\"JoinClass\" onclick=\"edit_course('$row[unit_id]', '$row_course[course_name]', '$row_course[course_number]', '$row_course[course_fee]', '$row_course[information]', '$row_course[course_trainer]', '$row_course[trainer_email]', '$row_course[course_id]')\" style=\"width:auto;\"></td>";
                 echo "</tr>";
             }
             echo "</table>";
@@ -122,30 +122,41 @@ if (isset($_SESSION['islogin'])) {
         ?>
 
 
-<!-- modal = id49 -->
-<!-- Edit Class -->
+        <!-- modal = id49 -->
+        <!-- Edit Class -->
 
         <div id="id49" class="modal">
-            <form class="modal-content"  method="POST">
-                    <div class="imgcontainer">
-                        <span onclick="document.getElementById('id49').style.display='none'" class="close" title="Close Modal">&times;</span>
-                    </div>
+            <form class="modal-content" method="POST" action="./updateCourse.php">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id49').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
                 <div class="container">
                     <h1>Edit Class</h1>
                     <label for="category">Category</label>
-                    <input type="text" id="category" name="category" placeholder="Enter Category of class">
+                    <?php
+                    require 'conn.php';
+
+                    $sql_unit = "select * from units";
+                    $result_unit = mysqli_query($conn, $sql_unit) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+                    echo "<select name='category' id='edit_category'>";
+                    while ($row_unit = mysqli_fetch_array($result_unit)) {
+                        echo "<option value=\"$row_unit[unit_id]\">$row_unit[unit_name]</option>";
+                    }
+                    echo "</select>";
+                    ?>
+                    <input type="text" id="edit_course_id" name="edit_course_id" hidden>
                     <label for="course">Course</label>
-                    <input type="text" id="course" name="course" placeholder="Enter Course name">
+                    <input type="text" id="edit_course" name="edit_course" placeholder="Enter Course name">
                     <label for="courseNum">Course Number</label>
-                    <input type="text" id="courseNum" name="courseNum" placeholder="Enter Course Number">
+                    <input type="text" id="edit_courseNum" name="edit_courseNum" placeholder="Enter Course Number">
                     <label for="cost">Cost</label>
-                    <input type="text" id="cost" name="cost" placeholder="Enter Cost of class">
+                    <input type="text" id="edit_cost" name="edit_cost" placeholder="Enter Cost of class">
                     <label for="trainer">Trainer</label>
-                    <input type="text" id="trainer" name="trainer" placeholder="Enter Trainer of class">
+                    <input type="text" id="edit_trainer" name="edit_trainer" placeholder="Enter Trainer of class">
                     <label for="trainerEmail">Trainer Email</label>
-                    <input type="text" id="trainerEmail" name="trainerEmail" placeholder="Enter Email of Trainer">
+                    <input type="text" id="edit_trainerEmail" name="edit_trainerEmail" placeholder="Enter Email of Trainer">
                     <label for="info">Information</label>
-                    <textarea id="info" name="info" placeholder="Enter Information about class" style="height:170px"></textarea>
+                    <textarea id="edit_info" name="edit_info" placeholder="Enter Information about class" style="height:170px"></textarea>
                     <input type="submit" value="Edit Class">
                     <button type="button" class="cancelbtn" onclick="document.getElementById('id49').style.display='none'" class="cancelbtn">Cancel</button>
                 </div>
@@ -182,3 +193,25 @@ if (isset($_SESSION['islogin'])) {
     </main>
 
     <?php include("footer.php"); ?>
+
+    <script>
+        function edit_course(unit_id, name, number, fee, information, trainer, email, course_id) {
+            document.getElementById('id49').style.display = 'block';
+
+            // dynamic change selece value is not working 
+            var selectid = document.getElementById('edit_category');
+            for (i = 0; i < selectid.length; i++) {
+                if (selectid[i].value == unit_id) {
+                    selectid[i].selected = true;
+                }
+
+            }
+            document.getElementById('edit_course').value = name;
+            document.getElementById('edit_courseNum').value = number;
+            document.getElementById('edit_cost').value = fee;
+            document.getElementById('edit_trainer').value = trainer;
+            document.getElementById('edit_trainerEmail').value = email;
+            document.getElementById('edit_info').value = information;
+            document.getElementById('edit_course_id').value = course_id;
+        }
+    </script>
