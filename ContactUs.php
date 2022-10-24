@@ -17,6 +17,7 @@ if (isset($_SESSION['islogin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="./css/style.css" type="text/css" rel="stylesheet" />
+	<title>Contact Us</title>
 </head>
 
 <body>
@@ -34,9 +35,9 @@ if (isset($_SESSION['islogin'])) {
 		  <div class="contactDetailsContainer">
 			<div class="contactDetails">
 				<p>Contact Details</p>
-				<p><i class="fa fa-envelope-open"></i> Email:<br>Qwerty@Gmail.com</p>
+				<p><i class="fa fa-envelope-open"></i> Email:<br>TurnstarStrategies@Turnstar.com.au</p>
 				
-				<p>PO Box 647<br>Smithing WA 6004</p>
+				<p>PO Box 123<br> 1 Smithing Street Canberra 2831</p>
 				
 				&nbsp;
 				<a href="https://facebook.com">Facebook</a><br>
