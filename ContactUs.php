@@ -35,9 +35,9 @@ if (isset($_SESSION['islogin'])) {
 		  <div class="contactDetailsContainer">
 			<div class="contactDetails">
 				<p>Contact Details</p>
-				<p><i class="fa fa-envelope-open"></i> Email:<br>Qwerty@Gmail.com</p>
+				<p><i class="fa fa-envelope-open"></i> Email:<br>TurnstarStrategies@Turnstar.com.au</p>
 				
-				<p>PO Box 647<br>Smithing WA 6004</p>
+				<p>PO Box 123<br> 1 Smithing Street Canberra 2831</p>
 				
 				&nbsp;
 				<a href="https://facebook.com">Facebook</a><br>
