@@ -99,12 +99,12 @@ if (isset($_SESSION['islogin'])) {
             echo "<div class='TrainingSubTitle'>";
             echo "<h3>$row[unit_name]</h3>";
             echo "</div>";
-            echo "<table>";
+            echo " <table class=\"trainingTable\">";
             $sql_course = "SELECT * FROM courses WHERE unit_id = $row[unit_id]";
             $result_course = mysqli_query($conn, $sql_course) or die("Error BOOK TYPE! - " . mysqli_error($conn));
             while ($row_course = mysqli_fetch_array($result_course)) {
                 echo "<tr>";
-                echo "<td>$row_course[course_name]</td>";
+                echo "<td class=\"classFont\">$row_course[course_name]</td>";
                 echo "<td>$row_course[course_number]</td>";
                 echo "<td>$row_course[course_fee]</td>";
                 echo "<td>$row_course[information]</td>";
