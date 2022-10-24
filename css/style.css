@@ -413,7 +413,8 @@ body {
 
 .contactDetails {
 	display:inline-block;
-	border: 2px solid #3c78FF;
+	border: 2px solid #F5F5F5;
+  background-color: white;
 	width: 200px;
 }
 
