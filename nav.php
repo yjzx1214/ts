@@ -21,13 +21,40 @@
     }
     ?>
 	
-	<div class="mobile">
+	<div class="mobile" id="myMobile">
+	
+	<div class="dropdown">
+		<a href="javascript:void(0);" class="icon" onclick="mobileDropDown()">
+			<i class="fa fa-bars"></i>
+		</a>
 		
-		<button class="dropDownButton">
-			<i class="fa fa-bars" aria-hidden="true"></i>
-		</button>
+				<button class="loginButton" onclick="document.getElementById(
+											<?php
+												if (empty($_SESSION)){
+													echo '\'id01\'';
+												} else { 
+													echo '\'id03\'';
+												}
+											?>
+											).style.display='block'">
+			<i class="fa fa-user-circle"></i>
+		</button>	
 		
+		<div id="dropdown-content">
+			<div class="cleardiv">""</div>
+			<a href="TheTs.php" class="linkHover">The Ts</a>
+			<a href="OurPartners.php" class="linkHover">Our Partners</a>
+			<a href="Training.php" class="linkHover">Training</a>
+			<a href="OurServices.php" class="linkHover">Our Services</a>
+			<a href="Media.php" class="linkHover">Media</a>
+			<a href="Newsletter.php" class="linkHover">Newsletter</a>
+			<a href="ContactUs.php" class="linkHover">Contact Us</a>
+		</div>
 	</div>
+
+	</div>
+	
+	
 	
     <div class="topnav-right">
         <div class="pill-nav">
@@ -61,7 +88,7 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
 
-            <button type="submit" name="LogInGo" value="LogInGo" class="loginButton">Login</button>
+            <button type="submit" name="LogInGo" value="LogInGo" class="submitButton">Login</button>
             <button type="button" class="signUpButton" name="SignUpGo" value="SingUpGo" onclick="document.getElementById('id02').style.display='block' , document.getElementById('id01').style.display='none'">Sign Up</button>
 		</div>
         <div style="clear:both;"></div>
@@ -156,4 +183,15 @@
         }
         return result;
     }
+	
+	// dropdown mobile menu
+	/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+	function mobileDropDown() {
+	  var x = document.getElementById("myMobile");
+	  if (x.className === "mobile") {
+		x.className += " responsive";
+	  } else {
+		x.className = "mobile";
+	  }
+	} 
 </script>

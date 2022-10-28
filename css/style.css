@@ -26,6 +26,7 @@ body {
     padding: 25px 16px;
     text-decoration: none;
   }
+  
   .home:link {
     float: left;
     font-size: 16px;
@@ -465,7 +466,7 @@ input[type=submit]:hover {
   clear: both;
 }
 
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
   .column, input[type=submit] {
     width: 100%;
@@ -622,8 +623,7 @@ img.serviceIMG {
 /*end of Our Partners*/
 
 /* Training  width is diffrent not sure why might delete*/
-
-.JoinClass {
+.JoinClass {		  
   width: 30%;
 }
 
@@ -868,17 +868,17 @@ tr:nth-child(odd) {
 
 @media screen and (max-width: 1058px) {
   
-  .navbar {
-	  /* if we need to change anything */
-  }
+  .linkHover, .topnav-right {
+									  
+   
   
-  .linkHover {
+			  
 	display: none;
   }
   
-  .topnav-right {
-	  display: none;
-	  }
+				 
+				 
+	
   
   .home {
 	  width: 33%;
@@ -893,7 +893,7 @@ tr:nth-child(odd) {
 	display: block;
   }
   
-  .dropDownButton {
+  .icon {
       background: rgba(0,0,0,0);
       display: inline-block;
       color: white;
@@ -906,6 +906,10 @@ tr:nth-child(odd) {
       /*width: 108px;*/
 	  height: 69px;
 	  float: left;
+  }
+  
+  .dropdown-button:active {
+	  display: block;
   }
   
   .loginButton{
@@ -923,7 +927,7 @@ tr:nth-child(odd) {
 	  
   }
   
-    body::after {
+  body::after {
   content: '';
   display: block;
   height: 250px; 
@@ -935,14 +939,60 @@ tr:nth-child(odd) {
   
 
 
-  .modal-content {
+  .modal-content  {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 95%; /* Could be more or less, depending on screen size */
-	height: 95%;
+    width: 85%; /* Could be more or less, depending on screen size */
+	padding: 5px;
+	height: auto;
+  }
+  
+  
+  /*testing--------------------------------------*/ 
+  
+  
+  .mobile a:not(:first-child), .dropdown .dropdown-button {
+    display: none;
+  }
+
+}
+
+					   
+
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .mobile.responsive {position: relative;}
+  .mobile.responsive a.icon {
+    position: absolute;
+    left: 33%;
+    top: 0;
+	text-align:center;
+  }
+  .mobile.responsive .loginButton{
+	position: absolute;
+    left: 66%;
+    top: 0;
+	text-align:center;
+  }
+  
+  .mobile.responsive a {
+	position: absolue;
+    float: none;
+    display: inline-block;
+    text-align: left;
+  }
+  
+  .mobile.responsive .dropdown {float: none;}
+  .mobile.responsive .dropdown-content {position: relative;}
+  .mobile.responsive .dropdown .dropdown-button {
+    display: block;
+    width: 100%;
+    text-align: left;
   }
 }
 
-/* End of Mobile view*/
+}
 
+/* End of Mobile view*/
