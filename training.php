@@ -139,7 +139,8 @@ if (isset($_SESSION['islogin'])) {
 
                     $sql_unit = "select * from units";
                     $result_unit = mysqli_query($conn, $sql_unit) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-                    echo "<select name='category' id='edit_category'>";
+                    echo "<select name='edit_category' id='edit_category'>";
+                    echo "<option value=\"none\" selected disabled hidden>Please select course category</option> ";
                     while ($row_unit = mysqli_fetch_array($result_unit)) {
                         echo "<option value=\"$row_unit[unit_id]\">$row_unit[unit_name]</option>";
                     }
@@ -198,15 +199,6 @@ if (isset($_SESSION['islogin'])) {
     <script>
         function edit_course(unit_id, name, number, fee, information, trainer, email, course_id) {
             document.getElementById('id49').style.display = 'block';
-
-            // dynamic change selece value is not working 
-            var selectid = document.getElementById('edit_category');
-            for (i = 0; i < selectid.length; i++) {
-                if (selectid[i].value == unit_id) {
-                    selectid[i].selected = true;
-                }
-
-            }
             document.getElementById('edit_course').value = name;
             document.getElementById('edit_courseNum').value = number;
             document.getElementById('edit_cost').value = fee;
