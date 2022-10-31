@@ -97,12 +97,14 @@ if (isset($_SESSION['islogin'])) {
         $sql = "select * from units";
         $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
         while ($row = mysqli_fetch_array($result)) {
-            echo "<div class='TrainingSubTitle'>";
-            echo "<h3>$row[unit_name]</h3>";
-            echo "</div>";
-            echo " <table class=\"trainingTable\">";
             $sql_course = "SELECT * FROM courses WHERE unit_id = $row[unit_id]";
             $result_course = mysqli_query($conn, $sql_course) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+            if ($result_course->num_rows == true) {
+                echo "<div class='TrainingSubTitle'>";
+                echo "<h3>$row[unit_name]</h3>";
+                echo "</div>";
+                echo " <table class=\"trainingTable\">";
+            }
             while ($row_course = mysqli_fetch_array($result_course)) {
                 echo "<tr>";
                 echo "<td class=\"classFont\">$row_course[course_name]</td>";
