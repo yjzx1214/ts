@@ -927,21 +927,13 @@ tr:nth-child(odd) {
 
 @media screen and (max-width: 1058px) {
   
-  .linkHover, .topnav-right {
-									  
-   
-  
-			  
-	display: none;
+  .linkHover, .topnav-right {  
+	  display: none;
   }
   
-				 
-				 
-	
   
   .home {
 	  width: 33%;
-      /*width: 108px;*/
 	  margin: 0px;
 	  padding: 0px;
 	  text-align: left;
@@ -954,36 +946,35 @@ tr:nth-child(odd) {
   
   .icon {
       background: rgba(0,0,0,0);
-      display: inline-block;
       color: white;
       margin: 0px;
       border-width: 0;
       text-decoration: none;
       cursor: pointer;
       font-size: 17px;
-	  width: 33%;
+	    width: 33%;
       /*width: 108px;*/
-	  height: 69px;
-	  float: left;
+	    height: 69px;
+	    float: left;
   }
   
   .dropdown-button:active {
 	  display: block;
   }
   
-  .loginButton{
-	  margin: 0px;
-	  padding: 0px;
+  .mobileLogin{
 	  width: 33%;
 	  height: 69px;
-      border-radius: 0px;
 	  background: rgba(0,0,0,0);
 	  float: left;
-      /*width: 108px;*/
-  }
-  
-  .submit{
-	  
+    color:white;
+    font-size: 17px;
+    padding: 14px 20px;
+    border-width: 0px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    font-size: 17px;
   }
   
   body::after {
@@ -996,24 +987,15 @@ tr:nth-child(odd) {
 	height: 250px;
   }
   
-
-
   .modal-content  {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 85%; /* Could be more or less, depending on screen size */
-	padding: 5px;
-	height: auto;
+	  padding: 5px;
+	  height: auto;
   }
   
-  
-  /*testing--------------------------------------*/ 
-  
-  
-  .mobile a:not(:first-child), .dropdown .dropdown-button {
-    display: none;
-  }
 		   
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
 
@@ -1022,17 +1004,17 @@ tr:nth-child(odd) {
     position: absolute;
     left: 33%;
     top: 0;
-	text-align:center;
+	  text-align:center;
   }
-  .mobile.responsive .loginButton{
-	position: absolute;
+  .mobile.responsive .mobileLogin{
+	  position: absolute;
     left: 66%;
     top: 0;
-	text-align:center;
+	  text-align:center;
   }
   
   .mobile.responsive a {
-	position: absolue;
+	  position: absolue;
     float: none;
     display: inline-block;
     text-align: left;
@@ -1047,6 +1029,6 @@ tr:nth-child(odd) {
   }
 }
 
-}
+
 
 /* End of Mobile view*/

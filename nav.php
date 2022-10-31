@@ -28,7 +28,7 @@
 			<i class="fa fa-bars"></i>
 		</a>
 		
-				<button class="loginButton" onclick="document.getElementById(
+				<button class="mobileLogin" onclick="document.getElementById(
 											<?php
 												if (empty($_SESSION)){
 													echo '\'id01\'';
