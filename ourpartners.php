@@ -34,37 +34,37 @@ if (isset($_SESSION['islogin'])) {
 <div class="mediaRow">
   <div class="mediaColumn">
     <div class="content">
-      <img src="picture/GOV.png" alt="GOV" style="width:100%">
+      <img src="picture/GOV.png" alt="GOV" style="max-width: 200px; width:100%; max-height: 150px; height:100%">
       <h3>My Work</h3>
     </div>
   </div>
   <div class="mediaColumn">
     <div class="content">
-    <img src="picture/AWP.png" alt="AWP" style="width:100%">
+    <img src="picture/AWP.png" alt="AWP" style="max-width: 200px; width:100%; max-height: 150px; height:100%">
       <h3>My Work</h3>
    </div>
   </div>
   <div class="mediaColumn">
     <div class="content">
-    <img src="picture/ATO.png" alt="ATO" style="width:100%">
+    <img src="picture/ATO.png" alt="ATO" style="max-width: 200px; width:100%; max-height: 150px; height:100%">
       <h3>My Work</h3>
    </div>
   </div>
   <div class="mediaColumn">
     <div class="content">
-    <img src="picture/ACMA.png" alt="ACMA" style="width:100%">
+    <img src="picture/ACMA.png" alt="ACMA" style="max-width: 200px; width:100%; max-height: 150px; height:100%">
       <h3>My Work</h3>
     </div>
   </div>
 <div class="mediaColumn">
     <div class="content">
-      <img src="picture/DTA.png" alt="DTA" style="width:100%">
+      <img src="picture/DTA.png" alt="DTA" style="max-width: 200px; width:100%; max-height: 150px; height:100%">
       <h3>My Work</h3>
     </div>
   </div>
   <div class="mediaColumn">
     <div class="content">
-    <img src="picture/ACCC.png" alt="ACCC" style="width:100%">
+    <img src="picture/ACCC.png" alt="ACCC" style="max-width: 200px; width:100%; max-height: 150px; height:100%">
       <h3>My Work</h3>
     </div>
   </div>
