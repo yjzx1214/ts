@@ -49,6 +49,13 @@
 			<a href="Media.php" class="linkHover">Media</a>
 			<a href="Newsletter.php" class="linkHover">Newsletter</a>
 			<a href="ContactUs.php" class="linkHover">Contact Us</a>
+            <?php
+                if (!empty($_SESSION)) {
+                    if ($_SESSION['userlevel'] == 1){
+                    echo '<a href="Admin.php" class="linkHover">Admin</a>';
+                    }
+                }
+            ?>
 		</div>
 	</div>
 
