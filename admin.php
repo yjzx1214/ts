@@ -40,6 +40,7 @@ if (isset($_SESSION['islogin'])) {
                     </div>
 
                     <div class="cleardiv"></div>
+                    <div class="normalScreen">
                     <?php
                     require 'conn.php';
                     $count = 1;
@@ -61,6 +62,27 @@ if (isset($_SESSION['islogin'])) {
                     }
                     echo "</table>";
                     ?>
+                    </div>
+                    <div class="mobileScreen">
+                    <?php
+                    require 'conn.php';
+                    $count = 1;
+
+                    $sql = "select * from users";
+                    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+                    echo "<table id='myTable'>";
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "<tr><th>ID</th><td>$row[u_id]</td></tr>";
+                        echo "<tr><th>Name</th><td>$row[u_name]</td></tr>";
+                        echo "<tr><th>Email</th><td>$row[u_email]</td></tr>";
+                        echo "<tr><th>Phone</th><td>$row[u_phone]</td></tr>";
+                        echo "<tr><th>Update</th><td><a href='#' onclick=edit($count)>Edit</a></td></tr>";
+                        echo "<tr><th>Delete</th><td><a href=./del-user.php?u_id=$row[u_id]>Delete</a></td></tr>";
+                        $count++;
+                    }
+                    echo "</table>";
+                    ?>
+                    </div>
                 </div>
                 <div class="column">
                     <form action="update.php" method="POST" onsubmit="return check()">
