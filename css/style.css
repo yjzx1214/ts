@@ -762,6 +762,19 @@ body::after {
 
 /* Admin */
 
+.adminColumn {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+.adminRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

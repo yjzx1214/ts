@@ -30,8 +30,8 @@ if (isset($_SESSION['islogin'])) {
             <div style="text-align:center">
                 <h1>Admin</h1>
             </div>
-            <div class="row">
-                <div class="column">
+            <div class="adminRow">
+                <div class="adminColumn">
 
                     <input type="text" id="myInput" onkeyup="searchName()" placeholder="Search for names.." title="Type in a name">
 
@@ -84,7 +84,7 @@ if (isset($_SESSION['islogin'])) {
                     ?>
                     </div>
                 </div>
-                <div class="column">
+                <div class="adminColumn">
                     <form action="update.php" method="POST" onsubmit="return check()">
                         <label for="id">ID</label>
                         <input type="text" id="update-id" name="userid" readonly>
