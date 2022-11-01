@@ -17,6 +17,43 @@ $unit_list = mysqli_fetch_all($result_unit, MYSQLI_ASSOC);
 $sql_course = "select * from courses";
 $result_course = mysqli_query($conn, $sql_course);
 $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
+
+if (!empty($_POST['addCourse'])) {
+    $category = $_POST['category'];
+    $course = $_POST['course'];
+    $courseNum = $_POST['courseNum'];
+    $cost = $_POST['cost'];
+    $trainer = $_POST['trainer'];
+    $trainerEmail = $_POST['trainerEmail'];
+    $info = $_POST['info'];
+
+    $sql = "INSERT INTO courses (unit_id, course_name, course_number, course_fee, information, course_trainer, trainer_email) VALUES ('$category', '$course', '$courseNum', '$cost', '$info', '$trainer', '$trainerEmail');";
+    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+    $numrows = mysqli_affected_rows($conn);
+    if ($numrows == 1) {
+        header('location:training.php');
+    } else {
+        echo "Add course fail";
+    }
+} elseif (!empty($_POST['editCourse'])) {
+    $course_id = $_POST['edit_course_id'];
+    $unit_id = $_POST['edit_category'];
+    $course = $_POST['edit_course'];
+    $courseNum = $_POST['edit_courseNum'];
+    $cost = $_POST['edit_cost'];
+    $trainer = $_POST['edit_trainer'];
+    $email = $_POST['edit_trainerEmail'];
+    $information = $_POST['edit_info'];
+
+    $sql = "UPDATE courses SET unit_id='$unit_id', course_name='$course', course_number='$courseNum', course_fee='$cost', course_trainer='$trainer', trainer_email='$email', information='$information' WHERE course_id='$course_id';";
+    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+    $numrows = mysqli_affected_rows($conn);
+    if ($numrows == 1) {
+        header('location:training.php');
+    } else {
+        echo "Edit course fail";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,12 +85,12 @@ $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
 
         <div id="addbtnContainer">
             <div class=" addTrainingbtn">
-                <button class="Trainingbtn" onclick="document.getElementById('id47').style.display='block'" style="width:auto;">Add Class</button>
+                <button class="Trainingbtn" onclick="document.getElementById('id47').style.display='block'" style="width:auto;">Add Course</button>
             </div>
         </div>
 
         <div id="id47" class="modal">
-            <form class="modal-content" method="POST" action="./addClass.php">
+            <form class="modal-content animate" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id47').style.display='none'" class="close" title="Close Modal">&times;</span>
                 </div>
@@ -77,14 +114,13 @@ $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
                     <input type="text" id="trainerEmail" name="trainerEmail" placeholder="Enter Email of Trainer">
                     <label for="info">Information</label>
                     <textarea id="info" name="info" placeholder="Enter Information about class" style="height:170px"></textarea>
-                    <input type="submit" value="Add Class">
+                    <input type="submit" value="Add Course" name="addCourse">
                     <button type="button" class="cancelbtn" onclick="document.getElementById('id47').style.display='none'" class="cancelbtn">Cancel</button>
                 </div>
             </form>
         </div>
 
         <!-- include course name number, cost price, trainer name, contact email address -->
-
         <div class="cleardiv"></div>
 
         <!-- Category and course list-->
@@ -96,14 +132,14 @@ $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
                 <?php foreach ($course_list as $course) : ?>
                     <?php if ($unit['unit_id'] == $course['unit_id']) : ?>
                         <tr>
-                            <td class="classFont"><?php echo $course['course_name'] ?></td>
-                            <td><?php echo $course['course_number'] ?></td>
-                            <td><?php echo $course['course_fee'] ?></td>
-                            <td><?php echo $course['information'] ?></td>
-                            <td><?php echo $course['course_trainer'] ?></td>
-                            <td><?php echo $course['trainer_email'] ?></td>
+                            <td class="classFont" id="<?php echo $course['course_id'] ?>name"><?php echo $course['course_name'] ?></td>
+                            <td id="<?php echo $course['course_id'] ?>number"><?php echo $course['course_number'] ?></td>
+                            <td id="<?php echo $course['course_id'] ?>fee"><?php echo $course['course_fee'] ?></td>
+                            <td id="<?php echo $course['course_id'] ?>info"><?php echo $course['information'] ?></td>
+                            <td id="<?php echo $course['course_id'] ?>trainer"><?php echo $course['course_trainer'] ?></td>
+                            <td id="<?php echo $course['course_id'] ?>email"><?php echo $course['trainer_email'] ?></td>
                             <td><input type="submit" value="Join" class="JoinClass" onclick="document.getElementById('id48').style.display='block'" style="width:auto;"></td>
-                            <td><input type="submit" value="Edit" class="JoinClass" onclick="edit_course()" style="width:auto;"></td>
+                            <td><input type="submit" value="Edit" class="JoinClass" onclick="edit_course(<?php echo $course['course_id'] ?>, <?php echo $course['unit_id'] ?>)" style="width:auto;"></td>
                         </tr>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -112,12 +148,9 @@ $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
             </div>
         <?php endforeach; ?>
 
-
-        <!-- modal = id49 -->
         <!-- Edit Class -->
-
         <div id="id49" class="modal">
-            <form class="modal-content" method="POST" action="./updateCourse.php">
+            <form class="modal-content animate" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id49').style.display='none'" class="close" title="Close Modal">&times;</span>
                 </div>
@@ -126,10 +159,10 @@ $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
                     <label for="category">Category</label>
                     <select name='edit_category' id='edit_category'>
                         <?php foreach ($unit_list as $unit) : ?>
-                            <option value="<?php echo $unit['unit_id'] ?>"><?php echo $unit['unit_name'] ?></option>
+                            <option value="<?php echo $unit['unit_id'] ?>" id="<?php echo $unit['unit_id'] ?>unit"><?php echo $unit['unit_name'] ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="text" id="edit_course_id" name="edit_course_id" hidden>
+                    <input type="hidden" id="edit_course_id" name="edit_course_id">
                     <label for="course">Course</label>
                     <input type="text" id="edit_course" name="edit_course" placeholder="Enter Course name">
                     <label for="courseNum">Course Number</label>
@@ -142,19 +175,15 @@ $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
                     <input type="text" id="edit_trainerEmail" name="edit_trainerEmail" placeholder="Enter Email of Trainer">
                     <label for="info">Information</label>
                     <textarea id="edit_info" name="edit_info" placeholder="Enter Information about class" style="height:170px"></textarea>
-                    <input type="submit" value="Edit Class">
+                    <input type="submit" value="Edit Course" name="editCourse">
                     <button type="button" class="cancelbtn" onclick="document.getElementById('id49').style.display='none'" class="cancelbtn">Cancel</button>
                 </div>
             </form>
         </div>
 
-
-
-
-
         <!-- course payment page -->
         <div id="id48" class="modal">
-            <form class="modal-content" method="POST">
+            <form class="modal-content animate" method="POST">
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id48').style.display='none'" class="close" title="Close Modal">&times;</span>
                 </div>
@@ -173,21 +202,21 @@ $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
                 </div>
             </form>
         </div>
-
-
     </main>
 
     <?php include("footer.php"); ?>
 
     <script>
-        function edit_course(unit_id, name, number, fee, information, trainer, email, course_id) {
+        // display existing course information
+        function edit_course(course_id, unit_id) {
             document.getElementById('id49').style.display = 'block';
-            document.getElementById('edit_course').value = name;
-            document.getElementById('edit_courseNum').value = number;
-            document.getElementById('edit_cost').value = fee;
-            document.getElementById('edit_trainer').value = trainer;
-            document.getElementById('edit_trainerEmail').value = email;
-            document.getElementById('edit_info').value = information;
+            document.getElementById('edit_course').value = document.getElementById(course_id + 'name').innerHTML;
+            document.getElementById('edit_courseNum').value = document.getElementById(course_id + 'number').innerHTML;
+            document.getElementById('edit_cost').value = document.getElementById(course_id + 'fee').innerHTML;
+            document.getElementById('edit_trainer').value = document.getElementById(course_id + 'trainer').innerHTML;
+            document.getElementById('edit_trainerEmail').value = document.getElementById(course_id + 'email').innerHTML;
+            document.getElementById('edit_info').value = document.getElementById(course_id + 'info').innerHTML;
             document.getElementById('edit_course_id').value = course_id;
+            document.getElementById(unit_id + 'unit').selected = true;
         }
     </script>
