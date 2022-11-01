@@ -7,6 +7,7 @@ if (isset($_POST['SignUpGo'])) {
     $password = $_POST['psw'];
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_NUMBER_INT);
+    $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_SPECIAL_CHARS);
 
     $sql_check = "SELECT * FROM users WHERE u_name='$username'";
     $result_check = mysqli_query($conn, $sql_check);
@@ -14,7 +15,7 @@ if (isset($_POST['SignUpGo'])) {
         echo 'user existing';
         // need a page display or window
     } else {
-        $sql_register = "INSERT INTO users (u_name, u_password, u_email, u_phone, u_level) VALUES ('$username', '$password', '$email', '$phone', '3');";
+        $sql_register = "INSERT INTO users (u_name, u_password, u_email, u_phone, u_address, u_level) VALUES ('$username', '$password', '$email', '$phone', '$address', '3');";
         if (mysqli_query($conn, $sql_register)) {
             // Open Session
             session_start();
