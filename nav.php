@@ -176,7 +176,7 @@
             document.getElementById("psw-reminder").style.color = "red";
             result = false;
         }
-        var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+        var reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         if (!reg.test(email.value)) {
             document.getElementById("email-reminder").style.display = "block";
             document.getElementById("email-reminder").style.color = "red";
