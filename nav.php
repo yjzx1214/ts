@@ -105,8 +105,7 @@
 <!-- Sign Up-->
 
 <div id="id02" class="modal">
-    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-    <form class="modal-content" action="register.php" method="POST" onsubmit="return check()">
+    <form class="modal-content animate" action="register.php" method="POST" onsubmit="return check()">
         <div class="container">
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
@@ -167,7 +166,7 @@
         var email = document.getElementById("email");
         var phone = document.getElementById("phone");
         var result = true;
-        if (uname.value.length < 5) {
+        if (uname.value.length < 2) {
             document.getElementById("name-reminder").style.display = "block";
             document.getElementById("name-reminder").style.color = "red";
             result = false;
