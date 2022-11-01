@@ -33,7 +33,10 @@ if (isset($_SESSION['islogin'])) {
             <div class="content">
                 <div class="profileRow">
                     <div class="profileColumn">
-                            <img src="img_avatar.png" alt="Avatar" style="width:50%">
+                            <img src="picture/img_avatar.png" alt="Avatar" style="width:50%">
+                            
+                            <h3>Subscribed to Newsletter</h3>
+                            <input type="submit" value="Unsubscribe">
                     </div>
 
                     <div class="profileColumn">
