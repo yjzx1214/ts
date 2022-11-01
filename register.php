@@ -8,18 +8,25 @@ if (isset($_POST['SignUpGo'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_NUMBER_INT);
 
-    $sql = "INSERT Into users (u_name, u_password, u_email, u_phone, u_level) Values ('$username', '$password', '$email', '$phone', '1');";
-    if (mysqli_query($conn, $sql)) {
-        // Open Session
-        session_start();
-        //save user name into session
-        $_SESSION['username'] = $username;
-        $_SESSION['userlevel'] = 1;
-        $_SESSION['islogin'] = 1;
-        //redirect to home page
-        header('location:index.php');
+    $sql_check = "SELECT * FROM users WHERE u_name='$username'";
+    $result_check = mysqli_query($conn, $sql_check);
+    if (mysqli_num_rows($result_check) > 0) {
+        echo 'user existing';
+        // need a page display or window
     } else {
-        echo 'Error ' . mysqli_errno($conn);
+        $sql_register = "INSERT INTO users (u_name, u_password, u_email, u_phone, u_level) VALUES ('$username', '$password', '$email', '$phone', '3');";
+        if (mysqli_query($conn, $sql_register)) {
+            // Open Session
+            session_start();
+            //save user name into session
+            $_SESSION['username'] = $username;
+            $_SESSION['userlevel'] = 3;
+            $_SESSION['islogin'] = 1;
+            //redirect to home page
+            header('location:index.php');
+        } else {
+            echo 'Error ' . mysqli_errno($conn);
+        }
     }
     mysqli_close($conn);
 }

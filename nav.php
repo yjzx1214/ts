@@ -15,67 +15,67 @@
     <!-- This is the admin only button-->
     <?php
     if (!empty($_SESSION)) {
-		if ($_SESSION['userlevel'] == 1){
-        echo '<a href="Admin.php" class="linkHover">Admin</a>';
-		}
+        if ($_SESSION['userlevel'] == 1) {
+            echo '<a href="Admin.php" class="linkHover">Admin</a>';
+        }
     }
     ?>
-	
-	<div class="mobile" id="myMobile">
-	
-	<div class="dropdown">
-		<a href="javascript:void(0);" class="icon" onclick="mobileDropDown()">
-			<i class="fa fa-bars"></i>
-		</a>
-		
-				<button class="mobileLogin" onclick="document.getElementById(
+
+    <div class="mobile" id="myMobile">
+
+        <div class="dropdown">
+            <a href="javascript:void(0);" class="icon" onclick="mobileDropDown()">
+                <i class="fa fa-bars"></i>
+            </a>
+
+            <button class="mobileLogin" onclick="document.getElementById(
 											<?php
-												if (empty($_SESSION)){
-													echo '\'id01\'';
-												} else { 
-													echo '\'id03\'';
-												}
-											?>
+                                            if (empty($_SESSION)) {
+                                                echo '\'id01\'';
+                                            } else {
+                                                echo '\'id03\'';
+                                            }
+                                            ?>
 											).style.display='block'">
-			<i class="fa fa-user-circle"></i>
-		</button>	
-		
-		<div id="dropdown-content">
-			<div class="cleardiv">""</div>
-			<a href="TheTs.php" class="linkHover">The Ts</a>
-			<a href="OurPartners.php" class="linkHover">Our Partners</a>
-			<a href="Training.php" class="linkHover">Training</a>
-			<a href="OurServices.php" class="linkHover">Our Services</a>
-			<a href="Media.php" class="linkHover">Media</a>
-			<a href="Newsletter.php" class="linkHover">Newsletter</a>
-			<a href="ContactUs.php" class="linkHover">Contact Us</a>
-            <?php
+                <i class="fa fa-user-circle"></i>
+            </button>
+
+            <div id="dropdown-content">
+                <div class="cleardiv">""</div>
+                <a href="TheTs.php" class="linkHover">The Ts</a>
+                <a href="OurPartners.php" class="linkHover">Our Partners</a>
+                <a href="Training.php" class="linkHover">Training</a>
+                <a href="OurServices.php" class="linkHover">Our Services</a>
+                <a href="Media.php" class="linkHover">Media</a>
+                <a href="Newsletter.php" class="linkHover">Newsletter</a>
+                <a href="ContactUs.php" class="linkHover">Contact Us</a>
+                <?php
                 if (!empty($_SESSION)) {
-                    if ($_SESSION['userlevel'] == 1){
-                    echo '<a href="Admin.php" class="linkHover">Admin</a>';
+                    if ($_SESSION['userlevel'] == 1) {
+                        echo '<a href="Admin.php" class="linkHover">Admin</a>';
                     }
                 }
-            ?>
-		</div>
-	</div>
+                ?>
+            </div>
+        </div>
 
-	</div>
-	
-	
-	
+    </div>
+
+
+
     <div class="topnav-right">
         <div class="pill-nav">
-		
+
             <button class="loginButton" onclick="document.getElementById(
 			<?php
-			if (empty($_SESSION)){
-			echo '\'id01\'';
-			} else { 
-			echo '\'id03\'';
-			}
-			?>
+            if (empty($_SESSION)) {
+                echo '\'id01\'';
+            } else {
+                echo '\'id03\'';
+            }
+            ?>
 			).style.display='block'" style="width:auto;"><i class="fa fa-user-circle"></i><?php echo $login ?></button>
-			
+
         </div>
     </div>
 </div>
@@ -97,7 +97,7 @@
 
             <button type="submit" name="LogInGo" value="LogInGo" class="submitButton">Login</button>
             <button type="button" class="signUpButton" name="SignUpGo" value="SingUpGo" onclick="document.getElementById('id02').style.display='block' , document.getElementById('id01').style.display='none'">Sign Up</button>
-		</div>
+        </div>
         <div style="clear:both;"></div>
     </form>
 </div>
@@ -141,17 +141,17 @@
 <!-- Sign Out-->
 
 <div id="id03" class="modal">
-		<form class="modal-content" action="SignOut.php" method="post">
-		<div class="imgcontainer">
-		    <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
-			</div>
-		    <div class="container">
-		
+    <form class="modal-content" action="SignOut.php" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="container">
+
             <h1 style="text-align:center"><?php echo $login ?></h1>
             <p></p>
             <div class="clearfix">
-            <button type="button" onclick="location.href='profile.php' , document.getElementById('id03').style.display='none'" class="loginButton">Profile</button>
-                <button type="submit" class= "loginButton">Sign Out</button>
+                <button type="button" onclick="location.href='profile.php' , document.getElementById('id03').style.display='none'" class="loginButton">Profile</button>
+                <button type="submit" class="loginButton">Sign Out</button>
             </div>
         </div>
     </form>
@@ -190,15 +190,15 @@
         }
         return result;
     }
-	
-	// dropdown mobile menu
-	/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-	function mobileDropDown() {
-	  var x = document.getElementById("myMobile");
-	  if (x.className === "mobile") {
-		x.className += " responsive";
-	  } else {
-		x.className = "mobile";
-	  }
-	} 
+
+    // dropdown mobile menu
+    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+    function mobileDropDown() {
+        var x = document.getElementById("myMobile");
+        if (x.className === "mobile") {
+            x.className += " responsive";
+        } else {
+            x.className = "mobile";
+        }
+    }
 </script>
