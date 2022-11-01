@@ -3,14 +3,17 @@ header('Content-type:text/html; charset=utf-8');
 // Open Session
 session_start();
 
-if (isset($_SESSION['islogin'])) {
+if (isset($_SESSION['username'])) {
+    $user_id = $_SESSION['user_id'];
     $login = ucfirst($_SESSION['username']);
+    $level = $_SESSION['user_level'];
 } else {
-    $login = 'Login';
+    $user_id = $login =  $level = '';
 }
 ?>
 <?php include 'conn.php';
 
+// get courses and units from database
 $sql_unit = "select * from units";
 $result_unit = mysqli_query($conn, $sql_unit);
 $unit_list = mysqli_fetch_all($result_unit, MYSQLI_ASSOC);
@@ -18,6 +21,14 @@ $sql_course = "select * from courses";
 $result_course = mysqli_query($conn, $sql_course);
 $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
 
+// if user has login, check the enrollment history
+if (!empty($user_id)) {
+    $sql_enrollment = "SELECT * FROM enrollment WHERE u_id = '$user_id'";
+    $result_enrollment = mysqli_query($conn, $sql_enrollment);
+    $enrollment_list = mysqli_fetch_all($result_enrollment, MYSQLI_ASSOC);
+}
+
+// Add new course
 if (!empty($_POST['addCourse'])) {
     $category = $_POST['category'];
     $course = $_POST['course'];
@@ -28,13 +39,14 @@ if (!empty($_POST['addCourse'])) {
     $info = $_POST['info'];
 
     $sql = "INSERT INTO courses (unit_id, course_name, course_number, course_fee, information, course_trainer, trainer_email) VALUES ('$category', '$course', '$courseNum', '$cost', '$info', '$trainer', '$trainerEmail');";
-    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+    $result = mysqli_query($conn, $sql);
     $numrows = mysqli_affected_rows($conn);
     if ($numrows == 1) {
         header('location:training.php');
     } else {
         echo "Add course fail";
     }
+    // Edit existing course
 } elseif (!empty($_POST['editCourse'])) {
     $course_id = $_POST['edit_course_id'];
     $unit_id = $_POST['edit_category'];
@@ -46,12 +58,33 @@ if (!empty($_POST['addCourse'])) {
     $information = $_POST['edit_info'];
 
     $sql = "UPDATE courses SET unit_id='$unit_id', course_name='$course', course_number='$courseNum', course_fee='$cost', course_trainer='$trainer', trainer_email='$email', information='$information' WHERE course_id='$course_id';";
-    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+    $result = mysqli_query($conn, $sql);
     $numrows = mysqli_affected_rows($conn);
     if ($numrows == 1) {
         header('location:training.php');
     } else {
         echo "Edit course fail";
+    }
+    //Join course
+} elseif (!empty($_POST['joinCourse'])) {
+    $course_id = $_POST['join_course_id'];
+    $sql = "INSERT INTO enrollment (u_id, course_id) VALUES ('$user_id', '$course_id');";
+    $result = mysqli_query($conn, $sql);
+    $numrows = mysqli_affected_rows($conn);
+    if ($numrows == 1) {
+        header('location:training.php');
+    } else {
+        echo "Join course fail";
+    }
+} elseif (!empty($_POST['cancel_enrollment_id'])) {
+    $cancel_enrollment_id = $_POST['cancel_enrollment_id'];
+    $sql = "DELETE FROM enrollment WHERE enrol_id = '$cancel_enrollment_id'";
+    $result = mysqli_query($conn, $sql);
+    $numrows = mysqli_affected_rows($conn);
+    if ($numrows == 1) {
+        header('location:training.php');
+    } else {
+        echo "Cancel course fail";
     }
 }
 ?>
@@ -138,8 +171,31 @@ if (!empty($_POST['addCourse'])) {
                             <td id="<?php echo $course['course_id'] ?>info"><?php echo $course['information'] ?></td>
                             <td id="<?php echo $course['course_id'] ?>trainer"><?php echo $course['course_trainer'] ?></td>
                             <td id="<?php echo $course['course_id'] ?>email"><?php echo $course['trainer_email'] ?></td>
-                            <td><input type="submit" value="Join" class="JoinClass" onclick="document.getElementById('id48').style.display='block'" style="width:auto;"></td>
-                            <td><input type="submit" value="Edit" class="JoinClass" onclick="edit_course(<?php echo $course['course_id'] ?>, <?php echo $course['unit_id'] ?>)" style="width:auto;"></td>
+                            <?php if (!empty($login) && !empty($level)) : ?>
+                                <!-- Flag for check if user has joined -->
+                                <?php $is_join = false; ?>
+                                <?php foreach ($enrollment_list as $enrollment) : ?>
+                                    <!-- If enrollment list have record, course list display 'Quit' button -->
+                                    <?php if ($enrollment['course_id'] == $course['course_id']) : ?>
+                                        <!-- create a form for cancel enrollment -->
+                                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                                            <input type="hidden" id="cancel_enrollment_id" name="cancel_enrollment_id" value="<?php echo $enrollment['enrol_id'] ?>">
+                                            <td><input type="submit" value="Cancel" name="cancelCourse" class="JoinClass" style="width:auto;"></td>
+                                        </form>
+                                        <?php $is_join = true; ?>
+                                        <?php break; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                                <!-- If enrollment list does not have record, course list display 'Join' button -->
+                                <?php if (!$is_join) : ?>
+                                    <td><input type="submit" value="Join" class="JoinClass" onclick="join_course(<?php echo $course['course_id'] ?>)" style="width:auto;"></td>
+                                <?php endif; ?>
+                                <!-- If is admin, display 'Edit' button -->
+                                <?php if ($level == 1) : ?>
+                                    <td><input type="submit" value="Edit" class="JoinClass" onclick="edit_course(<?php echo $course['course_id'] ?>, <?php echo $course['unit_id'] ?>)" style="width:auto;"></td>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
                         </tr>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -189,6 +245,7 @@ if (!empty($_POST['addCourse'])) {
                 </div>
                 <div class="container">
                     <h1>Payment</h1>
+                    <input type="hidden" id="join_course_id" name="join_course_id">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Enter Name on card">
                     <label for="cardNum">Card Number</label>
@@ -197,7 +254,7 @@ if (!empty($_POST['addCourse'])) {
                     <input type="text" id="expiration" name="expiration" placeholder="Enter expiration of card">
                     <label for="securityCode">Security Code</label>
                     <input type="text" id="securityCode" name="securityCode" placeholder="Enter Security Code of card">
-                    <input type="submit" value="Confirm">
+                    <input type="submit" value="Confirm" name="joinCourse">
                     <button type="button" class="cancelbtn" onclick="document.getElementById('id48').style.display='none'" class="cancelbtn">Cancel</button>
                 </div>
             </form>
@@ -218,5 +275,11 @@ if (!empty($_POST['addCourse'])) {
             document.getElementById('edit_info').value = document.getElementById(course_id + 'info').innerHTML;
             document.getElementById('edit_course_id').value = course_id;
             document.getElementById(unit_id + 'unit').selected = true;
+        }
+
+        // set join course id to payment page
+        function join_course(course_id) {
+            document.getElementById('id48').style.display = 'block';
+            document.getElementById('join_course_id').value = course_id;
         }
     </script>

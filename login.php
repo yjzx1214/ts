@@ -12,12 +12,10 @@ if (count($row) > 0) {
     // Open Session
     session_start();
     //save user name into session
+    $_SESSION['user_id'] = $row['u_id'];
     $_SESSION['username'] = $row['u_name'];
-    $_SESSION['userlevel'] = $row['u_level'];
-    $_SESSION['islogin'] = 1;
-    setcookie('username', '', time() - 999);
-    setcookie('userlevel', time() - 999);
-    setcookie('islogin', '', time() - 999);
+    $_SESSION['user_level'] = $row['u_level'];
+
     //redirect to home page
     header('location: index.php');
 } else {

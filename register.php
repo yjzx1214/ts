@@ -20,9 +20,10 @@ if (isset($_POST['SignUpGo'])) {
             // Open Session
             session_start();
             //save user name into session
+            $_SESSION['user_id'] = $row['u_id'];
             $_SESSION['username'] = $username;
-            $_SESSION['userlevel'] = 3;
-            $_SESSION['islogin'] = 1;
+            $_SESSION['user_level'] = 3;
+
             //redirect to home page
             header('location:index.php');
         } else {

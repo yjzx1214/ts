@@ -15,7 +15,7 @@
     <!-- This is the admin only button-->
     <?php
     if (!empty($_SESSION)) {
-        if ($_SESSION['userlevel'] == 1) {
+        if ($_SESSION['user_level'] == 1) {
             echo '<a href="Admin.php" class="linkHover">Admin</a>';
         }
     }
@@ -65,7 +65,6 @@
 
     <div class="topnav-right">
         <div class="pill-nav">
-
             <button class="loginButton" onclick="document.getElementById(
 			<?php
             if (empty($_SESSION)) {
@@ -74,8 +73,7 @@
                 echo '\'id03\'';
             }
             ?>
-			).style.display='block'" style="width:auto;"><i class="fa fa-user-circle"></i><?php echo $login ?></button>
-
+			).style.display='block'" style="width:auto;"><i class="fa fa-user-circle"></i><?php echo $login ? $login : 'Login' ?></button>
         </div>
     </div>
 </div>
