@@ -9,6 +9,15 @@ if (isset($_SESSION['islogin'])) {
     $login = 'Login';
 }
 ?>
+<?php include 'conn.php';
+
+$sql_unit = "select * from units";
+$result_unit = mysqli_query($conn, $sql_unit);
+$unit_list = mysqli_fetch_all($result_unit, MYSQLI_ASSOC);
+$sql_course = "select * from courses";
+$result_course = mysqli_query($conn, $sql_course);
+$course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -32,15 +41,9 @@ if (isset($_SESSION['islogin'])) {
         </div>
         <div id="myBtnContainer">
             <button class="Trainingbtn active" onclick="filterSelection('all')"> Show all</button>
-            <?php
-            require 'conn.php';
-
-            $sql_unit = "select * from units";
-            $result_unit = mysqli_query($conn, $sql_unit) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-            while ($row_unit = mysqli_fetch_array($result_unit)) {
-                echo "<button class=\"Trainingbtn\"> $row_unit[unit_name] </button>";
-            }
-            ?>
+            <?php foreach ($unit_list as $unit) : ?>
+                <button class="Trainingbtn"> <?php echo $unit['unit_name'] ?> </button>
+            <?php endforeach; ?>
         </div>
 
         <div id="addbtnContainer">
@@ -57,17 +60,11 @@ if (isset($_SESSION['islogin'])) {
                 <div class="container">
                     <h1>Add Class</h1>
                     <label for="category">Category</label>
-                    <?php
-                    require 'conn.php';
-
-                    $sql_unit = "select * from units";
-                    $result_unit = mysqli_query($conn, $sql_unit) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-                    echo "<select name='category' id='category'>";
-                    while ($row_unit = mysqli_fetch_array($result_unit)) {
-                        echo "<option value=\"$row_unit[unit_id]\">$row_unit[unit_name]</option>";
-                    }
-                    echo "</select>";
-                    ?>
+                    <select name='category' id='category'>
+                        <?php foreach ($unit_list as $unit) : ?>
+                            <option value="<?php echo $unit['unit_id'] ?>"><?php echo $unit['unit_name'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     <label for="course">Course</label>
                     <input type="text" id="course" name="course" placeholder="Enter Course name">
                     <label for="courseNum">Course Number</label>
@@ -91,38 +88,29 @@ if (isset($_SESSION['islogin'])) {
         <div class="cleardiv"></div>
 
         <!-- Category and course list-->
-        <?php
-        require 'conn.php';
-
-        $sql = "select * from units";
-        $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-        while ($row = mysqli_fetch_array($result)) {
-            $sql_course = "SELECT * FROM courses WHERE unit_id = $row[unit_id]";
-            $result_course = mysqli_query($conn, $sql_course) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-            if ($result_course->num_rows == true) {
-                echo "<div class='TrainingSubTitle'>";
-                echo "<h3>$row[unit_name]</h3>";
-                echo "</div>";
-                echo " <table class=\"trainingTable\">";
-            }
-            while ($row_course = mysqli_fetch_array($result_course)) {
-                echo "<tr>";
-                echo "<td class=\"classFont\">$row_course[course_name]</td>";
-                echo "<td>$row_course[course_number]</td>";
-                echo "<td>$row_course[course_fee]</td>";
-                echo "<td>$row_course[information]</td>";
-                echo "<td>$row_course[course_trainer]</td>";
-                echo "<td>$row_course[trainer_email]</td>";
-                echo "<td><input type=\"submit\" value=\"Join\" class=\"JoinClass\" onclick=\"document.getElementById('id48').style.display='block'\" style=\"width:auto;\"></td>";
-                echo "<td><input type=\"submit\" value=\"Edit\" class=\"JoinClass\" onclick=\"edit_course('$row[unit_id]', '$row_course[course_name]', '$row_course[course_number]', '$row_course[course_fee]', '$row_course[information]', '$row_course[course_trainer]', '$row_course[trainer_email]', '$row_course[course_id]')\" style=\"width:auto;\"></td>";
-                echo "</tr>";
-            }
-            echo "</table>";
-            echo "<div class='box'>";
-            echo "</div>";
-        }
-
-        ?>
+        <?php foreach ($unit_list as $unit) : ?>
+            <div class='TrainingSubTitle'>
+                <h3><?php echo $unit['unit_name'] ?></h3>
+            </div>
+            <table class="trainingTable">
+                <?php foreach ($course_list as $course) : ?>
+                    <?php if ($unit['unit_id'] == $course['unit_id']) : ?>
+                        <tr>
+                            <td class="classFont"><?php echo $course['course_name'] ?></td>
+                            <td><?php echo $course['course_number'] ?></td>
+                            <td><?php echo $course['course_fee'] ?></td>
+                            <td><?php echo $course['information'] ?></td>
+                            <td><?php echo $course['course_trainer'] ?></td>
+                            <td><?php echo $course['trainer_email'] ?></td>
+                            <td><input type="submit" value="Join" class="JoinClass" onclick="document.getElementById('id48').style.display='block'" style="width:auto;"></td>
+                            <td><input type="submit" value="Edit" class="JoinClass" onclick="edit_course()" style="width:auto;"></td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </table>
+            <div class='box'>
+            </div>
+        <?php endforeach; ?>
 
 
         <!-- modal = id49 -->
@@ -136,18 +124,11 @@ if (isset($_SESSION['islogin'])) {
                 <div class="container">
                     <h1>Edit Class</h1>
                     <label for="category">Category</label>
-                    <?php
-                    require 'conn.php';
-
-                    $sql_unit = "select * from units";
-                    $result_unit = mysqli_query($conn, $sql_unit) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-                    echo "<select name='edit_category' id='edit_category'>";
-                    echo "<option value=\"none\" selected disabled hidden>Please select course category</option> ";
-                    while ($row_unit = mysqli_fetch_array($result_unit)) {
-                        echo "<option value=\"$row_unit[unit_id]\">$row_unit[unit_name]</option>";
-                    }
-                    echo "</select>";
-                    ?>
+                    <select name='edit_category' id='edit_category'>
+                        <?php foreach ($unit_list as $unit) : ?>
+                            <option value="<?php echo $unit['unit_id'] ?>"><?php echo $unit['unit_name'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     <input type="text" id="edit_course_id" name="edit_course_id" hidden>
                     <label for="course">Course</label>
                     <input type="text" id="edit_course" name="edit_course" placeholder="Enter Course name">
