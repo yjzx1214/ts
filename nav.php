@@ -130,8 +130,8 @@
             <span class="text-reminder" id="phone-reminder" style="display:none">* Phone number must be 10 digits long e.g. (0412 345 678)</span><br>
 
             <div class="clearfix">
-                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
                 <button type="submit" class="signUpButton" name="SignUpGo" value="SignUpGo">Sign Up</button>
+                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="signUpButton">Cancel</button>
             </div>
         </div>
     </form>
