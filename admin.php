@@ -9,6 +9,12 @@ if (isset($_SESSION['islogin'])) {
     $login = 'Login';
 }
 ?>
+<?php
+include 'conn.php';
+$sql = "SELECT * FROM users";
+$result = mysqli_query($conn, $sql);
+$userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -41,49 +47,51 @@ if (isset($_SESSION['islogin'])) {
 
                     <div class="cleardiv"></div>
                     <div class="normalScreen">
-                    <?php
-                    require 'conn.php';
-                    $count = 1;
-
-                    $sql = "select * from users";
-                    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-                    echo "<table id='myTable'>";
-                    echo "<tr><td>ID</td><td>Name</td><td>Email</td><td>Phone</td><td>Update</td><td>Delete</td></tr>";
-                    while ($row = mysqli_fetch_array($result)) {
-                        echo "<tr>";
-                        echo "<td>$row[u_id]</td>";
-                        echo "<td>$row[u_name]</td>";
-                        echo "<td>$row[u_email]</td>";
-                        echo "<td>$row[u_phone]</td>";
-                        echo "<td><a href='#' onclick=edit($count)>Edit</a></td>";
-                        echo "<td><a href=./del-user.php?u_id=$row[u_id]>Delete</a></td>";
-                        echo "</tr>";
-                        $count++;
-                    }
-                    echo "</table>";
-                    ?>
+                        <table id='myTable'>
+                            <tr>
+                                <td>ID</td>
+                                <td>Name</td>
+                                <td>Email</td>
+                                <td>Phone</td>
+                                <td>Update</td>
+                                <td>Delete</td>
+                            </tr>
+                            <?php foreach ($userlist as $user) : ?>
+                                <tr>
+                                    <td><?php echo $user['u_id'] ?></td>
+                                    <td><?php echo $user['u_name'] ?></td>
+                                    <td><?php echo $user['u_email'] ?></td>
+                                    <td><?php echo $user['u_phone'] ?></td>
+                                    <td><a href='#' onclick=edit(1)>Edit</a></td>
+                                    <td><a href='./del-user.php?u_id=<?php echo $user['u_id'] ?>'>Delete</a></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
                     </div>
                     <div class="mobileScreen">
-                    <?php
-                    require 'conn.php';
-                    $count = 1;
-
-                    $sql = "select * from users";
-                    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
-                    echo "<table id='myTable'>";
-                    while ($row = mysqli_fetch_array($result)) {
-                        echo "<tr><th>ID</th><td>$row[u_id]</td></tr>";
-                        echo "<tr><th>Name</th><td>$row[u_name]</td></tr>";
-                        echo "<tr><th>Email</th><td>$row[u_email]</td></tr>";
-                        echo "<tr><th>Phone</th><td>$row[u_phone]</td></tr>";
-                        echo "<tr><th>Update</th><td><a href='#' onclick=edit($count)>Edit</a></td></tr>";
-                        echo "<tr><th>Delete</th><td><a href=./del-user.php?u_id=$row[u_id]>Delete</a></td></tr>";
-                        $count++;
-                    }
-                    echo "</table>";
-                    ?>
+                        <table id='myTable'>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            <?php foreach ($userlist as $user) : ?>
+                                <tr>
+                                    <th><?php echo $user['u_id'] ?></th>
+                                    <th><?php echo $user['u_name'] ?></th>
+                                    <th><?php echo $user['u_email'] ?></th>
+                                    <th><?php echo $user['u_phone'] ?></th>
+                                    <th><a href='#' onclick=edit(1)>Edit</a></th>
+                                    <th><a href='./del-user.php?u_id=<?php echo $user['u_id'] ?>'>Delete</a></th>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
                     </div>
                 </div>
+
                 <div class="adminColumn">
                     <form action="update.php" method="POST" onsubmit="return check()">
                         <label for="id">ID</label>
