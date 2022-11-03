@@ -51,7 +51,7 @@
                 <a href="ContactUs.php" class="linkHover">Contact Us</a>
                 <?php
                 if (!empty($_SESSION)) {
-                    if ($_SESSION['userlevel'] == 1) {
+                    if ($_SESSION['user_level'] == 1) {
                         echo '<a href="Admin.php" class="linkHover">Admin</a>';
                     }
                 }
