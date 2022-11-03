@@ -4,9 +4,59 @@ header('Content-type:text/html; charset=utf-8');
 session_start();
 
 if (isset($_SESSION['username'])) {
+    $user_id = $_SESSION['user_id'];
     $login = ucfirst($_SESSION['username']);
+    $level = $_SESSION['user_level'];
 } else {
+    $user_id = $login =  $level = '';
     header('location:index.php');
+}
+?>
+
+<?php
+include 'conn.php';
+
+if (!empty($user_id)) {
+    $sql_enrollment = "SELECT * FROM enrollment WHERE u_id = '$user_id'";
+    $result_enrollment = mysqli_query($conn, $sql_enrollment);
+    $enrollment_list = mysqli_fetch_all($result_enrollment, MYSQLI_ASSOC);
+
+    $sql_course = "SELECT * FROM courses WHERE course_id IN ";
+    $enrol_history = '';
+    if (count($enrollment_list) > 0) {
+        // if user have enrolled any course, combine the course_id
+        for ($i = 0; $i < count($enrollment_list); $i++) {
+            if (count($enrollment_list) == 1) {
+                $enrol_history = '(' . $enrollment_list[$i]['course_id'] . ')';
+            } else {
+                if ($i == 0) {
+                    $enrol_history = '(' . $enrollment_list[$i]['course_id'];
+                } elseif ($i == count($enrollment_list) - 1) {
+                    $enrol_history = $enrol_history . ',' . $enrollment_list[$i]['course_id'] . ')';
+                } else {
+                    $enrol_history = $enrol_history . ',' . $enrollment_list[$i]['course_id'];
+                }
+            }
+        }
+        $sql_course = $sql_course . $enrol_history;
+        $result_course = mysqli_query($conn, $sql_course);
+        $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
+    }
+}
+
+// Deal form request
+// Cancel course
+if (!empty($_POST['cancelCourse'])) {
+    $cancel_course_id = $_POST['cancel_course_id'];
+    $sql = "DELETE FROM enrollment WHERE u_id = '$user_id' AND course_id = '$cancel_course_id'";
+    echo $sql;
+    $result = mysqli_query($conn, $sql);
+    $numrows = mysqli_affected_rows($conn);
+    if ($numrows == 1) {
+        header('location:profile.php');
+    } else {
+        echo "Cancel course fail";
+    }
 }
 ?>
 
@@ -73,25 +123,29 @@ if (isset($_SESSION['username'])) {
         </div>
 
         <table class="trainingTable">
-            <tr>
-                <td class="classFont">Strategic Studing</td>
-                <td>10672</td>
-                <td>This is a bunch of information that i have typed up to see what is going to appear on screen</td>
-                <td>$120</td>
-                <td>Bob Smith</td>
-                <td>Bob.Smith@TS.com</td>
-                <!--Cancel Class should remove it from User -->
-                <td><input type="submit" value="Cancel Class" class="JoinClass" style="width:auto;"></td>
-            </tr>
-            <tr>
-                <td class="classFont">Strategic Studing</td>
-                <td>10672</td>
-                <td>This is a bunch of information that i have typed up to see what is going to appear on screen</td>
-                <td>$120</td>
-                <td>Bob Smith</td>
-                <td>Bob.Smith@TS.com</td>
-                <td><input type="submit" value="Cancel Class" class="JoinClass" style="width:auto;"></td>
-            </tr>
+            <!-- if does not have any courses have been enrolled -->
+            <?php if ($enrollment_list == null) : ?>
+                <tr>
+                    <td>Do not have any courses</td>
+                </tr>
+            <?php else : ?>
+                <!-- display enrolled courses -->
+                <?php foreach ($course_list as $course) : ?>
+                    <tr>
+                        <td class="classFont"><?php echo $course['course_name'] ?></td>
+                        <td><?php echo $course['course_number'] ?></td>
+                        <td><?php echo $course['information'] ?></td>
+                        <td><?php echo $course['course_fee'] ?></td>
+                        <td><?php echo $course['course_trainer'] ?></td>
+                        <td><?php echo $course['trainer_email'] ?></td>
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                            <!-- hidden course_id for cancel course -->
+                            <input type="hidden" id="cancel_course_id" name="cancel_course_id" value="<?php echo $course['course_id'] ?>">
+                            <td><input type="submit" name="cancelCourse" value="Cancel Course" class="JoinClass" style="width:auto;"></td>
+                        </form>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif ?>
         </table>
 
 

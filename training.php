@@ -11,7 +11,8 @@ if (isset($_SESSION['username'])) {
     $user_id = $login =  $level = '';
 }
 ?>
-<?php include 'conn.php';
+<?php
+include 'conn.php';
 
 // get courses and units from database
 $sql_unit = "select * from units";
@@ -28,6 +29,7 @@ if (!empty($user_id)) {
     $enrollment_list = mysqli_fetch_all($result_enrollment, MYSQLI_ASSOC);
 }
 
+// Deal form request
 // Add new course
 if (!empty($_POST['addCourse'])) {
     $category = $_POST['category'];
@@ -76,7 +78,7 @@ if (!empty($_POST['addCourse'])) {
     } else {
         echo "Join course fail";
     }
-} elseif (!empty($_POST['cancel_enrollment_id'])) {
+} elseif (!empty($_POST['cancelCourse'])) {
     $cancel_enrollment_id = $_POST['cancel_enrollment_id'];
     $sql = "DELETE FROM enrollment WHERE enrol_id = '$cancel_enrollment_id'";
     $result = mysqli_query($conn, $sql);
