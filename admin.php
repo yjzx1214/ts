@@ -59,10 +59,10 @@ $userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <?php foreach ($userlist as $user) : ?>
                                 <tr>
                                     <td><?php echo $user['u_id'] ?></td>
-                                    <td><?php echo $user['u_name'] ?></td>
-                                    <td><?php echo $user['u_email'] ?></td>
-                                    <td><?php echo $user['u_phone'] ?></td>
-                                    <td><a href='#' onclick=edit(1)>Edit</a></td>
+                                    <td id="<?php echo $user['u_id'] ?>name"><?php echo $user['u_name'] ?></td>
+                                    <td id="<?php echo $user['u_id'] ?>email"><?php echo $user['u_email'] ?></td>
+                                    <td id="<?php echo $user['u_id'] ?>phone"><?php echo $user['u_phone'] ?></td>
+                                    <td><a href='#' onclick=edit(<?php echo $user['u_id'] ?>)>Edit</a></td>
                                     <td><a href='./del-user.php?u_id=<?php echo $user['u_id'] ?>'>Delete</a></td>
                                 </tr>
                             <?php endforeach; ?>
@@ -81,10 +81,10 @@ $userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <?php foreach ($userlist as $user) : ?>
                                 <tr>
                                     <th><?php echo $user['u_id'] ?></th>
-                                    <th><?php echo $user['u_name'] ?></th>
-                                    <th><?php echo $user['u_email'] ?></th>
-                                    <th><?php echo $user['u_phone'] ?></th>
-                                    <th><a href='#' onclick=edit(1)>Edit</a></th>
+                                    <th id="<?php echo $user['u_id'] ?>name"><?php echo $user['u_name'] ?></th>
+                                    <th id="<?php echo $user['u_id'] ?>email"><?php echo $user['u_email'] ?></th>
+                                    <th id="<?php echo $user['u_id'] ?>phone"><?php echo $user['u_phone'] ?></th>
+                                    <th><a href='#' onclick=edit(<?php echo $user['u_id'] ?>)>Edit</a></th>
                                     <th><a href='./del-user.php?u_id=<?php echo $user['u_id'] ?>'>Delete</a></th>
                                 </tr>
                             <?php endforeach; ?>
@@ -149,12 +149,12 @@ $userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 }
             }
 
-            function edit(count) {
+            function edit(user_id) {
                 var tab = document.getElementById("myTable");
-                document.getElementById('update-id').setAttribute("value", tab.rows[count].cells[0].innerText);
-                document.getElementById('update-name').setAttribute("value", tab.rows[count].cells[1].innerText);
-                document.getElementById('update-email').setAttribute("value", tab.rows[count].cells[2].innerText);
-                document.getElementById('update-phone').setAttribute("value", tab.rows[count].cells[3].innerText);
+                document.getElementById('update-id').value = user_id;
+                document.getElementById('update-name').value = document.getElementById(user_id + 'name').innerHTML;
+                document.getElementById('update-email').value = document.getElementById(user_id + 'email').innerHTML;
+                document.getElementById('update-phone').value = document.getElementById(user_id + 'phone').innerHTML;
             }
 
             function check() {
