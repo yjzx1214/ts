@@ -24,7 +24,7 @@ if (!empty($_POST['update'])) {
     $level = $_POST['u_level'];
 
     $sql = "UPDATE users SET u_name='$username', u_password='$password', u_email='$email', u_phone='$phone', u_level='$level' WHERE u_id='$user_id';";
-    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+    $result = mysqli_query($conn, $sql);
     $numrows = mysqli_affected_rows($conn);
     if ($numrows == 1) {
         header('location:admin.php');
