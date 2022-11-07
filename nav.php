@@ -1,3 +1,66 @@
+<?php
+require 'conn.php';
+
+if (!empty($_POST['login'])) {
+    $username = $_POST['uname'];
+    $password = $_POST['psw'];
+
+    $sql = "select * from users where u_name = '$username' and u_password = '$password';";
+    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+    $row = mysqli_fetch_array($result);
+    if (count($row) > 0) {
+        // Open Session
+        session_start();
+        //save user name into session
+        $_SESSION['user_id'] = $row['u_id'];
+        $_SESSION['username'] = $row['u_name'];
+        $_SESSION['user_level'] = $row['u_level'];
+
+        //redirect to home page
+        header('location: index.php');
+    } else {
+        //error password or username information
+        echo 'username or password error';
+    }
+} elseif (!empty($_POST['register'])) {
+    $username = filter_input(INPUT_POST, 'uname', FILTER_SANITIZE_SPECIAL_CHARS);
+    $password = $_POST['psw'];
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_NUMBER_INT);
+    $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    $sql_check = "SELECT * FROM users WHERE u_name='$username'";
+    $result_check = mysqli_query($conn, $sql_check);
+    if (mysqli_num_rows($result_check) > 0) {
+        echo 'user existing';
+        // need a page display or window
+    } else {
+        $sql_register = "INSERT INTO users (u_name, u_password, u_email, u_phone, u_address, u_level) VALUES ('$username', '$password', '$email', '$phone', '$address', '3');";
+        if (mysqli_query($conn, $sql_register)) {
+            // Open Session
+            session_start();
+            //save user name into session
+            $_SESSION['user_id'] = $row['u_id'];
+            $_SESSION['username'] = $username;
+            $_SESSION['user_level'] = 3;
+
+            //redirect to home page
+            header('location:index.php');
+        } else {
+            echo 'Error ' . mysqli_errno($conn);
+        }
+    }
+} elseif (!empty($_POST['signOut'])) {
+    session_start();
+    unset($_SESSION['user_id']);
+    unset($_SESSION['username']);
+    unset($_SESSION['user_level']);
+    // Finally, destroy the session.    
+    session_destroy();
+    header('location:index.php');
+}
+
+?>
 <div class="navbar">
 
     <a href="Index.php" class="home">Turnstar<br>Strategies</a>
@@ -14,7 +77,7 @@
 
     <!-- This is the admin only button-->
     <?php
-    if (!empty($_SESSION)) {
+    if (!empty($_SESSION['user_level'])) {
         if ($_SESSION['user_level'] == 1) {
             echo '<a href="Admin.php" class="linkHover">Admin</a>';
         }
@@ -80,7 +143,7 @@
 
 <div id="id01" class="modal">
 
-    <form class="modal-content animate" action="login.php" method="post">
+    <form class="modal-content animate" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
             <!--<img src="img_avatar2.png" alt="Avatar" class="avatar">         This is for Image of Login      -->
@@ -93,8 +156,8 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
 
-            <button type="submit" name="LogInGo" value="LogInGo" class="submitButton">Login</button>
-            <button type="button" class="signUpButton" name="SignUpGo" value="SingUpGo" onclick="document.getElementById('id02').style.display='block' , document.getElementById('id01').style.display='none'">Sign Up</button>
+            <input type="submit" name="login" value='Login' class="submitButton">
+            <button type="button" class="signUpButton" onclick="document.getElementById('id02').style.display='block' , document.getElementById('id01').style.display='none'">Sign Up</button>
         </div>
         <div style="clear:both;"></div>
     </form>
@@ -103,7 +166,7 @@
 <!-- Sign Up-->
 
 <div id="id02" class="modal">
-    <form class="modal-content animate" action="register.php" method="POST" onsubmit="return check()">
+    <form class="modal-content animate" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" onsubmit="return check()">
         <div class="container">
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
@@ -131,7 +194,7 @@
             <input type="text" placeholder="Enter address" name="address" id="address">
 
             <div class="clearfix">
-                <button type="submit" class="signUpButton" name="SignUpGo" value="SignUpGo">Sign Up</button>
+                <input type="submit" value="Register" class="signUpButton" name="register">
                 <button type="button" onclick="document.getElementById('id02').style.display='none'" class="signUpButton">Cancel</button>
             </div>
         </div>
@@ -141,7 +204,7 @@
 <!-- Sign Out-->
 
 <div id="id03" class="modal">
-    <form class="modal-content" action="SignOut.php" method="post">
+    <form class="modal-content" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         <div class="imgcontainer">
             <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
         </div>
@@ -151,7 +214,7 @@
             <p></p>
             <div class="clearfix">
                 <button type="button" onclick="location.href='profile.php' , document.getElementById('id03').style.display='none'" class="loginButton">Profile</button>
-                <button type="submit" class="loginButton">Sign Out</button>
+                <input type="submit" value="Sign Out" class="loginButton" name="signOut">
             </div>
         </div>
     </form>

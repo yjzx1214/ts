@@ -3,7 +3,7 @@ header('Content-type:text/html; charset=utf-8');
 // Open Session
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (!empty($_SESSION['username'])) {
     $login = ucfirst($_SESSION['username']);
 } else {
     $login = '';
@@ -104,7 +104,7 @@ if (isset($_SESSION['username'])) {
 
 
         <!-- Text after Slide show might add text back-->
-    </div>
+        </div>
     </main>
 
     <!-- This is footer file -->

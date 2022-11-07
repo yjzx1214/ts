@@ -3,7 +3,7 @@ header('Content-type:text/html; charset=utf-8');
 // Open Session
 session_start();
 
-if (isset($_SESSION['islogin'])) {
+if (isset($_SESSION['username'])) {
     $login = ucfirst($_SESSION['username']);
 } else {
     $login = 'Login';
