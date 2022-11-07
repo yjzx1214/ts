@@ -14,6 +14,23 @@ include 'conn.php';
 $sql = "SELECT * FROM users";
 $result = mysqli_query($conn, $sql);
 $userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+if (!empty($_POST['update'])) {
+    $user_id = $_POST['user_id'];
+    $username = $_POST['name'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $level = $_POST['u_level'];
+
+    $sql = "UPDATE users SET u_name='$username', u_password='$password', u_email='$email', u_phone='$phone', u_level='$level' WHERE u_id='$user_id';";
+    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+    $numrows = mysqli_affected_rows($conn);
+    if ($numrows == 1) {
+        header('location:admin.php');
+    } else {
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +78,7 @@ $userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                     <td><?php echo $user['u_id'] ?></td>
                                     <td id="<?php echo $user['u_id'] ?>name"><?php echo $user['u_name'] ?></td>
                                     <td id="<?php echo $user['u_id'] ?>email"><?php echo $user['u_email'] ?></td>
-                                    <td id="<?php echo $user['u_id'] ?>phone"><?php echo $user['u_phone'] ?></td>
+                                    <td id="<?php echo $user['u_id'] ?>phone">0<?php echo $user['u_phone'] ?></td>
                                     <td><a href='#' onclick=edit(<?php echo $user['u_id'] ?>)>Edit</a></td>
                                     <td><a href='./del-user.php?u_id=<?php echo $user['u_id'] ?>'>Delete</a></td>
                                 </tr>
@@ -83,7 +100,7 @@ $userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                     <th><?php echo $user['u_id'] ?></th>
                                     <th id="<?php echo $user['u_id'] ?>name"><?php echo $user['u_name'] ?></th>
                                     <th id="<?php echo $user['u_id'] ?>email"><?php echo $user['u_email'] ?></th>
-                                    <th id="<?php echo $user['u_id'] ?>phone"><?php echo $user['u_phone'] ?></th>
+                                    <th id="<?php echo $user['u_id'] ?>phone">0<?php echo $user['u_phone'] ?></th>
                                     <th><a href='#' onclick=edit(<?php echo $user['u_id'] ?>)>Edit</a></th>
                                     <th><a href='./del-user.php?u_id=<?php echo $user['u_id'] ?>'>Delete</a></th>
                                 </tr>
@@ -93,9 +110,9 @@ $userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 </div>
 
                 <div class="adminColumn">
-                    <form action="update.php" method="POST" onsubmit="return check()">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" onsubmit="return check()">
                         <label for="id">ID</label>
-                        <input type="text" id="update-id" name="userid" readonly>
+                        <input type="text" id="update-id" name="user_id" readonly>
                         <label for="name">Name</label>
                         <input type="text" id="update-name" name="name" placeholder="Your Name..">
                         <span class="text-reminder" id="name-reminder" style="display:none">* Username must be at least 5 characters</span><br>
@@ -121,7 +138,7 @@ $userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             }
                             ?>
                         </select>
-                        <input type="submit" value="Update">
+                        <input type="submit" value="Update" name="update">
                     </form>
                 </div>
             </div>
@@ -165,26 +182,22 @@ $userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 var phone = document.getElementById("update-phone");
                 var result = true;
                 if (uname.value.length < 2) {
-                    alert(1);
                     document.getElementById("name-reminder").style.display = "block";
                     document.getElementById("name-reminder").style.color = "red";
                     result = false;
                 }
                 if (pwd.value != pwdRepeat.value) {
-                    alert(3);
                     document.getElementById("psw-reminder").style.display = "block";
                     document.getElementById("psw-reminder").style.color = "red";
                     result = false;
                 }
                 var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
                 if (!reg.test(email.value)) {
-                    alert(4);
                     document.getElementById("email-reminder").style.display = "block";
                     document.getElementById("email-reminder").style.color = "red";
                     result = false;
                 }
                 if (phone.value.length != 10) {
-                    alert(5);
                     document.getElementById("phone-reminder").style.display = "block";
                     document.getElementById("phone-reminder").style.color = "red";
                     result = false;
