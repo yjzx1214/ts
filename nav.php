@@ -6,9 +6,9 @@ if (!empty($_POST['login'])) {
     $password = $_POST['psw'];
 
     $sql = "select * from users where u_name = '$username' and u_password = '$password';";
-    $result = mysqli_query($conn, $sql) or die("Error BOOK TYPE! - " . mysqli_error($conn));
+    $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
-    if (count($row) > 0) {
+    if (!empty($row)) {
         // Open Session
         session_start();
         //save user name into session
@@ -20,7 +20,7 @@ if (!empty($_POST['login'])) {
         header('location: index.php');
     } else {
         //error password or username information
-        echo 'username or password error';
+        echo '<script>alert("Username or Password Error!")</script>';
     }
 } elseif (!empty($_POST['register'])) {
     $username = filter_input(INPUT_POST, 'uname', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -152,6 +152,7 @@ if (!empty($_POST['login'])) {
         <div class="container">
             <label for="uname"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="uname" required>
+
 
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
