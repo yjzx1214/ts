@@ -1,13 +1,13 @@
 <?php
-header('Content-type:text/html; charset=utf-8');
-// Open Session
-session_start();
+	header('Content-type:text/html; charset=utf-8');
+	// Open Session
+	session_start();
 
-if (!empty($_SESSION['username'])) {
-    $login = ucfirst($_SESSION['username']);
-} else {
-    $login = '';
-}
+	if (!empty($_SESSION['username'])) {
+		$login = ucfirst($_SESSION['username']);
+	} else {
+		$login = '';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ if (!empty($_SESSION['username'])) {
 
     <!-- Title-->
 
-    <h2>Words that will change</h2>
+    <h2>Turnstar Strategies</h2>
 
     <!-- Slide Show -->
     <main id="main">
@@ -68,7 +68,8 @@ if (!empty($_SESSION['username'])) {
             <span class="dot" onclick="currentSlide(3)"></span>
             <span class="dot" onclick="currentSlide(4)"></span>
         </div>
-
+		
+		<!--Script for the slide show-->
         <script>
             let slideIndex = 1;
             showSlides(slideIndex);
