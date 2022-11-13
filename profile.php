@@ -17,6 +17,10 @@ if (isset($_SESSION['username'])) {
 include 'conn.php';
 
 if (!empty($user_id)) {
+    $sql_sub = "SELECT * FROM subscriptions WHERE u_id = '$user_id'";
+    $result_sub = mysqli_query($conn, $sql_sub);
+    $sub = mysqli_fetch_all($result_sub, MYSQLI_ASSOC);
+
     $sql_enrollment = "SELECT * FROM enrollment WHERE u_id = '$user_id'";
     $result_enrollment = mysqli_query($conn, $sql_enrollment);
     $enrollment_list = mysqli_fetch_all($result_enrollment, MYSQLI_ASSOC);
@@ -49,13 +53,32 @@ if (!empty($user_id)) {
 if (!empty($_POST['cancelCourse'])) {
     $cancel_course_id = $_POST['cancel_course_id'];
     $sql = "DELETE FROM enrollment WHERE u_id = '$user_id' AND course_id = '$cancel_course_id'";
-    echo $sql;
     $result = mysqli_query($conn, $sql);
     $numrows = mysqli_affected_rows($conn);
     if ($numrows == 1) {
         header('location:profile.php');
     } else {
         echo "Cancel course fail";
+    }
+} elseif (!empty($_POST['sub'])) {
+    $u_id = $_POST['u_id'];
+    $sql = "INSERT INTO subscriptions (u_id) VALUES ('$u_id')";
+    $result = mysqli_query($conn, $sql);
+    $numrows = mysqli_affected_rows($conn);
+    if ($numrows == 1) {
+        header('location:profile.php');
+    } else {
+        echo "subscription fail";
+    }
+} elseif (!empty($_POST['unsub'])) {
+    $u_id = $_POST['u_id'];
+    $sql = "DELETE FROM subscriptions WHERE u_id = '$u_id'";
+    $result = mysqli_query($conn, $sql);
+    $numrows = mysqli_affected_rows($conn);
+    if ($numrows == 1) {
+        header('location:profile.php');
+    } else {
+        echo "unsubscription fail";
     }
 }
 ?>
@@ -86,7 +109,14 @@ if (!empty($_POST['cancelCourse'])) {
                         <img src="picture/img_avatar.png" alt="Avatar" style="width:50%">
 
                         <h3>Subscribed to Newsletter</h3>
-                        <input type="button" class="submitButton" value="Unsubscribe">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                            <input type="hidden" value="<?php echo $user_id ?>" name="u_id">
+                            <?php if (count($sub) > 0) : ?>
+                                <input type="submit" class="submitButton" value="Unsubscribe" name="unsub">
+                            <?php else : ?>
+                                <input type="submit" class="submitButton" value="subscribe" name="sub">
+                            <?php endif; ?>
+                        </form>
                     </div>
 
                     <?php
