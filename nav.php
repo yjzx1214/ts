@@ -1,13 +1,13 @@
 <!--
 //*****************************************************************
 //Project: Turnstar Strategies Web Application
-//Programers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
 //Date: 14/11/2022
 //Software: Notepad++, Visual Studio Code
 //Platform: Microsoft Windows 10 Home
 //Purpose: This is the navigation bar that is included at the top of every page.
 //			It contains links to all the other pages, a drop down menu, a mobile view.
-//			and a user account sysem.
+//			and a user account system.
 //References: Some snippets of code were adapted from W3schools.com
 //*****************************************************************
 -->

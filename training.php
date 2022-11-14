@@ -1,11 +1,12 @@
 <!--
 //*****************************************************************
 //Project: Turnstar Strategies Web Application
-//Programers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
 //Date: 14/11/2022
 //Software: Notepad++, Visual Studio Code
 //Platform: Microsoft Windows 10 Home
-//Purpose: This is the Training page. It contains a list of courses which users can filter, create, delete and join, depending on their access level
+//Purpose: This is the Training page. It contains a list of courses 
+//			which users can filter, create, delete, and join, depending on their access level
 //References: Some snippets of code were adapted from W3schools.com
 //*****************************************************************
 -->

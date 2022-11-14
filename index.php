@@ -1,7 +1,7 @@
 <!--
 //*****************************************************************
 //Project: Turnstar Strategies Web Application
-//Programers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
 //Date: 14/11/2022
 //Software: Notepad++, Visual Studio Code
 //Platform: Microsoft Windows 10 Home

@@ -1,3 +1,15 @@
+<!--
+//*****************************************************************
+//Project: Turnstar Strategies Web Application
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Date: 14/11/2022
+//Software: Notepad++, Visual Studio Code
+//Platform: Microsoft Windows 10 Home
+//Purpose: This is the contact us page
+//References: Some snippets of code were adapted from W3schools.com
+//*****************************************************************
+-->
+
 <?php
 	header('Content-type:text/html; charset=utf-8');
 	// Open Session

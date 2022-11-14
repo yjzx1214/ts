@@ -1,11 +1,11 @@
 <!--
 //*****************************************************************
 //Project: Turnstar Strategies Web Application
-//Programers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
 //Date: 14/11/2022
 //Software: Notepad++, Visual Studio Code
 //Platform: Microsoft Windows 10 Home
-//Purpose: This is the Our Partners page, It shows a grid of images of the various
+//Purpose: This is the Our Partners page; it shows a grid of images of the various
 //			partners to TS
 //References: Some snippets of code were adapted from W3schools.com
 //*****************************************************************

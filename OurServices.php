@@ -1,11 +1,11 @@
 ﻿<!--
 //*****************************************************************
 //Project: Turnstar Strategies Web Application
-//Programers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
 //Date: 14/11/2022
 //Software: Notepad++, Visual Studio Code
 //Platform: Microsoft Windows 10 Home
-//Purpose: This is the Our Services page. It displays a summery of the various services TS offers.
+//Purpose: This is the Our Services page. It displays a summary of the various services TS offers.
 //References: Some snippets of code were adapted from W3schools.com
 //			https://en.wikipedia.org/wiki/Strategic_communication
 //			https://en.wikipedia.org/wiki/Information_technology
@@ -54,10 +54,10 @@
             <p>
 				"Communication is strategic when it is completely consistent with the organisation's mission, vision, values and 
 				when it is able to enhance the strategic positioning and competitiveness between their competitors. It is important 
-				to understand the concept of communication strategy, it should be seen from the organization's perspective and no one else beside them."
-				- Wikipedia <br>
-				Strategic Communications is an often misunderstood and yet invaluable area of knowledge for any organization. This ten week
-				course will teach you how to strategically guide your business to greater success while maintaining it's integrity. Learn all
+				to understand the concept of communication strategy, it should be seen from the organization's perspective and no one else beside them." <br>
+				- Wikipedia <br> <br>
+				Strategic Communications is an often misunderstood and yet invaluable area of knowledge for any organization. This ten-week
+				course will teach you how to strategically guide your business to greater success while maintaining its integrity. Learn all
 				of the industry standard principles and techniques used by the biggest businesses in the world.
             </p>
         </div>
@@ -71,11 +71,11 @@
 				"Information technology (IT) is the use of computers to create, process, store, retrieve, and exchange all kinds of data 
 				and information. IT forms part of information and communications technology (ICT). An information technology system (IT system) 
 				is generally an information system, a communications system, or, more specifically speaking, a computer system — including 
-				all hardware, software, and peripheral equipment — operated by a limited group of IT users."
-				- Wikipedia <br>
-				Information technology is all around as, and shapes the world we live in. This course seeks to aim you with general knowledge on
+				all hardware, software, and peripheral equipment — operated by a limited group of IT users." <br>
+				- Wikipedia <br> <br>
+				Information technology is all around us, and shapes the world we live in. This course seeks to aim you with general knowledge on
 				the most common areas inside IT. In ten weeks learn how to code basic programs, how IT networks are set up,
-				and the tools and principles that have been assisting the most talented programers throughout history.
+				and the tools and principles that have been assisting the most talented programmers throughout history.
             </p>
         </div>
 
@@ -87,10 +87,10 @@
             <p>
 				"(cyber security) is the protection of computer systems and networks from information disclosure, theft of, or damage to their 
 				hardware, software, or electronic data, as well as from the disruption or misdirection of the services they provide." 
-				- Wikipedia <br>
-				Cyber security is one of the biggest and most important emerging feilds, with often the highest paygrades, and hardest workloads.
-				This course will train you in the tools, methods and knowledge required to excell in a cyber security role. Weither you are 
-				looking to gain a job in cyber security or are simply trying to learn how to protect your business from cybercrime, this is the
+				- Wikipedia <br> <br>
+				Cyber security is one of the biggest and most important emerging fields, with often the highest paygrades, and hardest workloads.
+				This course will train you in the tools, methods and knowledge required to excel in a cyber security role. Weather you are 
+				looking to gain a job in cyber security or are simply trying to learn how to protect your business from cyber-crime, this is the
 				course for you. 
             </p>
         </div>
@@ -104,7 +104,7 @@
 				Business is the practice of making one's living or making money by producing or buying and selling products. Learn how to
 				be more effective in the managing of businesses. Including the importance and preparation of documentation, how to set up
 				effective supply trains, important economic factors to success and the different types of businesses and how to appropriately
-				set them up. Weither you wish to start a new business or bolster an old one, this ten week course will leave you with all 
+				set them up. Weather you wish to start a new business or bolster an old one, this ten-week course will leave you with all 
 				the knowledge for success.
 			</p>
         </div>
@@ -116,8 +116,8 @@
             <div class="cleardiv"></div>
             <p>
 				Learn proven methods to bolster the education of others, including how to effectively teach curriculums, run tests and exams,
-				and how to inspire a drive for higher education in others. This ten week course will help strengthen your knowledge and
-				resolve in the feild of general education. And who better to learn how to teach from then teachers who teach teaching.
+				and how to inspire a drive for higher education in others. This ten-week course will help strengthen your knowledge and
+				resolve in the field of general education. And who better to learn how to teach from then teachers who teach teaching.
             </p>
         </div>
     <div class="cleardiv"></div>

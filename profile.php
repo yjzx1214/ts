@@ -1,11 +1,11 @@
 <!--
 //*****************************************************************
 //Project: Turnstar Strategies Web Application
-//Programers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
 //Date: 14/11/2022
 //Software: Notepad++, Visual Studio Code
 //Platform: Microsoft Windows 10 Home
-//Purpose: This is the profile page. It displays a users profile information and lets them make changes.
+//Purpose: This is the profile page. It displays a user's profile information and lets them make changes.
 //References: Some snippets of code were adapted from W3schools.com
 //*****************************************************************
 -->

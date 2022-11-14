@@ -1,3 +1,16 @@
+<!--
+//*****************************************************************
+//Project: Turnstar Strategies Web Application
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Date: 14/11/2022
+//Software: Notepad++, Visual Studio Code
+//Platform: Microsoft Windows 10 Home
+//Purpose: This is the admin page, include all the script for admin to
+//			view, edit, delete, and add new users.
+//References: Some snippets of code were adapted from W3schools.com
+//*****************************************************************
+-->
+
 <?php
 	header('Content-type:text/html; charset=utf-8');
 	// Open Session
@@ -209,4 +222,5 @@ if (!empty($_POST['update'])) {
 
     </main>
 
+	<!-- This is the footer file -->
     <?php include("footer.php"); ?>
