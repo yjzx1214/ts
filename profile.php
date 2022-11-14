@@ -1,99 +1,111 @@
-<?php
-header('Content-type:text/html; charset=utf-8');
-// Open Session
-session_start();
+<!--
+//*****************************************************************
+//Project: Turnstar Strategies Web Application
+//Programers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Date: 14/11/2022
+//Software: Notepad++, Visual Studio Code
+//Platform: Microsoft Windows 10 Home
+//Purpose: This is the profile page. It displays a users profile information and lets them make changes.
+//References: Some snippets of code were adapted from W3schools.com
+//*****************************************************************
+-->
 
-if (isset($_SESSION['username'])) {
-    $user_id = $_SESSION['user_id'];
-    $login = ucfirst($_SESSION['username']);
-    $level = $_SESSION['user_level'];
-} else {
-    $user_id = $login =  $level = '';
-    header('location:index.php');
-}
+<?php
+	header('Content-type:text/html; charset=utf-8');
+	// Open Session
+	session_start();
+
+	if (isset($_SESSION['username'])) {
+		$user_id = $_SESSION['user_id'];
+		$login = ucfirst($_SESSION['username']);
+		$level = $_SESSION['user_level'];
+	} else {
+		$user_id = $login =  $level = '';
+		header('location:index.php');
+	}
 ?>
 
 <?php
-include 'conn.php';
+	include 'conn.php';
 
-if (!empty($user_id)) {
-    $sql_sub = "SELECT * FROM subscriptions WHERE u_id = '$user_id'";
-    $result_sub = mysqli_query($conn, $sql_sub);
-    $sub = mysqli_fetch_all($result_sub, MYSQLI_ASSOC);
+	if (!empty($user_id)) {
+		$sql_sub = "SELECT * FROM subscriptions WHERE u_id = '$user_id'";
+		$result_sub = mysqli_query($conn, $sql_sub);
+		$sub = mysqli_fetch_all($result_sub, MYSQLI_ASSOC);
 
-    $sql_enrollment = "SELECT * FROM enrollment WHERE u_id = '$user_id'";
-    $result_enrollment = mysqli_query($conn, $sql_enrollment);
-    $enrollment_list = mysqli_fetch_all($result_enrollment, MYSQLI_ASSOC);
+		$sql_enrollment = "SELECT * FROM enrollment WHERE u_id = '$user_id'";
+		$result_enrollment = mysqli_query($conn, $sql_enrollment);
+		$enrollment_list = mysqli_fetch_all($result_enrollment, MYSQLI_ASSOC);
 
-    $sql_course = "SELECT * FROM courses WHERE course_id IN ";
-    $enrol_history = '';
-    if (count($enrollment_list) > 0) {
-        // if user have enrolled any course, combine the course_id
-        for ($i = 0; $i < count($enrollment_list); $i++) {
-            if (count($enrollment_list) == 1) {
-                $enrol_history = '(' . $enrollment_list[$i]['course_id'] . ')';
-            } else {
-                if ($i == 0) {
-                    $enrol_history = '(' . $enrollment_list[$i]['course_id'];
-                } elseif ($i == count($enrollment_list) - 1) {
-                    $enrol_history = $enrol_history . ',' . $enrollment_list[$i]['course_id'] . ')';
-                } else {
-                    $enrol_history = $enrol_history . ',' . $enrollment_list[$i]['course_id'];
-                }
-            }
-        }
-        $sql_course = $sql_course . $enrol_history;
-        $result_course = mysqli_query($conn, $sql_course);
-        $course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
-    }
-}
+		$sql_course = "SELECT * FROM courses WHERE course_id IN ";
+		$enrol_history = '';
+		if (count($enrollment_list) > 0) {
+			// if user have enrolled any course, combine the course_id
+			for ($i = 0; $i < count($enrollment_list); $i++) {
+				if (count($enrollment_list) == 1) {
+					$enrol_history = '(' . $enrollment_list[$i]['course_id'] . ')';
+				} else {
+					if ($i == 0) {
+						$enrol_history = '(' . $enrollment_list[$i]['course_id'];
+					} elseif ($i == count($enrollment_list) - 1) {
+						$enrol_history = $enrol_history . ',' . $enrollment_list[$i]['course_id'] . ')';
+					} else {
+						$enrol_history = $enrol_history . ',' . $enrollment_list[$i]['course_id'];
+					}
+				}
+			}
+			$sql_course = $sql_course . $enrol_history;
+			$result_course = mysqli_query($conn, $sql_course);
+			$course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
+		}
+	}
 
-// Deal form request
-// Cancel course
-if (!empty($_POST['cancelCourse'])) {
-    $cancel_course_id = $_POST['cancel_course_id'];
-    $sql = "DELETE FROM enrollment WHERE u_id = '$user_id' AND course_id = '$cancel_course_id'";
-    $result = mysqli_query($conn, $sql);
-    $numrows = mysqli_affected_rows($conn);
-    if ($numrows == 1) {
-        header('location:profile.php');
-    } else {
-        echo "Cancel course fail";
-    }
-} elseif (!empty($_POST['sub'])) {
-    $u_id = $_POST['u_id'];
-    $sql = "INSERT INTO subscriptions (u_id) VALUES ('$u_id')";
-    $result = mysqli_query($conn, $sql);
-    $numrows = mysqli_affected_rows($conn);
-    if ($numrows == 1) {
-        header('location:profile.php');
-    } else {
-        echo "subscription fail";
-    }
-} elseif (!empty($_POST['unsub'])) {
-    $u_id = $_POST['u_id'];
-    $sql = "DELETE FROM subscriptions WHERE u_id = '$u_id'";
-    $result = mysqli_query($conn, $sql);
-    $numrows = mysqli_affected_rows($conn);
-    if ($numrows == 1) {
-        header('location:profile.php');
-    } else {
-        echo "unsubscription fail";
-    }
-} elseif (!empty($_POST['update'])) {
-    $username = $_POST['name'];
-    $password = $_POST['password'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
+	// Deal form request
+	// Cancel course
+	if (!empty($_POST['cancelCourse'])) {
+		$cancel_course_id = $_POST['cancel_course_id'];
+		$sql = "DELETE FROM enrollment WHERE u_id = '$user_id' AND course_id = '$cancel_course_id'";
+		$result = mysqli_query($conn, $sql);
+		$numrows = mysqli_affected_rows($conn);
+		if ($numrows == 1) {
+			header('location:profile.php');
+		} else {
+			echo "Cancel course fail";
+		}
+	} elseif (!empty($_POST['sub'])) {
+		$u_id = $_POST['u_id'];
+		$sql = "INSERT INTO subscriptions (u_id) VALUES ('$u_id')";
+		$result = mysqli_query($conn, $sql);
+		$numrows = mysqli_affected_rows($conn);
+		if ($numrows == 1) {
+			header('location:profile.php');
+		} else {
+			echo "subscription fail";
+		}
+	} elseif (!empty($_POST['unsub'])) {
+		$u_id = $_POST['u_id'];
+		$sql = "DELETE FROM subscriptions WHERE u_id = '$u_id'";
+		$result = mysqli_query($conn, $sql);
+		$numrows = mysqli_affected_rows($conn);
+		if ($numrows == 1) {
+			header('location:profile.php');
+		} else {
+			echo "unsubscription fail";
+		}
+	} elseif (!empty($_POST['update'])) {
+		$username = $_POST['name'];
+		$password = $_POST['password'];
+		$email = $_POST['email'];
+		$phone = $_POST['phone'];
 
-    $sql = "UPDATE users SET u_name='$username', u_password='$password', u_email='$email', u_phone='$phone' WHERE u_id='$user_id';";
-    $result = mysqli_query($conn, $sql);
-    $numrows = mysqli_affected_rows($conn);
-    if ($numrows == 1) {
-        header('location:profile.php');
-    } else {
-    }
-}
+		$sql = "UPDATE users SET u_name='$username', u_password='$password', u_email='$email', u_phone='$phone' WHERE u_id='$user_id';";
+		$result = mysqli_query($conn, $sql);
+		$numrows = mysqli_affected_rows($conn);
+		if ($numrows == 1) {
+			header('location:profile.php');
+		} else {
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +119,7 @@ if (!empty($_POST['cancelCourse'])) {
 </head>
 
 <body>
-    <!-- This is nav bar file -->
+    <!-- This is the nav bar file -->
     <?php include('nav.php') ?>
 
     <main>
@@ -133,10 +145,10 @@ if (!empty($_POST['cancelCourse'])) {
                     </div>
 
                     <?php
-                    include 'conn.php';
-                    $sql_user = "SELECT * FROM users WHERE u_name = '$login'";
-                    $result_user = mysqli_query($conn, $sql_user);
-                    $user = mysqli_fetch_row($result_user);
+						include 'conn.php';
+						$sql_user = "SELECT * FROM users WHERE u_name = '$login'";
+						$result_user = mysqli_query($conn, $sql_user);
+						$user = mysqli_fetch_row($result_user);
                     ?>
                     <div class="profileColumn">
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
@@ -188,8 +200,7 @@ if (!empty($_POST['cancelCourse'])) {
                 <?php endforeach; ?>
             <?php endif ?>
         </table>
-
-
     </main>
-
-    <?php include("footer.php"); ?>
+	
+<!-- This is the footer file -->
+<?php include("footer.php"); ?>
