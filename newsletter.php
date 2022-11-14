@@ -1,13 +1,25 @@
+<!--
+//*****************************************************************
+//Project: Turnstar Strategies Web Application
+//Programers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Date: 14/11/2022
+//Software: Notepad++, Visual Studio Code
+//Platform: Microsoft Windows 10 Home
+//Purpose: This is the Newsletter page, it simply lets users subscribe to
+//			the weekly newsletter by entering in their information.
+//References: Some snippets of code were adapted from W3schools.com
+//*****************************************************************
+-->
 <?php
-header('Content-type:text/html; charset=utf-8');
-// Open Session
-session_start();
+	header('Content-type:text/html; charset=utf-8');
+	// Open Session
+	session_start();
 
-if (isset($_SESSION['username'])) {
-    $login = ucfirst($_SESSION['username']);
-} else {
-    $login = 'Login';
-}
+	if (isset($_SESSION['username'])) {
+		$login = ucfirst($_SESSION['username']);
+	} else {
+		$login = 'Login';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +33,7 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <!-- This is nav bar file -->
+    <!-- This is the nav bar file -->
     <?php include('nav.php') ?>
 
     <main>
@@ -29,7 +41,8 @@ if (isset($_SESSION['username'])) {
             <h1>News Letter</h1>
             <p>Subscribe to newsletter</p>
         </div>
-
+		
+		<!-- Newsletter Form -->
         <div class="newsletterContainer">
             <div class="newsletterContent">
                 <form action="subscribe.php" method="POST">
@@ -41,8 +54,7 @@ if (isset($_SESSION['username'])) {
                 </form>
             </div>
         </div>
-
-
     </main>
-
+	
+	<!-- This is the footer file -->
     <?php include("footer.php"); ?>

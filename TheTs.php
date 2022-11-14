@@ -1,4 +1,16 @@
-﻿<?php
+﻿<!--
+//*****************************************************************
+//Project: Turnstar Strategies Web Application
+//Programers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Date: 14/11/2022
+//Software: Notepad++, Visual Studio Code
+//Platform: Microsoft Windows 10 Home
+//Purpose: This is about page (TheTS). It contains a brief summery on what Turnstar Strategies is as well as a message from it's CEO
+//References: Some snippets of code were adapted from W3schools.com
+//*****************************************************************
+-->
+
+<?php
 	header('Content-type:text/html; charset=utf-8');
 	// Open Session
 	session_start();
