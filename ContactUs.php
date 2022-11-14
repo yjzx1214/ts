@@ -1,13 +1,13 @@
 <?php
-header('Content-type:text/html; charset=utf-8');
-// Open Session
-session_start();
+	header('Content-type:text/html; charset=utf-8');
+	// Open Session
+	session_start();
 
-if (isset($_SESSION['username'])) {
-    $login = ucfirst($_SESSION['username']);
-} else {
-    $login = 'Login';
-}
+	if (isset($_SESSION['username'])) {
+		$login = ucfirst($_SESSION['username']);
+	} else {
+		$login = 'Login';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <!-- This is nav bar file -->
+    <!-- This is the nav bar file -->
     <?php include('nav.php') ?>
 
     <!-- Title-->
@@ -66,5 +66,5 @@ if (isset($_SESSION['username'])) {
 	</div>
 </main>
 
-    <!-- This is footer file -->
+    <!-- This is the footer file -->
     <?php include("footer.php"); ?>

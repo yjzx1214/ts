@@ -1,13 +1,13 @@
 <?php
-header('Content-type:text/html; charset=utf-8');
-// Open Session
-session_start();
+	header('Content-type:text/html; charset=utf-8');
+	// Open Session
+	session_start();
 
-if (isset($_SESSION['username'])) {
-    $login = ucfirst($_SESSION['username']);
-} else {
-    $login = 'Login';
-}
+	if (isset($_SESSION['username'])) {
+		$login = ucfirst($_SESSION['username']);
+	} else {
+		$login = 'Login';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +27,9 @@ if (isset($_SESSION['username'])) {
 <main>
 
 	<div style="text-align:center">
-    <h1>Media Release</h1>
-    <p>a Bunch of words a Bunch of words a Bunch of words a Bunch of words a Bunch of words a Bunch of words a Bunch of words a Bunch of words a Bunch of words a Bunch of words a Bunch of words </p>
-  </div>
+		<h1>Media Release</h1>
+		<p>Welcome to our media release page. This is where any important new news will be posted. These will be updated monthly</p>
+	</div>
     <div class="cleardiv"></div>
 
     <div class="mediaContainer">
@@ -38,48 +38,47 @@ if (isset($_SESSION['username'])) {
       </div>
       <img class="mediaIMG" src="mountains.jpg" alt="Mountains">
       <p class="mediaInfo">
-        We are here to make sure your design needs are met. No fluff and fancy promises,>
-        Our passionate team ess WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
-        At Spiderve solutions. Our highly skilled design professionals are committed to helping your business achieve its goals. We have a number of custom design solutions including website design, business branding and promotion, including logo and banner designs as well as social media marketing.
+		Is cyber security all it's cracked up to be?
+		Studies have shown the 4/10 internet users do not know the basics of keeping safe and secure communications online. 
+		This has lead to a rise in cyber crime and espionage as hackers enjoy easily pickings of unprotected personal information.
+		With the rise of social media platforms like facebook, and phonecall screening apps like truecaller, it is easier then ever to have your information stolen and then used with malicious intent.
+		Don't be the 40%, level up you cyber security knowledge and practices with Turnstar Strategies.
       </p>
       <div class="cleardiv"></div>
     </div>
 
     <div class="mediaContainer">
       <div class="mediaTitle">
-        <h3>Title</h3>
+        <h3>New Headquarters, with a view!</h3>
       </div>
       <img class="mediaIMG" src="mountains.jpg" alt="Mountains">
       <p class="mediaInfo">
-        We are here to make sure your design needs are met. No fluff and fancy promises,>
-        Our passionate team ess WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
-        At Spiderve solutions. Our highly skilled design professionals are committed to helping your business achieve its goals. We have a number of custom design solutions including website design, business branding and promotion, including logo and banner designs as well as social media marketing.
+		We at Turnstar our excited to announce our new headquarters in Canberra, Australia!
+		After 13 years of opperating out of small rented rooms in brisbane, we finally have a building to call our own, and what a view!
+		If you are in the nations capital, feel free to stop by and talk to any of our qualified professionals to see what we, can offer you.
       </p>
       <div class="cleardiv"></div>
     </div>
 
     <div class="mediaContainer">
       <div class="mediaTitle">
-        <h3>Title</h3>
+        <h3>New courses</h3>
       </div>
       <img class="mediaIMG" src="mountains.jpg" alt="Mountains">
       <p class="mediaInfo">
-        We are here to make sure your design needs are met. No fluff and fancy promises,>
-        Our passionate team ess WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
-        At Spiderve solutions. Our highly skilled design professionals are committed to helping your business achieve its goals. We have a number of custom design solutions including website design, business branding and promotion, including logo and banner designs as well as social media marketing.
+		We are thrilled to announce a whole new range of courses, available on our training page!
+		From cyber security to business, we have all kinds of training materials and perfessions keen to upskill you or your employees.
       </p>
       <div class="cleardiv"></div>
     </div>
 
     <div class="mediaContainer">
       <div class="mediaTitle">
-        <h3>Title</h3>
+        <h3>Webite up and running</h3>
       </div>
       <img class="mediaIMG" src="mountains.jpg" alt="Mountains">
       <p class="mediaInfo">
-        We are here to make sure your design needs are met. No fluff and fancy promises,>
-        Our passionate team ess WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.
-        At Spiderve solutions. Our highly skilled design professionals are committed to helping your business achieve its goals. We have a number of custom design solutions including website design, business branding and promotion, including logo and banner designs as well as social media marketing.
+	  Hello new world, as the techies say. We are thrilled to have branched out into the online domain with this, our new website! 
       </p>
       <div class="cleardiv"></div>
     </div>

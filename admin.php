@@ -1,19 +1,20 @@
 <?php
-header('Content-type:text/html; charset=utf-8');
-// Open Session
-session_start();
+	header('Content-type:text/html; charset=utf-8');
+	// Open Session
+	session_start();
 
-if (isset($_SESSION['username'])) {
-    $login = ucfirst($_SESSION['username']);
-} else {
-    $login = 'Login';
-}
+	if (isset($_SESSION['username'])) {
+		$login = ucfirst($_SESSION['username']);
+	} else {
+		$login = 'Login';
+	}
 ?>
+
 <?php
-include 'conn.php';
-$sql = "SELECT * FROM users";
-$result = mysqli_query($conn, $sql);
-$userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	include 'conn.php';
+	$sql = "SELECT * FROM users";
+	$result = mysqli_query($conn, $sql);
+	$userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 if (!empty($_POST['update'])) {
     $user_id = $_POST['user_id'];
