@@ -1,13 +1,13 @@
 ﻿<?php
-header('Content-type:text/html; charset=utf-8');
-// Open Session
-session_start();
+	header('Content-type:text/html; charset=utf-8');
+	// Open Session
+	session_start();
 
-if (isset($_SESSION['username'])) {
-    $login = ucfirst($_SESSION['username']);
-} else {
-    $login = 'Login';
-}
+	if (isset($_SESSION['username'])) {
+		$login = ucfirst($_SESSION['username']);
+	} else {
+		$login = 'Login';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <!-- This is nav bar file -->
+    <!-- This is the nav bar file -->
     <?php include('nav.php') ?>
 
     <main>
@@ -30,10 +30,11 @@ if (isset($_SESSION['username'])) {
         </div>
 
         <div class="TSContainer">
-            <p>We are here to make sure your design needs are met. No fluff and fancy promises, we just deliver. Our aim is to be fast, efficient and produce the best quality products for your business.</p>
-            <p>Our passionate team work endlessly to help your business harness the power of the web. From social media to WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.</p>
-            <p>At Spider Web Design we bring together our experience, energy and new age designs to provide our customers with creative and innovative solutions. Our highly skilled design professionals are committed to helping your business achieve its goals. We have a number of custom design solutions including website design, business branding and promotion, including logo and banner designs as well as social media marketing.</p>
-            <p>We always go above and beyond our customer's expectations because we treat your business as our own.</p>
+            <p>We at Turnstar Strategies are dedicated to providing the best possible security solutions, training and consolation services.</p>
+            <p>With decades of experience our professional team are more the capable to provide solutions for any budding business, group or individual. By staying on the forefront of modern tech we ensure that our solutions will last well into the future.</p>
+            <p>At Turnstar, excellence is the name of the game. We not only provide some of the best training money can buy, but also a new way of thinking. Just talk to any of our friendly and perfessional staff and you will see why we are rated number one by our peers.</p>
+            <p>So if you are here for consoltation or training on strategic communications, IT, cyber security, business or education, you have come to the right place.</p>
+			<p>So what are you waiting for? A whole new world is just beyond your finger tips.</p>
         </div>
 
         <br>
@@ -45,14 +46,16 @@ if (isset($_SESSION['username'])) {
 
             <img class="CEOimg" src="img_avatar.png" alt="Avatar">
 
-            <p>We are here to make sure your design needs are met. No fluff and fancy promises, we just deliver. Our aim is to be fast, efficient and produce the best quality products for your business.</p>
-            <p>Our passionate team work endlessly to help your business harness the power of the web. From social media to WordPress training we ensure you are given the skills to continue long after we leave the picture. We are never too busy for a chat and we are happy to provide advice and recommendations.</p>
-            <p>At Spider Web Design we bring together our experience, energy and new age designs to provide our customers with creative and innovative solutions. Our highly skilled design professionals are committed to helping your business achieve its goals. We have a number of custom design solutions including website design, business branding and promotion, including logo and banner designs as well as social media marketing.</p>
-            <p>We always go above and beyond our customer's expectations because we treat your business as our own.</p>
+            <p>I have been the effective CEO of Turnstar Strategies since the begining, and in that time I have seen it grow from a humble three person operation into the booming business it is today.</p>
+            <p>For 13 years we have been providing the highest quality services while growing stronger as a team, and as a family. With our new headquarters located in Canberra we are always available for a friendly chat or advice on the services we offer.</p>
+            <p>With the changes we have seen in the world recently, it has never been more important to stay at the forefront of the knowledge we provide.</p>
+            <p>It is with great honor and pride that we at Turnstar Strategies will continue to serve the public, well into the future, and beyond,</p>
+			<p>John Smith - CEO</p>
         </div>
 
-
+		<!-- clear div class to reset the floats -->
         <div class="cleardiv"></div>
     </main>
 
+    <!-- This is the footer file -->
     <?php include("footer.php"); ?>
