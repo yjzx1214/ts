@@ -80,6 +80,19 @@ if (!empty($_POST['cancelCourse'])) {
     } else {
         echo "unsubscription fail";
     }
+} elseif (!empty($_POST['update'])) {
+    $username = $_POST['name'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+
+    $sql = "UPDATE users SET u_name='$username', u_password='$password', u_email='$email', u_phone='$phone' WHERE u_id='$user_id';";
+    $result = mysqli_query($conn, $sql);
+    $numrows = mysqli_affected_rows($conn);
+    if ($numrows == 1) {
+        header('location:profile.php');
+    } else {
+    }
 }
 ?>
 
@@ -126,21 +139,19 @@ if (!empty($_POST['cancelCourse'])) {
                     $user = mysqli_fetch_row($result_user);
                     ?>
                     <div class="profileColumn">
-                        <form action="/page.php">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name.." value="<?php echo $user[1] ?>" readonly="readonly">
+                            <input type="text" id="name" name="name" placeholder="Your Name.." value="<?php echo $user[1] ?>">
                             <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Your Password.." value="<?php echo $user[2] ?>" readonly="readonly">
+                            <input type="password" id="password" name="password" placeholder="Your Password.." value="<?php echo $user[2] ?>">
                             <label for="email">Email</label>
-                            <input type="text" id="email" name="email" placeholder="Your Email.." value="<?php echo $user[3] ?>" readonly="readonly">
+                            <input type="text" id="email" name="email" placeholder="Your Email.." value="<?php echo $user[3] ?>">
                             <label for="phone">Phone</label>
-                            <input type="text" id="phone" name="phone" placeholder="Your Phone number.." value="<?php echo $user[4] ?>" readonly="readonly">
+                            <input type="text" id="phone" name="phone" placeholder="Your Phone number.." value="<?php echo $user[4] ?>">
                             <label for="address">Address</label>
-                            <input type="text" id="address" name="address" placeholder="Your Address number.." value="<?php echo $user[5] ?>" readonly="readonly">
-                            <!-- edit will allow the user to edit their information-->
-                            <input type="button" class="submitButton" value="Edit" onclick="allowEdit()">
+                            <input type="text" id="address" name="address" placeholder="Your Address number.." value="<?php echo $user[5] ?>">
                             <!-- only after clicked edit will update appear and will save the information-->
-                            <input type="button" class="submitButton" value="Update">
+                            <input type="submit" class="submitButton" value="Update" name="update">
                         </form>
                     </div>
                 </div>
@@ -182,13 +193,3 @@ if (!empty($_POST['cancelCourse'])) {
     </main>
 
     <?php include("footer.php"); ?>
-
-    <script>
-        function allowEdit() {
-            document.getElementById("name").readOnly = false;
-            document.getElementById("password").readOnly = false;
-            document.getElementById("email").readOnly = false;
-            document.getElementById("phone").readOnly = false;
-            document.getElementById("address").readOnly = false;
-        }
-    </script>
