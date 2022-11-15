@@ -387,20 +387,24 @@ footer {
 	border-radius: 5px;
 	font-size: 15px;
 	width: 35px;
-      text-align: center;
-      text-decoration: none;
-  }
-  
-  .fa-youtube {
-      background: #bb0000;
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 15px;
-      width: 35px;
-      text-align: center;
-      text-decoration: none;
-  }
+	text-align: center;
+	text-decoration: none;
+	}
+
+.fa-youtube {
+	background: #bb0000;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 15px;
+	width: 35px;
+	text-align: center;
+	text-decoration: none;
+	}
+	
+.cleardiv {
+	clear: both;
+}
 
 /* Contact Us*/
 
@@ -408,36 +412,36 @@ footer {
 	border-radius: 5px;
 	background-color: #f2f2f2;
 	padding: 10px;
-}
+	}
 
 .contactDetailsContainer {
 	text-align:center;
-}
+	}
 
 .contactDetails {
 	display:inline-block;
 	border: 2px solid #F5F5F5;
-  background-color: white;
+	background-color: white;
 	width: 300px;
-}
+	}
 
-.contactDetails a{
+.contactDetails a {
 	text-decoration: none;
-}
+	}
 
 * {
-  box-sizing: border-box;
-}
+	box-sizing: border-box;
+	}
 
 /* Style inputs */
 input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+	}
 
 input[type=submit] {
 	background-color: dodgerblue;
@@ -446,591 +450,555 @@ input[type=submit] {
 	padding: 12px 20px;
 	border: none;
 	cursor: pointer;
-}
+	}
 
 input[type=submit]:hover {
-  opacity: 0.8;
-}
-
-
+	opacity: 0.8;
+	}
+	
 /* Create two columns that float next to each other */
 .column {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-  padding: 20px;
-}
+	float: left;
+	width: 50%;
+	margin-top: 6px;
+	padding: 20px;
+	}
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+	content: "";
+	display: table;
+	clear: both;
+	}
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
-  .column, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
-
+	.column, input[type=submit] {
+		width: 100%;
+		margin-top: 0;
+		}
+	}
 /* End of Contact Us  */
 
 /* Media */
-
 .mediaContainer{
-  display: block;
-  margin: 0 20% 1% 20%;
-  padding: 10px;
-  background-color: white;
-}
+	display: block;
+	margin: 0 20% 1% 20%;
+	padding: 10px;
+	background-color: white;
+	}
 
 .mediaContainer:hover{
-  background-color: #E5E5E5;
-}
+	background-color: #E5E5E5;
+	}
 
 .mediaTitle{
-  padding: 0px 0px 0px 10px;
-}
+	padding: 0px 0px 0px 10px;
+	}
 
 img.mediaIMG{
-  float:left;
-    display: block;
-    top: 0;
-    margin: 10px;
-    width: 250px;
-}
+	float: left;
+	display: block;
+	top: 0;
+	margin: 10px;
+	width: 250px;
+	}
 
 p.mediaInfo{
-  padding: 10px;
-}
+	padding: 10px;
+	}
 
 .mediaRow {
-  margin: 8px -16px;
-}
+	margin: 8px -16px;
+	}
 
 /* Add padding BETWEEN each column */
 .mediaRow,
 .mediaRow > .mediaColumn {
-  padding: 8px;
-}
+	padding: 8px;
+	}
 
 /* Create four equal columns that floats next to each other */
 .mediaColumn {
-  float: left;
-  width: 25%;
-}
+	float: left;
+	width: 25%;
+	}
 
 /* Clear floats after rows */ 
 .mediaRow:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+	content: "";
+	display: table;
+	clear: both;
+	}
 
 /* Content */
 .content {
-  background-color: white;
-  padding: 20px;
-  text-align: center;
-}
+	background-color: white;
+	padding: 20px;
+	text-align: center;
+	}
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 900px) {
-  .mediaColumn {
-    width: 50%;
-  }
-}
+	.mediaColumn {
+		width: 50%;
+		}
+	}
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-  .mediaColumn {
-    width: 100%;
-  }
-}
+	.mediaColumn {
+		width: 100%;
+		}
+	}
 /* End of Media */
 
 /* The TS*/
-
 .TSContainer {
-    float: left;
-    display: inline-block;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    background-color: White;
-}
+	float: left;
+	display: inline-block;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px;
+	background-color: White;
+	}
 
 img.CEOimg {
-    float:left;
-    margin: 10px;
-    top: 0;
-    width: 200px;
-}
-
+	float:left;
+	margin: 10px;
+	top: 0;
+	width: 200px;
+	}
 /* End of The TS*/
 
 /* Our Services*/
-
 .serviceContainer {
-  display: block;
-  padding: 10px;
-  text-align: center;
-  margin: 0 20% 1% 20%;
-  background-color: white;
-}
-
-.cleardiv {
-	clear: both;
-}
+	display: block;
+	padding: 10px;
+	text-align: center;
+	margin: 0 20% 1% 20%;
+	background-color: white;
+	}
 /* End of Our Services*/
 
 
 /* Newsletter*/
 .newsletterContainer {
-  display:flex;
-  justify-content: center;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-}
+	display:flex;
+	justify-content: center;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px;
+	}
 
 .newsletterContent {
-  display: inline-block;
-  width: 50%;
-  padding: 10px;
-  background-color: white;
-}
-
+	display: inline-block;
+	width: 50%;
+	padding: 10px;
+	background-color: white;
+	}
 /* end of newsletter*/
 
 /* Our Partners*/
-
 .OurPartnersContainer {
-  background-color: white;
-  padding: 10px;
-  float: left;
-  display: inline;
-  width: 49%;
-  margin:8px;
-}
-
+	background-color: white;
+	padding: 10px;
+	float: left;
+	display: inline;
+	width: 49%;
+	margin:8px;
+	}
 /*end of Our Partners*/
 
-/* Training  width is different not sure why might delete*/
+/* Training  width is different not sure why might delete
 .JoinClass {		  
   width: 30%;
-}
-
-/* End of Training*/
+} */
 
 /* Training */
 
 .TrainingContainer {
-  margin:10px;
-  display: none;
-
-}
+	margin:10px;
+	display: none;
+	}
 
 .show {
-  display: block;
-}
+	display: block;
+	}
 
 .TrainingSubTitle {
-  margin: 10px;
-}
+	margin: 10px;
+	}
 
 .TrainingContent {
-  display: flex;
-  justify-content: center;
-  background-color: white;
-  padding: 10px;
-  margin: 8px;
-  max-height: 200px;
-  min-width: 500px;
-  overflow: auto;
-}
+	display: flex;
+	justify-content: center;
+	background-color: white;
+	padding: 10px;
+	margin: 8px;
+	max-height: 200px;
+	min-width: 500px;
+	overflow: auto;
+	}
 
 .TrainingImg {
-  font-size:20px;
-  padding:0px 20px 0 5px;
-}
+	font-size:20px;
+	padding:0px 20px 0 5px;
+	}
 
 .JoinClass {
-  background-color: dodgerblue;
-  display: inline-block;
-  color: white;
-  margin:10px;
-  border-radius: 5px;
-  border-width: 0;
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-  font-size: 17px;
-  width: 100px;
-  max-height: 50px;
-}
+	background-color: dodgerblue;
+	display: inline-block;
+	color: white;
+	margin:10px;
+	border-radius: 5px;
+	border-width: 0;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	font-size: 17px;
+	width: 100px;
+	max-height: 50px;
+	}
 
 .Trainingbtn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: white;
-  cursor: pointer;
-  background-color: dodgerblue;
-  color: white;
-}
+	border: none;
+	outline: none;
+	padding: 12px 16px;
+	background-color: white;
+	cursor: pointer;
+	background-color: dodgerblue;
+	color: white;
+	}
 
-  .Trainingbtn:hover {
-      opacity: 0.8;
-  }
+.Trainingbtn:hover {
+	opacity: 0.8;
+	}
 
-  .Trainingbtn.active {
-      color: white;
-      opacity: 0.8;
-      background-color: blue;
-  }
+.Trainingbtn.active {
+	color: white;
+	opacity: 0.8;
+	background-color: blue;
+	}
 
 #myBtnContainer {
-  margin: 20px;
-}
+	margin: 20px;
+	}
 
 #addbtnContainer {
-  margin: 0 20px;
-}
+	margin: 0 20px;
+	}
 
 .addTrainingbtn {
-  float: right;
-  display: inline;
-}
+	float: right;
+	display: inline;
+	}
 
 table.trainingTable {
-  border-collapse: separate;
-  border-spacing: 0 20px;
-  width: 100%;
-  border: none;
-}
+	border-collapse: separate;
+	border-spacing: 0 20px;
+	width: 100%;
+	border: none;
+	}
 
 table.trainingTable td {
-  text-align: center;
-  padding: 16px;
-}
+	text-align: center;
+	padding: 16px;
+	}
+	
 table.trainingTable td:nth-child(1) {
-  font-size: 1.1em;
-  font-weight: bold;
-}
+	font-size: 1.1em;
+	font-weight: bold;
+	}
 
 table.trainingTable tr{
-background-color: white;
-}
+	background-color: white;
+	}
 
 @media screen and (max-width: 900px) {
-
-  table.trainingTable td {
-    display: block;
-    text-align: center;
-  }
-}
-
+	table.trainingTable td {
+		display: block;
+		text-align: center;
+		}
+	}
 /* End of Training*/
 
-
 /*footer fixing to bottom of page*/
-
 body { 
-  min-height:100vh; margin:0; position:relative;
-}
-
-body {
-  position: relative;
-}
+	min-height:100vh;
+	margin:0;
+	position:relative;
+	}
 
 body::after {
-  content: '';
-  display: block;
-  height: 150px; 
-  /* Set same as footer's height, Set both to 250 on mobile view */
-}
-
+	content: '';
+	display: block;
+	height: 150px; 
+/* Set same as footer's height, Set both to 250 on mobile view */
+	}
 /*End of footer fixing*/
 
-
 /* Admin */
-
 .adminColumn {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-  padding: 20px;
-}
+	float: left;
+	width: 50%;
+	margin-top: 6px;
+	padding: 20px;
+	}
 
 .adminRow:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+	content: "";
+	display: table;
+	clear: both;
+	}
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-}
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+	}
 
 th, td {
-  text-align: left;
-  padding: 16px;
-}
+	text-align: left;
+	padding: 16px;
+	}
 
 tr:nth-child(even) {
-  background-color: White;
-}
+	background-color: White;
+	}
+	
 tr:nth-child(odd) {
-  background-color: lightgrey;
-}
+	background-color: lightgrey;
+	}
 
 #myInput {
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 85%;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  float: left;
-}
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	width: 85%;
+	font-size: 16px;
+	border: 1px solid #ddd;
+	float: left;
+	}
 
 .addUser {
-  border: none;
-  outline: none;
-  background-color: white;
-  cursor: pointer;
-  background-color: dodgerblue;
-  color: white;
-  float: right;
-  display: inline;
-  margin: 9px 0;
-}
-
+	border: none;
+	outline: none;
+	background-color: white;
+	cursor: pointer;
+	background-color: dodgerblue;
+	color: white;
+	float: right;
+	display: inline;
+	margin: 9px 0;
+	}
 
 .adminbtn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: white;
-  cursor: pointer;
-  background-color: dodgerblue;
-  color: white;
+	border: none;
+	outline: none;
+	padding: 12px 16px;
+	background-color: white;
+	cursor: pointer;
+	background-color: dodgerblue;
+	color: white;
+	}
 
-}
+.adminbtn:hover {
+	opacity: 0.8;
+	background-color: blue;
+	}
 
-  .adminbtn:hover {
-      opacity: 0.8;
-      background-color: blue;
-  }
+.adminbtn.active {
+	color: white;
+	opacity: 0.8;
+	background-color: blue;
+	}
 
-  .adminbtn.active {
-      color: white;
-      opacity: 0.8;
-      background-color: blue;
-  }
+.mobileScreen{
+	display:none;
+	}
 
+@media screen and (max-width: 1500px) {
+	.adminColumn{
+		width:100%;
+		margin-top: 0;
+		}
+	}
 
-  .mobileScreen{
-    display:none;
-  }
+@media screen and (max-width: 750px) {
+	.normalScreen{
+		display:none;
+		}
 
-  @media screen and (max-width: 1500px) {
+	.mobileScreen{
+		display: block;
+		}
 
-    .adminColumn{
-      width:100%;
-      margin-top: 0;
-    }
-  }
+	table td {
+		display: block;
+		text-align: center;
+		}
 
-  @media screen and (max-width: 750px) {
+	table td {
+		display: flex;
+		}
 
-    .normalScreen{
-      display:none;
-    }
+	table td::before {
+		content: attr(label);
+		font-weight: bold;
+		width: 120px;
+		min-width: 120px;
+		}
 
-    .mobileScreen{
-      display: block;
-    }
-
-    table td {
-      display: block;
-      text-align: center;
-    }
-
-    table td {
-      display: flex;
-    }
-
-    table td::before {
-      content: attr(label);
-      font-weight: bold;
-      width: 120px;
-      min-width: 120px;
-    }
-
-    tr:nth-child(even) {
-      background-color: White;
-    }
-    tr:nth-child(odd) {
-      background-color: White;
-    }
-
-    table th:nth-child(1) {
-      background-color: lightgrey;
-      font-weight: bold;
-    }
-
-  }
-
+	tr:nth-child(even) {
+		background-color: White;
+		}
+	tr:nth-child(odd) {
+		background-color: White;
+		}
+	table th:nth-child(1) {
+		background-color: lightgrey;
+		font-weight: bold;
+		}
+	}
 /*End of Admin*/
 
 /* Profile */
-
 .profileContainer{
-  display:flex;
-  justify-content: center;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-}
+	display:flex;
+	justify-content: center;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px;
+	}
 
 .profileColumn {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-  padding: 20px;
-}
+	float: left;
+	width: 50%;
+	margin-top: 6px;
+	padding: 20px;
+	}
 
 /* Clear floats after the columns */
 .profileRow:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
+	content: "";
+	display: table;
+	clear: both;
+	}
 
 /* input might need to change */
 @media screen and (max-width: 700px) {
-  .profileColumn, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
+	.profileColumn, input[type=submit] {
+		width: 100%;
+		margin-top: 0;
+		}
 
-}
-
+	}
 /* End of Profile */
 
 /* Mobile View*/
-
 @media screen and (max-width: 1058px) {
-  
-  .linkHover, .topnav-right {  
-	  display: none;
-  }
-  
-  
-  .home {
-	  width: 33%;
-	  margin: 0px;
-	  padding: 0px;
-	  text-align: left;
-	  background: rgba(0,0,0,0);
-  }
-  
-  .mobile {
-	display: block;
-  }
-  
-  .icon {
-      background: rgba(0,0,0,0);
-      color: white;
-      margin: 0px;
-      border-width: 0;
-      text-decoration: none;
-      cursor: pointer;
-      font-size: 17px;
-	    width: 33%;
-      /*width: 108px;*/
-	    height: 69px;
-	    float: left;
-  }
-  
-  .dropdown-button:active {
-	  display: block;
-  }
-  
-  .mobileLogin{
-	  width: 33%;
-	  height: 69px;
-	  background: rgba(0,0,0,0);
-	  float: left;
-    color:white;
-    font-size: 17px;
-    padding: 14px 20px;
-    border-width: 0px;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    font-size: 17px;
-  }
-  
-  body::after {
-  content: '';
-  display: block;
-  height: 250px; 
-  }
+	.linkHover, .topnav-right {  
+		display: none;
+		}
 
-  footer{
-	height: 250px;
-  }
-  
-  .modal-content  {
-    background-color: #fefefe;
-    margin: 5% 30%;
-    border: 1px solid #888;
-    width: 85%; /* Could be more or less, depending on screen size */
-	  padding: 5px;
-	  height: auto;
-  }
-  
-		   
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+	.home {
+		width: 33%;
+		margin: 0px;
+		padding: 0px;
+		text-align: left;
+		background: rgba(0,0,0,0);
+		}
 
-  .mobile.responsive {position: relative;}
-  .mobile.responsive a.icon {
-    position: absolute;
-    left: 33%;
-    top: 0;
-	  text-align:center;
-  }
-  .mobile.responsive .mobileLogin{
-	  position: absolute;
-    left: 66%;
-    top: 0;
-	  text-align:center;
-  }
+	.mobile {
+		display: block;
+		}
   
-  .mobile.responsive a {
-    float: none;
-    display: inline-block;
-    text-align: left;
-  }
+	.icon {
+		background: rgba(0,0,0,0);
+		color: white;
+		margin: 0px;
+		border-width: 0;
+		text-decoration: none;
+		cursor: pointer;
+		font-size: 17px;
+		width: 33%;
+		/*width: 108px; this is old correct size in case it is needed later*/
+		height: 69px;
+		float: left;
+		}
   
-  .mobile.responsive .dropdown {float: none;}
-  .mobile.responsive .dropdown-content {position: relative;}
-  .mobile.responsive .dropdown .dropdown-button {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-}
+	.dropdown-button:active {
+		display: block;
+	}
 
+	.mobileLogin{
+		width: 33%;
+		height: 69px;
+		background: rgba(0,0,0,0);
+		float: left;
+		color:white;
+		font-size: 17px;
+		padding: 14px 20px;
+		border-width: 0px;
+		text-decoration: none;
+		text-align: center;
+		cursor: pointer;
+		font-size: 17px;
+		}
 
+	body::after {
+		content: '';
+		display: block;
+		height: 250px; 
+		}
 
-/* End of Mobile view*/
+	footer{
+		height: 250px;
+		}
+
+	.modal-content  {
+		background-color: #fefefe;
+		margin: 5% 30%;
+		border: 1px solid #888;
+		width: 85%; /* Could be more or less, depending on screen size */
+		padding: 5px;
+		height: auto;
+		}
+	   
+	/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. 
+	This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+
+	.mobile.responsive {position: relative;}
+	
+	.mobile.responsive a.icon {
+		position: absolute;
+		left: 33%;
+		top: 0;
+		text-align:center;
+		}
+		
+	.mobile.responsive .mobileLogin{
+		position: absolute;
+		left: 66%;
+		top: 0;
+		text-align:center;
+		}
+  
+	.mobile.responsive a {
+		float: none;
+		display: inline-block;
+		text-align: left;
+		}
+
+	.mobile.responsive .dropdown {float: none;}
+
+	.mobile.responsive .dropdown-content {position: relative;}
+
+	.mobile.responsive .dropdown .dropdown-button {
+		display: block;
+		width: 100%;
+		text-align: left;
+		}
+	}
+	/* End of Mobile view*/
