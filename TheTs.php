@@ -56,7 +56,7 @@
 
         <div class="TSContainer">
 
-            <img class="CEOimg" src="img_avatar.png" alt="Avatar">
+            <img class="CEOimg" src="picture/img_avatar.png" alt="Avatar">
 
             <p>I have been the effective CEO of Turnstar Strategies since the beginning, and in that time I have seen it grow from a humble three person operation into the booming business it is today.</p>
             <p>For 13 years we have been providing the highest quality services while growing stronger as a team, and as a family. With our new headquarters located in Canberra we are always available for a friendly chat or advice on the services we offer.</p>

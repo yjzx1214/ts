@@ -51,7 +51,9 @@
 		<div class="mediaTitle">
 			<h3>Is Cyber really important?</h3>
 		</div>
+<!--
 		<img class="mediaIMG" src="mountains.jpg" alt="Mountains">
+-->
 		<p class="mediaInfo">
 			Is cyber security all it's cracked up to be?
 			Studies have shown that 4/10 internet users do not know the basics of keeping safe and secure communications online. 
@@ -66,7 +68,9 @@
 		<div class="mediaTitle">
 			<h3>New Headquarters, with a view!</h3>
 		</div>
+<!--
 		<img class="mediaIMG" src="mountains.jpg" alt="Mountains">
+-->
 		<p class="mediaInfo">
 			We at Turnstar our excited to announce our new headquarters in Canberra, Australia!
 			After 13 years of operating out of small, rented rooms in Brisbane, we finally have a building to call our own, and what a view!
@@ -79,7 +83,9 @@
 		<div class="mediaTitle">
 			<h3>New courses coming this year</h3>
 		</div>
+<!--
 		<img class="mediaIMG" src="mountains.jpg" alt="Mountains">
+-->
 		<p class="mediaInfo">
 			We are thrilled to announce a whole new range of courses, to be available on our training page!
 			From cyber-security to business, we have all kinds of training materials and professionals keen to upskill you or your employees.
@@ -91,7 +97,9 @@
 		<div class="mediaTitle">
 			<h3>Webite up and running</h3>
 		</div>
+<!--
 		<img class="mediaIMG" src="mountains.jpg" alt="Mountains">
+-->
 		<p class="mediaInfo">
 		Hello new world, as the techies say. We are thrilled to have branched out into the online domain with this, our new website! 
 		</p>

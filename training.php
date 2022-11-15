@@ -189,18 +189,20 @@
                             <?php if (!empty($login) && !empty($level)) : ?>
                                 <!-- Flag for check if user has joined -->
                                 <?php $is_join = false; ?>
-                                <?php foreach ($enrollment_list as $enrollment) : ?>
-                                    <!-- If enrollment list have record, course list display 'Quit' button -->
-                                    <?php if ($enrollment['course_id'] == $course['course_id']) : ?>
-                                        <!-- create a form for cancel enrollment -->
-                                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                                            <input type="hidden" id="cancel_enrollment_id" name="cancel_enrollment_id" value="<?php echo $enrollment['enrol_id'] ?>">
-                                            <td><input type="submit" value="Cancel" name="cancelCourse" class="JoinClass" style="width:auto;"></td>
-                                        </form>
-                                        <?php $is_join = true; ?>
-                                        <?php break; ?>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+                                <?php if (!empty($enrollment_list)) : ?>
+                                    <?php foreach ($enrollment_list as $enrollment) : ?>
+                                        <!-- If enrollment list have record, course list display 'Quit' button -->
+                                        <?php if ($enrollment['course_id'] == $course['course_id']) : ?>
+                                            <!-- create a form for cancel enrollment -->
+                                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                                                <input type="hidden" id="cancel_enrollment_id" name="cancel_enrollment_id" value="<?php echo $enrollment['enrol_id'] ?>">
+                                                <td><input type="submit" value="Cancel" name="cancelCourse" class="JoinClass" style="width:auto;"></td>
+                                            </form>
+                                            <?php $is_join = true; ?>
+                                            <?php break; ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                                 <!-- If enrollment list does not have record, course list display 'Join' button -->
                                 <?php if (!$is_join) : ?>
                                     <td><input type="submit" value="Join" class="JoinClass" onclick="join_course(<?php echo $course['course_id'] ?>)" style="width:auto;"></td>
