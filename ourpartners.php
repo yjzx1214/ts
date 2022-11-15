@@ -40,8 +40,8 @@
 <main>
 	<div style="text-align:center">
 		<h1>Our Partners</h1>
-        <p>At Turnstar Strategies we will be supporting our Canberra clients to address any of their organisational needs. 
-		To achieve these goals we have partnered up with some australian organisations and government agencis.
+        <p>At Turnstar Strategies we will be supporting our Canberran clients to address any of their organisational needs. 
+		To achieve these goals we have partnered up with some australian organisations and government agencies.
 		</p>
 	</div>
     <div class="cleardiv"></div>

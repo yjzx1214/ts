@@ -42,8 +42,8 @@
         </div>
 
         <div class="TSContainer">
-            <p>We at Turnstar Strategies are dedicated to providing the best possible security solutions, training and consolation services.</p>
-            <p>With decades of experience our professional team are more the capable to provide solutions for any budding business, group or individual. By staying on the forefront of modern tech we ensure that our solutions will last well into the future.</p>
+            <p>We at Turnstar Strategies are dedicated to providing the best possible security solutions, training and consultation services.</p>
+            <p>With decades of experience our professional team are more then capable to provide solutions for any budding business, group or individual. By staying on the forefront of modern tech we ensure that our solutions will last well into the future.</p>
             <p>At Turnstar, excellence is the name of the game. We not only provide some of the best training money can buy, but also a new way of thinking. Just talk to any of our friendly and professional staff and you will see why we are rated number one by our peers.</p>
             <p>So if you are here for consultation or training on strategic communications, IT, cyber security, business or education, you have come to the right place.</p>
 			<p>So what are you waiting for? A whole new world is just beyond your fingertips.</p>

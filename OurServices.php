@@ -73,7 +73,7 @@
 				is generally an information system, a communications system, or, more specifically speaking, a computer system — including 
 				all hardware, software, and peripheral equipment — operated by a limited group of IT users." <br>
 				- Wikipedia <br> <br>
-				Information technology is all around us, and shapes the world we live in. This course seeks to aim you with general knowledge on
+				Information technology is all around us, and shapes the world we live in. This course seeks to arm you with general knowledge on
 				the most common areas inside IT. In ten weeks learn how to code basic programs, how IT networks are set up,
 				and the tools and principles that have been assisting the most talented programmers throughout history.
             </p>

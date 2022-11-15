@@ -41,7 +41,7 @@
 
 	<div style="text-align:center">
 		<h1>Media Release</h1>
-		<p>Welcome to our media release page. This is where any important new news will be posted. <br> 
+		<p>Welcome to our media release page. This is where any important news will be posted. <br> 
 		These will be updated monthly or whenever important events occur.
 		</p>
 	</div>
@@ -54,7 +54,7 @@
 		<img class="mediaIMG" src="mountains.jpg" alt="Mountains">
 		<p class="mediaInfo">
 			Is cyber security all it's cracked up to be?
-			Studies have shown the 4/10 internet users do not know the basics of keeping safe and secure communications online. 
+			Studies have shown that 4/10 internet users do not know the basics of keeping safe and secure communications online. 
 			This has led to a rise in cyber-crime and espionage as hackers enjoy easy pickings of unprotected personal information.
 			With the rise of social media platforms like Facebook, and phone call screening apps like truecaller, it is easier than ever to have your information stolen and then used with malicious intent.
 			Don't be the 40%, level up you cyber security knowledge and practices with Turnstar Strategies.
@@ -62,7 +62,7 @@
 		<div class="cleardiv"></div>
     </div>
 
-    <div class="mediaContainer">
+	<div class="mediaContainer">
 		<div class="mediaTitle">
 			<h3>New Headquarters, with a view!</h3>
 		</div>
@@ -73,9 +73,9 @@
 			If you are in the nation's capital, feel free to stop by and talk to any of our qualified professionals to see what we, can offer you.
 		</p>
 		<div class="cleardiv"></div>
-    </div>
+	</div>
 
-    <div class="mediaContainer">
+	<div class="mediaContainer">
 		<div class="mediaTitle">
 			<h3>New courses coming this year</h3>
 		</div>
@@ -85,9 +85,9 @@
 			From cyber-security to business, we have all kinds of training materials and professionals keen to upskill you or your employees.
 		</p>
 		<div class="cleardiv"></div>
-    </div>
+	</div>
 
-    <div class="mediaContainer">
+	<div class="mediaContainer">
 		<div class="mediaTitle">
 			<h3>Webite up and running</h3>
 		</div>
