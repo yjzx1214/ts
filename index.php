@@ -46,26 +46,26 @@
 
             <div class="mySlides fade">
                 <div class="numbertext">1 / 4</div>
-                <img src="picture/img_nature_wide.jpg" style="width:100%">
-                <div class="text">Caption Text</div>
+                <img src="picture/Consulting1.jpg" style="width:100%; Height:600px">
+                <div class="text"></div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">2 / 4</div>
-                <img src="picture/img_snow_wide.jpg" style="width:100%">
-                <div class="text">Caption Two</div>
+                <img src="picture/Consulting2.jpg" style="width:100%; Height:600px">
+                <div class="text"></div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">3 / 4</div>
-                <img src="picture/img_mountains_wide.jpg" style="width:100%">
-                <div class="text">Caption Three</div>
+                <img src="picture/Consulting3.jpg" style="width:100%; Height:600px">
+                <div class="text"></div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">4 / 4</div>
-                <img src="picture/img_lights_wide.jpg" style="width:100%">
-                <div class="text">Caption Four</div>
+                <img src="picture/Consulting4.jpg" style="width:100%; Height:600px">
+                <div class="text"></div>
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">❮</a>
