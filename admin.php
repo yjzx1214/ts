@@ -1,19 +1,33 @@
-<?php
-header('Content-type:text/html; charset=utf-8');
-// Open Session
-session_start();
+<!--
+//*****************************************************************
+//Project: Turnstar Strategies Web Application
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Date: 14/11/2022
+//Software: Notepad++, Visual Studio Code
+//Platform: Microsoft Windows 10 Home
+//Purpose: This is the admin page, include all the script for admin to
+//			view, edit, delete, and add new users.
+//References: Some snippets of code were adapted from W3schools.com
+//*****************************************************************
+-->
 
-if (isset($_SESSION['username'])) {
-    $login = ucfirst($_SESSION['username']);
-} else {
-    $login = 'Login';
-}
-?>
 <?php
-include 'conn.php';
-$sql = "SELECT * FROM users";
-$result = mysqli_query($conn, $sql);
-$userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	header('Content-type:text/html; charset=utf-8');
+	// Open Session
+	session_start();
+
+	if (isset($_SESSION['username'])) {
+		$login = ucfirst($_SESSION['username']);
+	} else {
+		$login = 'Login';
+	}
+?>
+
+<?php
+	include 'conn.php';
+	$sql = "SELECT * FROM users";
+	$result = mysqli_query($conn, $sql);
+	$userlist = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 if (!empty($_POST['update'])) {
     $user_id = $_POST['user_id'];
@@ -208,4 +222,5 @@ if (!empty($_POST['update'])) {
 
     </main>
 
+	<!-- This is the footer file -->
     <?php include("footer.php"); ?>

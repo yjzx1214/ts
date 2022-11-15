@@ -1,3 +1,16 @@
+<!--
+//*****************************************************************
+//Project: Turnstar Strategies Web Application
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Date: 14/11/2022
+//Software: Notepad++, Visual Studio Code
+//Platform: Microsoft Windows 10 Home
+//Purpose: This is the index/home page, it only contains the company name
+//			and an interactive slideshow of related images.
+//References: Some snippets of code were adapted from W3schools.com
+//*****************************************************************
+-->
+
 <?php
 	header('Content-type:text/html; charset=utf-8');
 	// Open Session
@@ -25,7 +38,6 @@
     <?php include('nav.php') ?>
 
     <!-- Title-->
-
     <h2>Turnstar Strategies</h2>
 
     <!-- Slide Show -->
@@ -58,7 +70,6 @@
 
             <a class="prev" onclick="plusSlides(-1)">❮</a>
             <a class="next" onclick="plusSlides(1)">❯</a>
-
         </div>
         <br>
 
@@ -70,43 +81,39 @@
         </div>
 		
 		<!--Script for the slide show-->
-        <script>
-            let slideIndex = 1;
-            showSlides(slideIndex);
+		<script>
+			let slideIndex = 1;
+			showSlides(slideIndex);
+			
+				function plusSlides(n) {
+				showSlides(slideIndex += n);
+			}
 
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
-            }
+			function currentSlide(n) {
+				showSlides(slideIndex = n);
+			}
 
-            function currentSlide(n) {
-                showSlides(slideIndex = n);
-            }
-
-            function showSlides(n) {
-                let i;
-                let slides = document.getElementsByClassName("mySlides");
-                let dots = document.getElementsByClassName("dot");
-                if (n > slides.length) {
-                    slideIndex = 1
-                }
-                if (n < 1) {
-                    slideIndex = slides.length
-                }
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndex - 1].style.display = "block";
-                dots[slideIndex - 1].className += " active";
-            }
-        </script>
-
-
-        <!-- Text after Slide show might add text back-->
-        </div>
+			function showSlides(n) {
+				let i;
+				let slides = document.getElementsByClassName("mySlides");
+				let dots = document.getElementsByClassName("dot");
+				if (n > slides.length) {
+					slideIndex = 1
+				}
+				if (n < 1) {
+					slideIndex = slides.length
+				}
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				}
+				for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex - 1].style.display = "block";
+				dots[slideIndex - 1].className += " active";
+			}
+		</script>
     </main>
 
-    <!-- This is footer file -->
-    <?php include("footer.php"); ?>
+	<!-- This is the footer file -->
+	<?php include("footer.php"); ?>

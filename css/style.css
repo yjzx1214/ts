@@ -1,9 +1,20 @@
+/*
+//*****************************************************************
+//Project: Turnstar Strategies Web Application
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Date: 14/11/2022
+//Software: Notepad++, Visual Studio Code
+//Platform: Microsoft Windows 10 Home
+//Purpose: This is the CSS file. Its purpose is to format and style the HTML.
+//References: Some snippets of code were adapted from W3schools.com
+//*****************************************************************
+*/
+
 /*Colors used for reference:
-#F5F5F5 light gray background
-#333535 dark gray text, header and footer
+#F5F5F5 light grey background
+#333535 dark grey text, header and footer
 #FFA500 orange highlight
 */ 
-
 
 body {
     font-family: Bahnschrift;
@@ -13,9 +24,9 @@ body {
   }
   
   .navbar {
-      overflow: hidden;
-      border-bottom: 6px solid #FFA500;
-	  background-color: #333535;
+    overflow: hidden;
+    border-bottom: 6px solid #FFA500;
+	background-color: #333535;
   }
   
   .navbar a {
@@ -451,7 +462,7 @@ input[type=submit]:hover {
 }
 
 
-/* Create two columns that float next to eachother */
+/* Create two columns that float next to each other */
 .column {
   float: left;
   width: 50%;
@@ -616,7 +627,7 @@ img.CEOimg {
 
 /*end of Our Partners*/
 
-/* Training  width is diffrent not sure why might delete*/
+/* Training  width is different not sure why might delete*/
 .JoinClass {		  
   width: 30%;
 }
@@ -1014,7 +1025,6 @@ tr:nth-child(odd) {
   }
   
   .mobile.responsive a {
-	  position: absolue;
     float: none;
     display: inline-block;
     text-align: left;

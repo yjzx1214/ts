@@ -1,95 +1,108 @@
-<?php
-header('Content-type:text/html; charset=utf-8');
-// Open Session
-session_start();
+<!--
+//*****************************************************************
+//Project: Turnstar Strategies Web Application
+//Programmers: Paul Gardiner, Dylan Kirby, Jason Yu
+//Date: 14/11/2022
+//Software: Notepad++, Visual Studio Code
+//Platform: Microsoft Windows 10 Home
+//Purpose: This is the Training page. It contains a list of courses 
+//			which users can filter, create, delete, and join, depending on their access level
+//References: Some snippets of code were adapted from W3schools.com
+//*****************************************************************
+-->
 
-if (isset($_SESSION['username'])) {
-    $user_id = $_SESSION['user_id'];
-    $login = ucfirst($_SESSION['username']);
-    $level = $_SESSION['user_level'];
-} else {
-    $user_id = $login =  $level = '';
-}
+<?php
+	header('Content-type:text/html; charset=utf-8');
+	// Open Session
+	session_start();
+
+	if (isset($_SESSION['username'])) {
+		$user_id = $_SESSION['user_id'];
+		$login = ucfirst($_SESSION['username']);
+		$level = $_SESSION['user_level'];
+	} else {
+		$user_id = $login =  $level = '';
+	}
 ?>
+
 <?php
-include 'conn.php';
+	include 'conn.php';
 
-// get courses and units from database
-$sql_unit = "select * from units";
-$result_unit = mysqli_query($conn, $sql_unit);
-$unit_list = mysqli_fetch_all($result_unit, MYSQLI_ASSOC);
-$sql_course = "select * from courses";
-$result_course = mysqli_query($conn, $sql_course);
-$course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
+	// get courses and units from database
+	$sql_unit = "select * from units";
+	$result_unit = mysqli_query($conn, $sql_unit);
+	$unit_list = mysqli_fetch_all($result_unit, MYSQLI_ASSOC);
+	$sql_course = "select * from courses";
+	$result_course = mysqli_query($conn, $sql_course);
+	$course_list = mysqli_fetch_all($result_course, MYSQLI_ASSOC);
 
-// if user has login, check the enrollment history
-if (!empty($user_id)) {
-    $sql_enrollment = "SELECT * FROM enrollment WHERE u_id = '$user_id'";
-    $result_enrollment = mysqli_query($conn, $sql_enrollment);
-    $enrollment_list = mysqli_fetch_all($result_enrollment, MYSQLI_ASSOC);
-}
+	// if user has login, check the enrollment history
+	if (!empty($user_id)) {
+		$sql_enrollment = "SELECT * FROM enrollment WHERE u_id = '$user_id'";
+		$result_enrollment = mysqli_query($conn, $sql_enrollment);
+		$enrollment_list = mysqli_fetch_all($result_enrollment, MYSQLI_ASSOC);
+	}
 
-// Deal form request
-// Add new course
-if (!empty($_POST['addCourse'])) {
-    $category = $_POST['category'];
-    $course = $_POST['course'];
-    $courseNum = $_POST['courseNum'];
-    $cost = $_POST['cost'];
-    $trainer = $_POST['trainer'];
-    $trainerEmail = $_POST['trainerEmail'];
-    $info = $_POST['info'];
+	// Deal form request
+	// Add new course
+	if (!empty($_POST['addCourse'])) {
+		$category = $_POST['category'];
+		$course = $_POST['course'];
+		$courseNum = $_POST['courseNum'];
+		$cost = $_POST['cost'];
+		$trainer = $_POST['trainer'];
+		$trainerEmail = $_POST['trainerEmail'];
+		$info = $_POST['info'];
 
-    $sql = "INSERT INTO courses (unit_id, course_name, course_number, course_fee, information, course_trainer, trainer_email) VALUES ('$category', '$course', '$courseNum', '$cost', '$info', '$trainer', '$trainerEmail');";
-    $result = mysqli_query($conn, $sql);
-    $numrows = mysqli_affected_rows($conn);
-    if ($numrows == 1) {
-        header('location:training.php');
-    } else {
-        echo "Add course fail";
-    }
-    // Edit existing course
-} elseif (!empty($_POST['editCourse'])) {
-    $course_id = $_POST['edit_course_id'];
-    $unit_id = $_POST['edit_category'];
-    $course = $_POST['edit_course'];
-    $courseNum = $_POST['edit_courseNum'];
-    $cost = $_POST['edit_cost'];
-    $trainer = $_POST['edit_trainer'];
-    $email = $_POST['edit_trainerEmail'];
-    $information = $_POST['edit_info'];
+		$sql = "INSERT INTO courses (unit_id, course_name, course_number, course_fee, information, course_trainer, trainer_email) VALUES ('$category', '$course', '$courseNum', '$cost', '$info', '$trainer', '$trainerEmail');";
+		$result = mysqli_query($conn, $sql);
+		$numrows = mysqli_affected_rows($conn);
+		if ($numrows == 1) {
+			header('location:training.php');
+		} else {
+			echo "Add course fail";
+		}
+		// Edit existing course
+	} elseif (!empty($_POST['editCourse'])) {
+		$course_id = $_POST['edit_course_id'];
+		$unit_id = $_POST['edit_category'];
+		$course = $_POST['edit_course'];
+		$courseNum = $_POST['edit_courseNum'];
+		$cost = $_POST['edit_cost'];
+		$trainer = $_POST['edit_trainer'];
+		$email = $_POST['edit_trainerEmail'];
+		$information = $_POST['edit_info'];
 
-    $sql = "UPDATE courses SET unit_id='$unit_id', course_name='$course', course_number='$courseNum', course_fee='$cost', course_trainer='$trainer', trainer_email='$email', information='$information' WHERE course_id='$course_id';";
-    $result = mysqli_query($conn, $sql);
-    $numrows = mysqli_affected_rows($conn);
-    if ($numrows == 1) {
-        header('location:training.php');
-    } else {
-        echo "Edit course fail";
-    }
-    //Join course
-} elseif (!empty($_POST['joinCourse'])) {
-    echo ('1' . $user_id);
-    $course_id = $_POST['join_course_id'];
-    $sql = "INSERT INTO enrollment (u_id, course_id) VALUES ('$user_id', '$course_id');";
-    $result = mysqli_query($conn, $sql);
-    $numrows = mysqli_affected_rows($conn);
-    if ($numrows == 1) {
-        header('location:training.php');
-    } else {
-        echo "Join course fail";
-    }
-} elseif (!empty($_POST['cancelCourse'])) {
-    $cancel_enrollment_id = $_POST['cancel_enrollment_id'];
-    $sql = "DELETE FROM enrollment WHERE enrol_id = '$cancel_enrollment_id'";
-    $result = mysqli_query($conn, $sql);
-    $numrows = mysqli_affected_rows($conn);
-    if ($numrows == 1) {
-        header('location:training.php');
-    } else {
-        echo "Cancel course fail";
-    }
-}
+		$sql = "UPDATE courses SET unit_id='$unit_id', course_name='$course', course_number='$courseNum', course_fee='$cost', course_trainer='$trainer', trainer_email='$email', information='$information' WHERE course_id='$course_id';";
+		$result = mysqli_query($conn, $sql);
+		$numrows = mysqli_affected_rows($conn);
+		if ($numrows == 1) {
+			header('location:training.php');
+		} else {
+			echo "Edit course fail";
+		}
+		//Join course
+	} elseif (!empty($_POST['joinCourse'])) {
+		$course_id = $_POST['join_course_id'];
+		$sql = "INSERT INTO enrollment (u_id, course_id) VALUES ('$user_id', '$course_id');";
+		$result = mysqli_query($conn, $sql);
+		$numrows = mysqli_affected_rows($conn);
+		if ($numrows == 1) {
+			header('location:training.php');
+		} else {
+			echo "Join course fail";
+		}
+	} elseif (!empty($_POST['cancelCourse'])) {
+		$cancel_enrollment_id = $_POST['cancel_enrollment_id'];
+		$sql = "DELETE FROM enrollment WHERE enrol_id = '$cancel_enrollment_id'";
+		$result = mysqli_query($conn, $sql);
+		$numrows = mysqli_affected_rows($conn);
+		if ($numrows == 1) {
+			header('location:training.php');
+		} else {
+			echo "Cancel course fail";
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -103,17 +116,16 @@ if (!empty($_POST['addCourse'])) {
 </head>
 
 <body>
-    <!-- This is nav bar file -->
+    <!-- This is the nav bar file -->
     <?php include('nav.php') ?>
 
     <main>
-
 
         <div style="text-align:center">
             <h1>Training</h1>
         </div>
         <div id="myBtnContainer">
-            <button class="Trainingbtn active" onclick="filterSelection('all')"> Show all</button>
+            <button class="Trainingbtn active" onclick="filterSelection('all')">Show all</button>
             <?php foreach ($unit_list as $unit) : ?>
                 <button class="Trainingbtn"> <?php echo $unit['unit_name'] ?> </button>
             <?php endforeach; ?>
@@ -266,25 +278,26 @@ if (!empty($_POST['addCourse'])) {
         </div>
     </main>
 
-    <?php include("footer.php"); ?>
+	<!-- This is the footer file -->
+	<?php include("footer.php"); ?>
 
-    <script>
-        // display existing course information
-        function edit_course(course_id, unit_id) {
-            document.getElementById('id49').style.display = 'block';
-            document.getElementById('edit_course').value = document.getElementById(course_id + 'name').innerHTML;
-            document.getElementById('edit_courseNum').value = document.getElementById(course_id + 'number').innerHTML;
-            document.getElementById('edit_cost').value = document.getElementById(course_id + 'fee').innerHTML;
-            document.getElementById('edit_trainer').value = document.getElementById(course_id + 'trainer').innerHTML;
-            document.getElementById('edit_trainerEmail').value = document.getElementById(course_id + 'email').innerHTML;
-            document.getElementById('edit_info').value = document.getElementById(course_id + 'info').innerHTML;
-            document.getElementById('edit_course_id').value = course_id;
-            document.getElementById(unit_id + 'unit').selected = true;
-        }
+<script>
+    // display existing course information
+    function edit_course(course_id, unit_id) {
+        document.getElementById('id49').style.display = 'block';
+        document.getElementById('edit_course').value = document.getElementById(course_id + 'name').innerHTML;
+        document.getElementById('edit_courseNum').value = document.getElementById(course_id + 'number').innerHTML;
+        document.getElementById('edit_cost').value = document.getElementById(course_id + 'fee').innerHTML;
+        document.getElementById('edit_trainer').value = document.getElementById(course_id + 'trainer').innerHTML;
+        document.getElementById('edit_trainerEmail').value = document.getElementById(course_id + 'email').innerHTML;
+        document.getElementById('edit_info').value = document.getElementById(course_id + 'info').innerHTML;
+        document.getElementById('edit_course_id').value = course_id;
+        document.getElementById(unit_id + 'unit').selected = true;
+    }
 
-        // set join course id to payment page
-        function join_course(course_id) {
-            document.getElementById('id48').style.display = 'block';
-            document.getElementById('join_course_id').value = course_id;
-        }
-    </script>
+    // set join course id to payment page
+    function join_course(course_id) {
+        document.getElementById('id48').style.display = 'block';
+        document.getElementById('join_course_id').value = course_id;
+    }
+</script>
