@@ -59,6 +59,8 @@
 				$_SESSION['user_level'] = 3;
 
 				// This is my solution to the create user bug-------------------------
+				// It does force the user to re-sign in however
+				// So if there is a better solution feel free to change it
 				session_destroy();
 				//--------------------------------------------------------------------	
 
