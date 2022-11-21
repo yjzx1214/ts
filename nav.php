@@ -58,6 +58,10 @@
 				$_SESSION['username'] = $username;
 				$_SESSION['user_level'] = 3;
 
+				// This is my solution to the create user bug-------------------------
+				session_destroy();
+				//--------------------------------------------------------------------	
+
 				//redirect to home page
 				header('location:index.php');
 			} else {
