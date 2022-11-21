@@ -124,16 +124,17 @@
         <div style="text-align:center">
             <h1>Training</h1>
         </div>
-        <div id="myBtnContainer">
-            <button class="Trainingbtn active" onclick="filterSelection('all')">Show all</button>
-            <?php foreach ($unit_list as $unit) : ?>
-                <button class="Trainingbtn"> <?php echo $unit['unit_name'] ?> </button>
-            <?php endforeach; ?>
-        </div>
 
+		<!-- only visable add class button for admins and teachers -->
         <div id="addbtnContainer">
             <div class=" addTrainingbtn">
-                <button class="Trainingbtn" onclick="document.getElementById('id47').style.display='block'" style="width:auto;">Add Course</button>
+				<?php
+					if (!empty($_SESSION['user_level'])) {
+						if ($_SESSION['user_level'] == 2 || $_SESSION['user_level'] == 1 ) {
+							echo '<button class="Trainingbtn" onclick="document.getElementById(\'id47\').style.display=\'block\'" style="width:auto;">Add Course</button>';
+						}
+					}
+				?>                
             </div>
         </div>
 
