@@ -51,18 +51,16 @@
 		} else {
 			$sql_register = "INSERT INTO users (u_name, u_password, u_email, u_phone, u_address, u_level) VALUES ('$username', '$password', '$email', '$phone', '$address', '3');";
 			if (mysqli_query($conn, $sql_register)) {
+				$sql_id = "SELECT max(u_id) FROM users;";
+				$result_id = mysqli_query($conn, $sql_id);
+				$row_id = mysqli_fetch_array($result_id);
+
 				// Open Session
 				session_start();
 				//save user name into session
-				$_SESSION['user_id'] = $row['u_id'];
+				$_SESSION['user_id'] = $row_id['max(u_id)'];
 				$_SESSION['username'] = $username;
 				$_SESSION['user_level'] = 3;
-
-				// This is my solution to the create user bug-------------------------
-				// It does force the user to re-sign in however
-				// So if there is a better solution feel free to change it
-				session_destroy();
-				//--------------------------------------------------------------------	
 
 				//redirect to home page
 				header('location:index.php');
