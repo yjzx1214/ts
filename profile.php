@@ -102,11 +102,6 @@
 		$result = mysqli_query($conn, $sql);
 		$numrows = mysqli_affected_rows($conn);
 		if ($numrows == 1) {
-			// This is my solution to the create user bug-------------------------
-			// It does force the user to re-sign in however
-			// So if there is a better solution feel free to change it
-			session_destroy();
-			//--------------------------------------------------------------------
 			header('location:profile.php');
 		} else {
 		}
@@ -151,7 +146,7 @@
 
                     <?php
 						include 'conn.php';
-						$sql_user = "SELECT * FROM users WHERE u_name = '$login'";
+						$sql_user = "SELECT * FROM users WHERE u_id = '$user_id'";
 						$result_user = mysqli_query($conn, $sql_user);
 						$user = mysqli_fetch_row($result_user);
                     ?>
